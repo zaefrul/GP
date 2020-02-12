@@ -24,7 +24,7 @@ export default {
             { title: 'Project', url: '/project' },
             { title: 'invoice', url: '/invoice' },
             { title: 'Metadata', url: '/metadata' },
-            { title: 'Supplier', url: '/supplier' }
+            { title: 'Supplier', url: '/supplier/list' }
         ],
         selectedLink : 'Home'
         }

@@ -6,81 +6,49 @@
           <h5>Bersatu Teguh Construction Sdn. Bhd.</h5>
         </div>
       </div>
+      
     <div class="container csMenuMargin">
         <div class="row">
           <div class="col-lg-12">
             <ul class="nav nav-tabs nav-fill">
             <li class="nav-item">
-              <a class="nav-link" href="#" @click="selectedComponent = 'piMain'">Project Information</a>
+              <router-link :to="'/project-detail/' + this.$route.params.pid" class="nav-link">Project Information</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" @click="selectedComponent = 'piCustomerRfqList'">Cust RFQ</a>
+              <router-link :to="'/project-detail/' + this.$route.params.pid + '/crfq'" class="nav-link">Cust RFQ</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" @click="selectedComponent = 'piSupplierRfqList'">Supp RFQ</a>
+              <router-link :to="'/project-detail/' + this.$route.params.pid + '/srfq'" class="nav-link">Supp RFQ</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" @click="selectedComponent = 'piCustomerQuotationList'">Cust Quotation</a>
+              <router-link :to="'/project-detail/' + this.$route.params.pid + '/cq'" class="nav-link">Cust Quotation</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" @click="selectedComponent = 'piSupplierQuotationList'">Supp Quotation</a>
+              <router-link :to="'/project-detail/' + this.$route.params.pid + '/sq'" class="nav-link">Supp Quotation</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" @click="selectedComponent = 'piCustomerPoList'">Cust Purchase Order</a>
+              <router-link :to="'/project-detail/' + this.$route.params.pid + '/cpo'" class="nav-link">Cust Purchase Order</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" @click="selectedComponent = 'piSupplierPoList'">Supp Purchase Order</a>
+              <router-link :to="'/project-detail/' + this.$route.params.pid + '/spo'" class="nav-link" >Supp Purchase Order</router-link>
             </li>
           </ul>
 
-          <component :is="selectedComponent"></component>
+          <router-view></router-view>
 
           </div>
         </div>
       </div>
+
 </div>
 </template>
 
 <script>
-
-/**project detail */
-import ProjectInformation from './projectInformation.vue'
-import CustomerRfqView from './customerRfqView.vue'
-import SupplierRfqView from './supplierRfqView.vue'
-import SupplierQuotationView from './supplierQuotationView.vue'
-import CustomerQuotationView from './CustomerQuotationView.vue'
-import SupplierPoViewView from './supplierPoView.vue'
-import CustomerPoView from './CustomerPoView.vue'
-
 export default {
-    name : 'projectLanding',
+  name : 'projectLanding',
   data(){
     return {
-      // dummyAPI: [],
-      selectedComponent: 'piMain'
     }
-  },
-  //  mounted() {
-  //    fetch("https://jsonplaceholder.typicode.com/todos/1")
-  //    .then(response => response.json())
-  //    .then(json => this.dummyAPI)
-  //    .then(console.log(dummyAPI))
-  //  },
-  methods: {
-    customerDetail: [
-      { id: '10', pid: 'NCC100000000', title: 'Bersatu Teguh Construction Sdn. Bhd.', rdate: '12/12/2019', status: 'Pending' },
-      { id: '11', pid: 'NCC100000111', title: 'Kayu Kayan Sdn. Bhd.', rdate: '12/12/2019', status: 'Pending' },
-      { id: '12', pid: 'NCC100333300', title: 'Wak Joko Sdn. Bhd.', rdate: '11/01/2020', status: 'Pending' },
-    ]
-  },
-  components: {
-    piMain: ProjectInformation,
-    piSupplierRfqList: SupplierRfqView,
-    piCustomerRfqList: CustomerRfqView,
-    piSupplierQuotationList: SupplierQuotationView,
-    piCustomerQuotationList: CustomerQuotationView,
-    piSupplierPoList: SupplierPoViewView,
-    piCustomerPoList: CustomerPoView
   }
 
 }
