@@ -6,7 +6,7 @@
 
           <ul class="nav navbar-nav" style="margin:auto;">
             <!-- <li v-for="item in items" class="nav-item">  <a class="nav-link pr-5 pl-5"> <router-link :to="item.url" tag="li" active-class="active" exact>{{ item.title }}</router-link> </a> </li> -->
-            <router-link :to="item.url" tag="li" active-class="active" exact v-for="(item, index) in items" :key="index"><a class="nav-link pl-5 pr-5 ml-2 mr-2">{{ item.title }}</a></router-link>
+            <router-link :to="item.url" tag="li" active-class="active" exact v-for="(item, index) in items" :key="index"><a class="nav-link pl-5 pr-5 ml-3 mr-3">{{ item.title }}</a></router-link>
           </ul>
         </div>
       </nav>
@@ -23,8 +23,9 @@ export default {
             { title: 'Home', url: '/' },
             { title: 'Project', url: '/project' },
             { title: 'invoice', url: '/invoice' },
-            { title: 'Metadata', url: '/metadata' },
-            { title: 'Supplier', url: '/supplier' }
+            { title: 'Supplier', url: '/supplier' },
+            { title: 'Customer', url: '/customer' },
+            { title: 'Setting', url: '/setting' }
         ],
         selectedLink : 'Home'
         }
