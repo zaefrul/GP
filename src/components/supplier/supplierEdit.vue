@@ -57,8 +57,8 @@
                             </div>
                         </div>
 
-                    <router-link to="/supplier/list" tag="button" class="btn btn-danger ml-3" style="float: right;" >Cancel</router-link>
-                    <router-link :to="'/supplier/' + this.$route.params.id + '/view'" tag="button" class="btn btn-primary ml-3" style="float: right;" >Save</router-link>
+                    <router-link :to="'/supplier/view/' + this.$route.params.sid" tag="button" class="btn btn-danger ml-3" style="float: right;" >Cancel</router-link>
+                    <router-link :to="'/supplier/view/' + this.$route.params.sid" tag="button" class="btn btn-primary ml-3" style="float: right;" >Save</router-link>
                         
                     </div>
                 </div>

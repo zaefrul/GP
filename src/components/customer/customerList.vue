@@ -1,11 +1,11 @@
 <template>
-    <div id="supplierList">
+    <div id="customerList">
 
 <div class="jumbotron jumbotron-fluid text-center">
-  <h1 class="display-4">SUPPLIER</h1>
+  <h1 class="display-4">CUSTOMER</h1>
   <p class="lead">This is the listing of supplier</p>
   <p class="lead"> 
-       <router-link to="supplier/add"><button type="button" class="btn btn-primary">Register New Supplier</button></router-link>
+       <router-link to="customer/add"><button type="button" class="btn btn-primary">Register New Customer</button></router-link>
   </p>
 </div>
 
@@ -22,10 +22,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in supplierItem" :key="index++">
+        <tr v-for="(item, index) in customerItem" :key="index++">
           <th scope="row">{{ index }}</th>
           <td>{{ item.id }}</td>
-          <td><router-link :to="'/supplier/view/' + item.id" >{{ item.company }}</router-link></td>
+          <td><router-link :to="'/customer/view/' + item.id" >{{ item.company }}</router-link></td>
           <td>{{ item.license }}</td>
           <td>{{ item.contact }}</td>
         </tr>
@@ -54,10 +54,10 @@
 
 <script>
 export default {
-    name : "supplierList",
+    name : "customerList",
     data: function(){
         return {
-            supplierItem : [
+            customerItem : [
                 { id: '12345', company: 'company a', license: 'abc1234', contact: '+60193737373', email: 'companyA@mail.com'},
                 { id: '12345', company: 'company a', license: 'abc1234', contact: '+60193737373', email: 'companyA@mail.com'},
                 { id: '12345', company: 'company a', license: 'abc1234', contact: '+60193737373', email: 'companyA@mail.com'},

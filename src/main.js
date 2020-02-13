@@ -22,6 +22,13 @@ import SupplierAdd from './components/supplier/supplierAdd.vue' //supplier
 import SupplierView from './components/supplier/supplierView.vue' //supplier
 import SupplierEdit from './components/supplier/supplierEdit.vue' //supplier
 
+//customer
+import CustomerLanding from './components/customer/customerLanding.vue' //customer landing
+import CustomerList from './components/customer/customerList.vue' //customer list
+import CustomerAdd from './components/customer/customerAdd.vue' //customer add
+import CustomerView from './components/customer/customerView.vue' //customer view
+import CustomerEdit from './components/customer/customerEdit.vue' //customer edit
+
 //invoice
 import InvoiceLanding from './components/invoice/invoiceLanding.vue' //invoice
 import InvoiceList from './components/invoice/invoiceList.vue' //invoice
@@ -135,7 +142,17 @@ const routes = [
         { path: 'edit/:sid', component: SupplierEdit },
         { path: 'add', component: SupplierAdd }
       ]
-    }
+    },
+  //Customer  
+  { path: '/customer', component: CustomerLanding,
+  children: [
+    { path: '', component: CustomerList },
+    { path: 'list', component: CustomerList },
+    { path: 'view/:cid', component: CustomerView },
+    { path: 'edit/:cid', component: CustomerEdit },
+    { path: 'add', component: CustomerAdd }
+  ]
+}
 ];
 
 const router = new VueRouter({
