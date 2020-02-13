@@ -1,5 +1,5 @@
 <template>
-    <div id="piMain">
+    <div id="piMain" class="content-margin-top">
         <div class="progressBar mb-5 mt-5">
             <div class="progressRow">
                 <div class="progressBlock">

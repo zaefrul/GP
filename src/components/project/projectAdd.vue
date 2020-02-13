@@ -1,5 +1,5 @@
 <template>
-    <div id="projectAdd">
+    <div id="projectAdd" class="content-margin-top">
 
         <div class="jumbotron jumbotron-fluid text-center">
             <h1 class="display-4">REGISTER NEW PROJECT</h1>

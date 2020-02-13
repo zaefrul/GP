@@ -1,5 +1,5 @@
 <template>
-    <div id="supplierView">
+    <div id="supplierView" class="content-margin-top">
 
 <div class="jumbotron jumbotron-fluid text-center" v-for="(item, index) in supplierView" :key="index++">
   <h1 class="display-4">SUPPLIER: {{ item.company }}</h1>

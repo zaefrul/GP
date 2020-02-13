@@ -1,5 +1,5 @@
 <template>
-    <div id="customerEdit">
+    <div id="customerEdit" class="content-margin-top">
 
 <div class="jumbotron jumbotron-fluid text-center" v-for="(item, index) in customerEdit" :key="index++">
   <h1 class="display-4">CUSTOMER: {{ item.company }}</h1>

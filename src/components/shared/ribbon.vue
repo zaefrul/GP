@@ -1,6 +1,6 @@
 <template>
 <div id="ribbon">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <img src="././dist/img/gp-white-logo.png" alt="" width="230px">
   
   <div class="collapse navbar-collapse" id="navbarSupportedContent">

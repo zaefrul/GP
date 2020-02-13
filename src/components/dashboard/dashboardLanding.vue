@@ -1,5 +1,5 @@
 <template>
-<div id="dashboardLanding">
+<div id="dashboardLanding" class="content-margin-top">
     <div class="jumbotron jumbotron-fluid ">
         <div class="container">
             <div class="row">

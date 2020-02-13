@@ -8,7 +8,6 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 //import all component
 import DashboardLanding from './components/dashboard/dashboardLanding.vue' //dashboard
-import Metadata from './components/metadata/metadata.vue' //metadata
 
 //Project List
 import ProjectAllLanding from './components/project/projectAllLanding.vue' //project
@@ -73,6 +72,17 @@ import PiSupplierRfqAdd from './components/projectDetail/supplier/requestForQuot
 import PiSupplierRfqList from './components/projectDetail/supplier/requestForQuotation/supplierRfqList.vue' //supplier rfq view
 import PiSupplierRfqEdit from './components/projectDetail/supplier/requestForQuotation/supplierRfqEdit.vue' //supplier rfq view
 
+//setting page
+//main
+import SettingLanding from './components/setting/settingLanding.vue' //setting main
+import SettingMain from './components/setting/settingMain.vue' //setting main
+
+//metadata
+import MetadataList from './components/setting/metadata/metadata.vue' //metadata
+
+//user
+import UserList from './components/setting/user/userList.vue' //metadata
+
 Vue.use(VueRouter);
 
 // Install BootstrapVue
@@ -131,8 +141,6 @@ const routes = [
         { path: 'view/:iid', component: InvoiceDetail }
       ]
   },
-  //Metadata
-  { path: '/metadata', component: Metadata },
   //Supplier
   { path: '/supplier', component: SupplierLanding,
       children: [
@@ -145,14 +153,21 @@ const routes = [
     },
   //Customer  
   { path: '/customer', component: CustomerLanding,
-  children: [
-    { path: '', component: CustomerList },
-    { path: 'list', component: CustomerList },
-    { path: 'view/:cid', component: CustomerView },
-    { path: 'edit/:cid', component: CustomerEdit },
-    { path: 'add', component: CustomerAdd }
-  ]
-}
+    children: [
+      { path: '', component: CustomerList },
+      { path: 'list', component: CustomerList },
+      { path: 'view/:cid', component: CustomerView },
+      { path: 'edit/:cid', component: CustomerEdit },
+      { path: 'add', component: CustomerAdd }
+    ]
+  },
+  //Setting
+  { path: '/setting', component: SettingLanding,
+      children: [
+        { path: 'metadata', component: MetadataList },
+        { path: 'user', component: UserList }
+      ] 
+  }
 ];
 
 const router = new VueRouter({

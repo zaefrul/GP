@@ -1,5 +1,5 @@
 <template>
-    <div id="invoiceList">
+    <div id="invoiceList" class="content-margin-top">
 
 <div class="jumbotron jumbotron-fluid text-center">
   <h1 class="display-4">INVOICE LIST</h1>

@@ -1,5 +1,5 @@
 <template>
-    <div id="supplierEdit">
+    <div id="supplierEdit" class="content-margin-top">
 
 <div class="jumbotron jumbotron-fluid text-center" v-for="(item, index) in supplierEdit" :key="index++">
   <h1 class="display-4">SUPPLIER: {{ item.company }}</h1>
@@ -62,8 +62,6 @@
                         
                     </div>
                 </div>
-
-                
                 
             </form>
 

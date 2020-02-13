@@ -1,5 +1,5 @@
 <template>
-    <div id="supplierAdd">
+    <div id="supplierAdd" class="content-margin-top">
 
 <div class="jumbotron jumbotron-fluid text-center">
   <h1 class="display-4">REGISTER SUPPLIER</h1>

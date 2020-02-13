@@ -1,5 +1,5 @@
 <template>
-    <div id="customerList">
+    <div id="customerList" class="content-margin-top">
 
 <div class="jumbotron jumbotron-fluid text-center">
   <h1 class="display-4">CUSTOMER</h1>
