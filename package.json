@@ -22,8 +22,10 @@
     "vue": "vue/dist/vue.common.js"
   },
   "dependencies": {
+    "bootstrap": "^4.4.1",
+    "bootstrap-vue": "^2.4.0",
     "chart.js": "^2.9.3",
-    "vue": "^2.0.1",
+    "vue": "^2.6.11",
     "vue-chartjs": "^3.5.0",
     "vue-router": "^3.1.5"
   },

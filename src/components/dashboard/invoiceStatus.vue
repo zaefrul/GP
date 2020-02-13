@@ -1,5 +1,5 @@
 <template>
-    <div id="invoiceStatus">
+    <div id="invoiceStatus" class="content-margin-top">
       <div class="card">
         <h5 class="card-header">Invoice Status</h5>
         <div class="card-body">

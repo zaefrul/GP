@@ -1,11 +1,11 @@
 <template>
-    <div id="projectList">
+    <div id="projectList" class="content-margin-top">
 
 <div class="jumbotron jumbotron-fluid text-center">
-    <h1 class="display-4">CUSTOMER LIST</h1>
-    <p class="lead">This is the listing of our existing customer</p>
+    <h1 class="display-4">PROJECT LIST</h1>
+    <p class="lead">This is the listing of our projects</p>
     <p class="lead"> 
-       <router-link to="/projectAdd"><button type="button" class="btn btn-primary">Add New Customer</button></router-link>
+       <router-link to="project/add"><button type="button" class="btn btn-primary">Register New Project</button></router-link>
     </p>
 </div>
 
@@ -24,7 +24,7 @@
       <tbody>
         <tr v-for="(item, index) in projectListItem" :key="index++">
           <th scope="row">{{ index }}</th>
-          <td>{{ item.title }}</td>
+          <td><router-link :to="'/project-detail/' + item.pid">{{ item.title }}</router-link></td>
           <td>{{ item.phone }}</td>
           <td>{{ item.email }}</td>
           <td><a href="#">Delete</a></td>

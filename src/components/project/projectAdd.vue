@@ -1,8 +1,13 @@
 <template>
-    <div id="projectAdd">
+    <div id="projectAdd" class="content-margin-top">
+
+        <div class="jumbotron jumbotron-fluid text-center">
+            <h1 class="display-4">REGISTER NEW PROJECT</h1>
+            <p class="lead">Register new project to the system</p>
+        </div>
+
         <div class="container" style="margin-bottom: 60px;margin-top: 30px;">
             <form action="">
-
                 <div class="card">
                     <div class="card-body">
                         <div class="form-row mb-3">
@@ -120,9 +125,11 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <button class="btn btn-success ml-3" style="float: right;" type="submit">Submit</button>
-                        <button class="btn btn-danger ml-3" style="float: right;" type="submit">Cancel</button>
+
+                        <router-link to="/project" class="btn btn-danger ml-3" style="float: right;">Cancel</router-link>
+                        <router-link to="/project" class="btn btn-success ml-3" style="float: right;">Submit</router-link>
                         <button class="btn btn-warning ml-3" style="float: right;" type="submit">Add New Row</button>
+
                     </div>
                 </div>
                 
