@@ -9,8 +9,11 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 //import all component
 import DashboardLanding from './components/dashboard/dashboardLanding.vue' //dashboard
 import Metadata from './components/metadata/metadata.vue' //metadata
-import Project from './components/project/projectList.vue' //project
-import Invoice from './components/invoice/invoiceList.vue' //invoice
+
+//Project List
+import ProjectAllLanding from './components/project/projectAllLanding.vue' //project
+import ProjectListing from './components/project/projectList.vue' //project
+import ProjectAdd from './components/project/projectAdd.vue' //project add
 
 //supplier
 import SupplierLanding from './components/supplier/supplierLanding.vue' //supplier
@@ -20,7 +23,9 @@ import SupplierView from './components/supplier/supplierView.vue' //supplier
 import SupplierEdit from './components/supplier/supplierEdit.vue' //supplier
 
 //invoice
-import InvoiceDetail from './components/invoice/invoiceDetail.vue'
+import InvoiceLanding from './components/invoice/invoiceLanding.vue' //invoice
+import InvoiceList from './components/invoice/invoiceList.vue' //invoice
+import InvoiceDetail from './components/invoice/invoiceDetail.vue' //invoice detail
 
 //project detail
 import ProjectDetailLanding from './components/projectDetail/projectLanding.vue' //project detail
@@ -61,10 +66,6 @@ import PiSupplierRfqAdd from './components/projectDetail/supplier/requestForQuot
 import PiSupplierRfqList from './components/projectDetail/supplier/requestForQuotation/supplierRfqList.vue' //supplier rfq view
 import PiSupplierRfqEdit from './components/projectDetail/supplier/requestForQuotation/supplierRfqEdit.vue' //supplier rfq view
 
-
-import ProjectAdd from './components/project/projectAdd.vue'
-
-
 Vue.use(VueRouter);
 
 // Install BootstrapVue
@@ -74,9 +75,14 @@ Vue.use(IconsPlugin)
 
 const routes = [
   { path: '/', component: DashboardLanding },
-  { path: '/project', component: Project },
-  { path: '/projectAdd', component: ProjectAdd },
-  //PI
+  //Project Listing
+  { path: '/project', component: ProjectAllLanding,
+      children: [
+        { path: '', component: ProjectListing },
+        { path: 'add', component: ProjectAdd }
+      ]  
+  },
+  //Project Detail
   { path: '/project-detail/:pid', component: ProjectDetailLanding,
       children: [
         { path: '', component: ProjectInformation },
@@ -111,16 +117,22 @@ const routes = [
         { path: 'srfq/edit', component: PiSupplierRfqEdit }
       ]
   },
-  { path: '/invoice', component: Invoice },
-  { path: '/invoice-detail/:iid', component: InvoiceDetail },
+  //Invoice
+  { path: '/invoice', component: InvoiceLanding,
+      children: [
+        { path: '', component: InvoiceList },
+        { path: 'view/:iid', component: InvoiceDetail }
+      ]
+  },
+  //Metadata
   { path: '/metadata', component: Metadata },
-  //{ path: '/supplier', component: Supplier },
-  { path: '/supplier/:id', component: SupplierLanding,
+  //Supplier
+  { path: '/supplier', component: SupplierLanding,
       children: [
         { path: '', component: SupplierList },
         { path: 'list', component: SupplierList },
-        { path: 'view', component: SupplierView },
-        { path: 'edit', component: SupplierEdit },
+        { path: 'view/:sid', component: SupplierView },
+        { path: 'edit/:sid', component: SupplierEdit },
         { path: 'add', component: SupplierAdd }
       ]
     }

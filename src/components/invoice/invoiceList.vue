@@ -28,7 +28,7 @@
           <td>{{ item.idate }}</td>
           <td><router-link :to="'/project-detail/' + item.pid">{{ item.title }}</router-link></td>
           <td>{{ item.price }}</td>
-          <td><router-link :to="'/invoice-detail/' + item.iid">View invoice</router-link></td>
+          <td><router-link :to="'invoice/view/' + item.iid">View invoice</router-link></td>
         </tr>
       </tbody>
     </table>

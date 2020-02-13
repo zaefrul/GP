@@ -2,10 +2,11 @@
     <div id="invoiceDetail">
         <div class="container">
             <div class="card" style="margin-top: 50px; margin-bottom: 100px;">
-                    <h3 class="card-header">Invoice Detail
+                <h3 class="card-header">Invoice Detail
+                    <router-link to="/invoice" class="btn btn-danger ml-3" style="float: right;">Back</router-link>
                     <button id="printInvoice" type="button" class="btn btn-primary ml-3" style="float: right;" @click="printInvoice"><i class="fa fa-print"></i> Print</button>
-                    <button type="button" class="btn btn-primary" style="float: right;"><i class="fa fa-file-pdf-o"></i> Export</button>
-                    </h3>
+                    <button type="button" class="btn btn-primary ml-3" style="float: right;"><i class="fa fa-file-pdf-o"></i> Export</button>
+                </h3>
                 <div class="card-body">
                     
                     <div class="invoice overflow-auto">
