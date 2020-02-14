@@ -25,7 +25,9 @@ export default {
             { title: 'invoice', url: '/invoice' },
             { title: 'Supplier', url: '/supplier' },
             { title: 'Customer', url: '/customer' },
-            { title: 'Setting', url: '/setting' }
+            { title: 'Setting', url: '/setting' },
+            { title: 'Login', url: '/login' },
+            { title: 'Test', url: '/test' }
         ],
         selectedLink : 'Home'
         }

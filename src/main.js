@@ -6,6 +6,9 @@ import VueRouter from 'vue-router';
 import App from './App.vue';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
+//Login Page
+import LoginLanding from './components/login/loginLanding.vue' //login 
+
 //import all component
 import DashboardLanding from './components/dashboard/dashboardLanding.vue' //dashboard
 
@@ -82,6 +85,9 @@ import MetadataList from './components/setting/metadata/metadata.vue' //metadata
 
 //user
 import UserList from './components/setting/user/userList.vue' //metadata
+
+//testpage
+import testPage from './components/test03.vue' //test page
 
 Vue.use(VueRouter);
 
@@ -167,7 +173,11 @@ const routes = [
         { path: 'metadata', component: MetadataList },
         { path: 'user', component: UserList }
       ] 
-  }
+  },
+  //login
+  { path: '/login', component: LoginLanding },
+  //test
+  { path: '/test', component: testPage }
 ];
 
 const router = new VueRouter({
