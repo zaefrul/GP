@@ -3,7 +3,7 @@
         
       <div class="card">
         <h5 class="card-header">Project Status
-          <router-link to="/projectAdd"><button type="button" class="btn btn-primary btn-sm" style="float: right;">Add New Project</button></router-link>
+          <router-link to="/project/add"><button type="button" class="btn btn-primary btn-sm" style="float: right;">Add New Project</button></router-link>
         </h5>
         <div class="card-body">
           <table class="table table-striped">
