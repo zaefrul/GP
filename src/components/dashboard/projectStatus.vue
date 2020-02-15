@@ -16,11 +16,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(item, index) in project" :key="index++">
+              <tr v-for="(item, index) in projectStatusItem" :key="index++">
                 <th scope="row">{{ index }}</th>
-                <td>{{ item.dateCreated | moment("calendar") }}</td>
-                <td><a href="#"><router-link :to="'/project-detail/' + item.id">{{ item.customer.companyName }}</router-link></a></td>
-                <td>{{ item.stage }}</td>
+                <td>{{ item.date }}</td>
+                <td><a href="#"><router-link :to="'/project-detail/' + item.pid">{{ item.company }}</router-link></a></td>
+                <td>{{ item.status }}</td>
               </tr>
             </tbody>
           </table>
@@ -30,21 +30,17 @@
 </template>
 
 <script>
-import {mapActions, mapMutations, mapGetters} from 'vuex'
-import {Http} from '../../service/httpservice'
 export default {
     name : "projectStatus",
-    mounted(){
-      Http.get("api/projects")
-        .then(response => {
-          this.createProject(response.data)
-        })
-    },
-    computed: {
-      ...mapGetters(["project"])
-    },
-    methods: {
-      ...mapActions(["createProject"])
+    data : function(){
+        return {
+        projectStatusItem : [
+            { pid: '10', date: '12/10/2019', company: 'Bersatu Teguh Construction Sdn. Bhd.', status: 'Waiting for SOA' },
+            { pid: '11', date: '14/10/2019', company: 'Bersatu Teguh Construction Sdn. Bhd.', status: 'Completed' },
+            { pid: '12', date: '15/10/2019', company: 'Bersatu Teguh Construction Sdn. Bhd.', status: 'Pending LOA' },
+            { pid: '13', date: '16/10/2019', company: 'Bersatu Teguh Construction Sdn. Bhd.', status: 'In Progress' }
+        ]
+        }
     }
 }
 </script>

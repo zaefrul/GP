@@ -5,6 +5,7 @@
                 <div class="progressBlock">
                     <div class="progressTitle">Supplier RFQ</div>
                     <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus >= 1 }">
+                        <div class="level">1</div>
                     </div>
                 </div>
                 <div class="progressBlock">
