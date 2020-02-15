@@ -24,15 +24,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in metadataItem" :key="index++">
+        <tr v-for="(item, index) in metadata" :key="index++">
           <th scope="row">{{ index }}</th>
-          <td>{{ item.description }}</td>
-          <td>{{ item.part }}</td>
-          <td>{{ item.model }}</td>
-          <td>{{ item.serial }}</td>
-          <td>{{ item.drawing }}</td>
-          <td>{{ item.item }}</td>
-          <td>{{ item.price }}</td>
+          <td>{{ item.partName }}</td>
+          <td>{{ item.partNumber }}</td>
+          <td>{{ item.modelNumber }}</td>
+          <td>{{ item.serialNumber }}</td>
+          <td>{{ item.drawingNumber }}</td>
+          <td>{{ item.tagNumber }}</td>
+          <td>{{ item.prices[0].amount }}</td>
           <td><a href="#">{{ item.history }}</a></td>
         </tr>
       </tbody>
@@ -56,30 +56,21 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+import Http from '../../service/httpservice'
 export default {
     name : "metadata",
-    data: function(){
-        return {
-            metadataItem : [
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99', history: 'History'},
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99', history: 'History'},
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99', history: 'History'},
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99', history: 'History'},
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99', history: 'History'},
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99', history: 'History'},
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99', history: 'History'},
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99', history: 'History'},
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99', history: 'History'},
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99', history: 'History'},
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99', history: 'History'},
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99', history: 'History'},
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99', history: 'History'},
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99', history: 'History'},
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99', history: 'History'},
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99', history: 'History'},
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99', history: 'History'}
-            ]
-        }
+    mounted() {
+      Http.get("api/metadatas")
+        .then(response => {
+          this.createMetadata(response.data)
+        })
+    },
+    computed: {
+      ...mapGetters(["metadata"])
+    },
+    methods: {
+      ...mapActions(["createMetadata"])
     }
 }
 </script>
