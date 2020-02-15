@@ -5,6 +5,11 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from './App.vue';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import Axios from 'axios'
+import VueAxios from 'vue-axios'
+import {store} from './service/store'
+
+Vue.use(require('vue-moment'))
 
 //Login Page
 import LoginLanding from './components/login/loginLanding.vue' //login 
@@ -184,5 +189,8 @@ const router = new VueRouter({
 new Vue({ // eslint-disable-line no-new
   el: '#app',
   router,
+  store,
+  Axios,
+  VueAxios,
   render: (h) => h(App)
 })

@@ -22,12 +22,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in customerItem" :key="index++">
+        <tr v-for="(item, index) in customer" :key="index++">
           <th scope="row">{{ index }}</th>
           <td>{{ item.id }}</td>
-          <td><router-link :to="'/customer/view/' + item.id" >{{ item.company }}</router-link></td>
+          <td><router-link :to="'/customer/view/' + item.id" >{{ item.companyName }}</router-link></td>
           <td>{{ item.license }}</td>
-          <td>{{ item.contact }}</td>
+          <td>{{ item.phone }}</td>
         </tr>
       </tbody>
     </table>
@@ -53,22 +53,21 @@
 </template>
 
 <script>
+import {mapActions, mapGetters, mapMutations} from 'vuex'
+import Http from '../../service/httpservice'
 export default {
     name : "customerList",
-    data: function(){
-        return {
-            customerItem : [
-                { id: '12345', company: 'company a', license: 'abc1234', contact: '+60193737373', email: 'companyA@mail.com'},
-                { id: '12345', company: 'company a', license: 'abc1234', contact: '+60193737373', email: 'companyA@mail.com'},
-                { id: '12345', company: 'company a', license: 'abc1234', contact: '+60193737373', email: 'companyA@mail.com'},
-                { id: '12345', company: 'company a', license: 'abc1234', contact: '+60193737373', email: 'companyA@mail.com'},
-                { id: '12345', company: 'company a', license: 'abc1234', contact: '+60193737373', email: 'companyA@mail.com'},
-                { id: '12345', company: 'company a', license: 'abc1234', contact: '+60193737373', email: 'companyA@mail.com'},
-                { id: '12345', company: 'company a', license: 'abc1234', contact: '+60193737373', email: 'companyA@mail.com'},
-                { id: '12345', company: 'company a', license: 'abc1234', contact: '+60193737373', email: 'companyA@mail.com'},
-                { id: '12345', company: 'company a', license: 'abc1234', contact: '+60193737373', email: 'companyA@mail.com'},
-            ]
-        }
+    mounted() {
+      Http.get("api/customers")
+        .then(response => {
+          this.createCustomer(response.data)
+        })
+    },
+    computed: {
+      ...mapGetters(["customer"])
+    },
+    methods: {
+      ...mapActions(["createCustomer"])
     }
 }
 </script>

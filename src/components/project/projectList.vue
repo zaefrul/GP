@@ -22,11 +22,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in displayedPosts" :key="index++">
-          <!-- <th scope="row">{{ index }}</th> -->
-          <td><router-link :to="'/project-detail/' + item.pid">{{ item.title }}</router-link></td>
-          <td>{{ item.phone }}</td>
-          <td>{{ item.email }}</td>
+        <tr v-for="(item, index) in project" :key="index++">
+          <th scope="row">{{ index }}</th>
+          <td><router-link :to="'/project-detail/' + item.id">{{ item.customer.companyName }}</router-link></td>
+          <td>{{ item.customer.phone }}</td>
+          <td>{{ item.customer.email }}</td>
           <td><a href="#">Delete</a></td>
         </tr>
       </tbody>
@@ -56,81 +56,21 @@
 </template>
 
 <script>
+import {mapActions, mapGetters, mapMutations} from 'vuex'
+import Http from '../../service/httpservice'
 export default {
     name : "projectList",
-    data: function(){
-        return {
-            posts : [
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'admin@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'test@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'afasdg@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'afg@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: '4rghg@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'htgr@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'rqegf@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'cgag@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'snhg@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'jywthegf@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'htef@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'aerhfdv@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'afg@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'jyh@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'wgda@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'asdg@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'adgva@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'admin@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'admin@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'adgar@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'admin@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'asdga@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'asdgag@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'admin@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'asdga@btc.com'}
-            ],
-            page: 1,
-            perPage: 10,
-            pages: [],	
-        }
-    },
-    methods:{
-      getPosts () {	
-        let data = [];
-        for(let i = 0; i < 10; i++){
-          this.posts.push({
-                suffix:'#' + i});
-        }  
-      },
-      setPages () {
-        let numberOfPages = Math.ceil(this.posts.length / this.perPage);
-        for (let index = 1; index <= numberOfPages; index++) {
-          this.pages.push(index);
-        }
-      },
-      paginate (posts) {
-        let page = this.page;
-        let perPage = this.perPage;
-        let from = (page * perPage) - perPage;
-        let to = (page * perPage);
-        return  posts.slice(from, to);
-      }
+    mounted(){
+      Http.get("/api/projects")
+        .then(response => {
+          this.createProject(response.data)
+        })
     },
     computed: {
-      displayedPosts () {
-        return this.paginate(this.posts);
-      }
+      ...mapGetters(["project"])
     },
-    watch: {
-      posts () {
-        this.setPages();
-      }
-    },
-    created(){
-      this.getPosts();
-    },
-    filters: {
-      trimWords(value){
-        return value.split(" ").splice(0,20).join(" ") + '...';
-      }
+    methods: {
+      ...mapActions(["createProject"])
     }
 }
 
