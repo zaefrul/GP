@@ -9,7 +9,7 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 //Login Page
 import LoginLanding from './components/login/loginLanding.vue' //login 
 
-//import all component
+//landing page
 import DashboardLanding from './components/dashboard/dashboardLanding.vue' //dashboard
 
 //Project List
@@ -86,9 +86,6 @@ import MetadataList from './components/setting/metadata/metadata.vue' //metadata
 //user
 import UserList from './components/setting/user/userList.vue' //metadata
 
-//testpage
-import testPage from './components/test03.vue' //test page
-
 Vue.use(VueRouter);
 
 // Install BootstrapVue
@@ -97,6 +94,7 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 
 const routes = [
+  //homepage
   { path: '/', component: DashboardLanding },
   //Project Listing
   { path: '/project', component: ProjectAllLanding,
@@ -175,9 +173,7 @@ const routes = [
       ] 
   },
   //login
-  { path: '/login', component: LoginLanding },
-  //test
-  { path: '/test', component: testPage }
+  { path: '/login', component: LoginLanding }
 ];
 
 const router = new VueRouter({
