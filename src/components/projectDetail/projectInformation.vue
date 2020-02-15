@@ -4,78 +4,78 @@
             <div class="progressRow">
                 <div class="progressBlock">
                     <div class="progressTitle">Supplier RFQ</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus => 1 }">
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus >= 1 }">
                         <div class="level">1</div>
                     </div>
                 </div>
                 <div class="progressBlock">
                     <div class="progressTitle">Customer Quotation</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus => 2 }">
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus >= 2 }">
                         <div class="level">2</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus => 2 }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus >= 2 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
                     <div class="progressTitle">Supplier Quotation</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus => 3 }">
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus >= 3 }">
                         <div class="level">3</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus => 3 }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus >= 3 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
                     <div class="progressTitle">Customer Purchase Order</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus => 4 }">
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus >= 4 }">
                         <div class="level">4</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus => 4 }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus >= 4 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
                     <div class="progressTitle">Supplier Purchase Order</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus => 5 }">
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus >= 5 }">
                         <div class="level">5</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus => 5 }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus >= 5 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
                     <div class="progressTitle">Supplier SOA</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus => 6 }">
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus >= 6 }">
                         <div class="level">6</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus => 6 }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus >= 6 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
                     <div class="progressTitle">Customer SOA</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus => 7 }">
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus >= 7 }">
                         <div class="level">7</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus => 7 }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus >= 7 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
                     <div class="progressTitle">Supplier Delivery Order</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus => 8 }">
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus >= 8 }">
                         <div class="level">8</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus => 8 }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus >= 8 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
                     <div class="progressTitle">Customer Delivery Order</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus => 9 }">
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus >= 9 }">
                         <div class="level">9</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus => 9 }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus >= 9 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
                     <div class="progressTitle">Supplier Invoice</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus => 10 }">
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus >= 10 }">
                         <div class="level">10</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus => 10 }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus >= 10 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
                     <div class="progressTitle">Customer Invoice</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus > 11 }">
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus >= 11 }">
                         <div class="level">11</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus > 11 }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus >= 11 }"></div>
                     </div>
                 </div>
             </div>
