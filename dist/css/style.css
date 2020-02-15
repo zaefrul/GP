@@ -3,3 +3,14 @@ li.nav-item-sub {
     float: left;
     list-style: none;
 }
+
+.settingBody {
+    width: calc(100% - 230px);
+    height: calc(100vh - 118px);
+    /* background: #dee1ea; */
+    margin-left: 230px;
+}
+
+.content-margin-top {
+    margin-top: 62px;
+}
