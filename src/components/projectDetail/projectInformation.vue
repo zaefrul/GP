@@ -4,78 +4,78 @@
             <div class="progressRow">
                 <div class="progressBlock">
                     <div class="progressTitle">Supplier RFQ</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': p1 === true }">
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus => 1 }">
                         <div class="level">1</div>
                     </div>
                 </div>
                 <div class="progressBlock">
                     <div class="progressTitle">Customer Quotation</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': p2 === true }">
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus => 2 }">
                         <div class="level">2</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': p2 === true }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus => 2 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
                     <div class="progressTitle">Supplier Quotation</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': p3 === true }">
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus => 3 }">
                         <div class="level">3</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': p3 === true }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus => 3 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
                     <div class="progressTitle">Customer Purchase Order</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': p4 === true }">
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus => 4 }">
                         <div class="level">4</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': p4 === true }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus => 4 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
                     <div class="progressTitle">Supplier Purchase Order</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': p5 === true }">
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus => 5 }">
                         <div class="level">5</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': p5 === true }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus => 5 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
                     <div class="progressTitle">Supplier SOA</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': p6 === true }">
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus => 6 }">
                         <div class="level">6</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': p6 === true }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus => 6 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
                     <div class="progressTitle">Customer SOA</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': p7 === true }">
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus => 7 }">
                         <div class="level">7</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': p7 === true }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus => 7 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
                     <div class="progressTitle">Supplier Delivery Order</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': p8 === true }">
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus => 8 }">
                         <div class="level">8</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': p8 === true }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus => 8 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
                     <div class="progressTitle">Customer Delivery Order</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': p9 === true }">
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus => 9 }">
                         <div class="level">9</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': p9 === true }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus => 9 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
                     <div class="progressTitle">Supplier Invoice</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': p10 === true }">
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus => 10 }">
                         <div class="level">10</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': p10 === true }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus => 10 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
                     <div class="progressTitle">Customer Invoice</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': p11 === true }">
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus > 11 }">
                         <div class="level">11</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': p11 === true }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus > 11 }"></div>
                     </div>
                 </div>
             </div>
@@ -179,40 +179,18 @@ export default {
     name: 'piMain',
     data: function(){
         return {
-            p1: true,
-            p2: true,
-            p3: true,
-            p4: true,
-            p5: false,
-            p6: false,
-            p7: false,
-            p8: false,
-            p9: false,
-            p10: false,
-            p11: false
+            stageStatus: 5,
+            
         }
     },
     methods: {
-    onFileChange(e) {
-      var files = e.target.files || e.dataTransfer.files;
-      if (!files.length)
-        return;
-      this.createImage(files[0]);
-    },
-    createImage(file) {
-      var image = new Image();
-      var reader = new FileReader();
-      var vm = this;
-
-      reader.onload = (e) => {
-        vm.image = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    },
-    removeImage: function (e) {
-      this.image = '';
+        onFileChange(e) {
+        var files = e.target.files || e.dataTransfer.files;
+        if (!files.length)
+            return;
+        this.createImage(files[0]);
+        }
     }
-  }
 }
 </script>
 
