@@ -14,7 +14,7 @@ Vue.use(require('vue-moment'))
 //Login Page
 import LoginLanding from './components/login/loginLanding.vue' //login 
 
-//import all component
+//landing page
 import DashboardLanding from './components/dashboard/dashboardLanding.vue' //dashboard
 
 //Project List
@@ -99,6 +99,7 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 
 const routes = [
+  //homepage
   { path: '/', component: DashboardLanding },
   //Project Listing
   { path: '/project', component: ProjectAllLanding,

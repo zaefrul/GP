@@ -14,7 +14,7 @@
     <table class="table">
       <thead class="thead-dark">
         <tr>
-          <th scope="col">#</th>
+          <!-- <th scope="col">#</th> -->
           <th scope="col">Company Name</th>
           <th scope="col">Phone Number</th>
           <th scope="col">Email</th>
@@ -33,15 +33,21 @@
     </table>
   </div>
   <div class="row">
-    <nav aria-label="..." style="margin: auto;">
-      <ul class="pagination">
-        <li class="page-item disabled"> <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a> </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item active" aria-current="page"> <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a> </li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"> <a class="page-link" href="#">Next</a> </li>
-      </ul>
-    </nav>
+
+    <nav aria-label="Page navigation example" style="margin: auto;">
+			<ul class="pagination">
+				<li class="page-item">
+					<button type="button" class="page-link" v-if="page != 1" @click="page--"> Previous </button>
+				</li>
+				<li class="page-item" style="display: flex;">
+					<button type="button" class="page-link" v-for="(pageNumber,index) in pages.slice(page-1, page+5)" @click="page = pageNumber" :key="index++"> {{pageNumber}} </button>
+				</li>
+				<li class="page-item">
+					<button type="button" @click="page++" v-if="page < pages.length" class="page-link"> Next </button>
+				</li>
+			</ul>
+		</nav>
+
   </div>
 
 </div>
@@ -67,6 +73,7 @@ export default {
       ...mapActions(["createProject"])
     }
 }
+
 </script>
 
 <style scoped>
