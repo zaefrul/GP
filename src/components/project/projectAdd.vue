@@ -26,50 +26,50 @@
                             <div class="form-row">
                                 <div class="form-group col-md-8">
                                 <label for="inputEmail4">Company Name</label>
-                                <input type="text" class="form-control" name="companyName" id="companyname" placeholder="">
+                                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
                                 </div>
                                 <div class="form-group col-md-4">
                                 <label for="inputPassword4">Phone Number</label>
-                                <input type="text" class="form-control" name="phone" id="phone" placeholder="">
+                                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-8">
                                 <label for="inputEmail4">Address</label>
-                                <input type="text" class="form-control" name="address" id="Address" placeholder="">
+                                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
                                 </div>
                                 <div class="form-group col-md-4">
                                 <label for="inputEmail4">Email Address</label>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="email">
+                                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-8">
-                                    <input type="text" class="form-control" name="address2" id="inputAddress" placeholder="1234 Main St">
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-3">
                                     <label for="inputCity">Postcode</label>
-                                    <input type="text" name="postcode" class="form-control" id="inputCity">
+                                    <input type="text" class="form-control" id="inputCity">
                                 </div>
                                 <div class="form-group col-md-5">
                                     <label for="inputState">State</label>
-                                    <select id="state" name="state" class="form-control">
+                                    <select id="inputState" class="form-control">
                                         <option selected>Choose...</option>
-                                        <option value="Selangor">Selangor</option>
-                                        <option value="Kuala Lumpur">Kuala Lumpur</option>
+                                        <option>Selangor</option>
+                                        <option>Kuala Lumpur</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-8">
                                 <label for="inputState">Country</label>
-                                <select id="country" name="country" class="form-control">
+                                <select id="inputState" class="form-control">
                                     <option selected>Choose...</option>
-                                    <option value="Malaysia">Malaysia</option>
-                                    <option value="Indonesia">Indonesia</option>
-                                    <option value="Brunei">Brunei</option>
+                                    <option>Malaysia</option>
+                                    <option>Indonesia</option>
+                                    <option>Brunei</option>
                                 </select>
                                 </div>
                             </div>

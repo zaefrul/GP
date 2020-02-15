@@ -5,6 +5,7 @@
                 <div class="progressBlock">
                     <div class="progressTitle">Supplier RFQ</div>
                     <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus >= 1 }">
+                        <div class="level">1</div>
                     </div>
                 </div>
                 <div class="progressBlock">
@@ -78,9 +79,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="progress " style>
-                <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-            </div> -->
         </div>
         <div class="informationUploadBox">
             <div class="card mb-4">
