@@ -22,11 +22,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in projectListItem" :key="index++">
+        <tr v-for="(item, index) in project" :key="index++">
           <th scope="row">{{ index }}</th>
-          <td><router-link :to="'/project-detail/' + item.pid">{{ item.title }}</router-link></td>
-          <td>{{ item.phone }}</td>
-          <td>{{ item.email }}</td>
+          <td><router-link :to="'/project-detail/' + item.id">{{ item.customer.companyName }}</router-link></td>
+          <td>{{ item.customer.phone }}</td>
+          <td>{{ item.customer.email }}</td>
           <td><a href="#">Delete</a></td>
         </tr>
       </tbody>
@@ -50,22 +50,21 @@
 </template>
 
 <script>
+import {mapActions, mapGetters, mapMutations} from 'vuex'
+import Http from '../../service/httpservice'
 export default {
     name : "projectList",
-    data: function(){
-        return {
-            projectListItem : [
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'admin@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'admin@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'admin@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'admin@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'admin@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'admin@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'admin@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'admin@btc.com'},
-                { pid: 'NCC10024115', title: 'Bersatu Teguh Construction Sdn. Bhd.', phone: '+603-2424 567', email: 'admin@btc.com'}
-            ]
-        }
+    mounted(){
+      Http.get("/api/projects")
+        .then(response => {
+          this.createProject(response.data)
+        })
+    },
+    computed: {
+      ...mapGetters(["project"])
+    },
+    methods: {
+      ...mapActions(["createProject"])
     }
 }
 </script>

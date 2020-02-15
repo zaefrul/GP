@@ -29,41 +29,15 @@
 </template>
 
 <script>
-// import Chart from 'chart.js';
-// import {planetChartData} from './chart-data';
+import Chart from 'chart.js';
+import planetChartData from './chart-data.js';
 
 
 export default {
   name: 'invoiceStatus',
   data() {
     return {
-      planetChartData: {
-    type: 'doughnut',
-    data: {
-      labels: ['Completed', 'In-Progress', 'Rejected'],
-      datasets: [
-        { // one line graph
-          label: 'Number of Moons',
-          data: [400, 231, 213],
-          backgroundColor: [
-            '#312de2cc', //Blue
-            '#ffb892cc', //yellow
-            '#f3496ecc' // Red
-          ],
-          borderColor: [
-            '#312de2',
-            '#ffb892',
-            '#f3496e'
-          ],
-          borderWidth: 1
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      legend: false
-    }
-  },
+      planetChartData: planetChartData,
     }
   },
     methods: {
