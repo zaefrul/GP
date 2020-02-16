@@ -12,47 +12,49 @@
                     <div class="card-body">
 
                         <!--New Customer List-->
-                        <div class="newForm" v-for="(item, index) in customerView" :key="index++">
+                        
+                        <!--New Customer List-->
+                        <div class="editForm" v-for="(item, index) in customerView" :key="index++">
                             <div class="form-row">
                                 <div class="form-group col-md-8">
-                                <label for="inputEmail4">Company Name</label>
-                                <input type="email" class="form-control" id="inputEmail4" :placeholder="item.company" readonly>
+                                <label for="inputCompanyName">Company Name</label>
+                                <input type="text" id="inputCompanyName" class="form-control" placeholder="Company Name" v-model="inputCompanyName" readonly>
                                 </div>
                                 <div class="form-group col-md-4">
-                                <label for="inputPassword4">Phone Number</label>
-                                <input type="password" class="form-control" id="inputPassword4" :placeholder="item.contact" readonly>
+                                <label for="inputPhoneNumber">Phone Number</label>
+                                <input type="text" id="inputPhoneNumber" class="form-control" placeholder="Phone Number" v-model="inputPhoneNumber" readonly>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-8">
-                                <label for="inputEmail4">Address</label>
-                                <input type="email" class="form-control" id="inputEmail4" :placeholder="item.email" readonly>
+                                <label for="inputAddressMain">Address</label>
+                                <input type="text" id="inputAddressMain" class="form-control" placeholder="Address" v-model="inputAddressMain" readonly>
                                 </div>
                                 <div class="form-group col-md-4">
-                                <label for="inputEmail4">Email Address</label>
-                                <input type="password" class="form-control" id="inputPassword4" :placeholder="item.email" readonly>
+                                <label for="inputEmail">Email Address</label>
+                                <input type="text" id="email" class="form-control" placeholder="Email" v-model="inputEmail" readonly>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-8">
-                                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" readonly>
+                                    <input type="text" id="inputAddressSub" class="form-control" placeholder="Address" v-model="inputAddressSub" readonly>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-3">
-                                    <label for="inputCity">Postcode</label>
-                                    <input type="text" class="form-control" id="inputCity" readonly>
+                                    <label for="inputPostcode">Postcode</label>
+                                    <input type="text" class="form-control" id="inputCity" placeholder="inputPostcode" v-model="inputPostcode" readonly>
                                 </div>
                                 
                                 <div class="form-group col-md-5">
-                                    <label for="inputCity">State</label>
-                                    <input type="text" class="form-control" id="inputCity" readonly>
+                                    <label for="inputState">State</label>
+                                    <input type="text" id="inputState" class="form-control" placeholder="Postcode" v-model="inputState" readonly>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-8">
-                                    <label for="inputCity">Country</label>
-                                    <input type="text" class="form-control" id="inputCity" readonly>
+                                    <label for="inputCountry">Country</label>
+                                    <input type="text" id="inputCountry" class="form-control" placeholder="Postcode" v-model="inputCountry" readonly>
                                 </div>
                             </div>
                         </div>

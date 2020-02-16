@@ -1,5 +1,5 @@
 <template>
-    <div id="piSupplierPoEdit" class="content-margin-top">
+    <div id="piSupplierPoEdit">
         <div class="container" style="margin-bottom: 60px;margin-top: 30px;">
             <div class="card mb-3">
                 <div class="card-body">
@@ -36,7 +36,7 @@
                         <td>{{ item.drawing }}</td>
                         <td>{{ item.item }}</td>
                         <td>{{ item.quantity }}</td>
-                        <td><input type="text" class="form-control" id="exampleFormControlInput1" :placeholder="item.price"></td>
+                        <td><input type="text" class="form-control" id="exampleFormControlInput1" :placeholder="item.price" :v-model="'inputPrice' + item.id"></td>
                         </tr>
                     </tbody>
                 </table>

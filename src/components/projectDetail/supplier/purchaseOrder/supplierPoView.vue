@@ -1,5 +1,5 @@
 <template>
-    <div id="piSupplierPoView" class="content-margin-top">
+    <div id="piSupplierPoView">
         <div class="container" style="margin-bottom: 60px;margin-top: 30px;">
             <div class="card mb-3">
                 <div class="card-body">

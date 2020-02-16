@@ -1,5 +1,6 @@
 <template>
-    <div id="piSupplierQuotationAdd" class="content-margin-top">
+    <div id="piSupplierQuotationAdd">
+        <form action="">
         <div class="container" style="margin-bottom: 60px;margin-top: 30px;">
             <div class="card mb-3">
                 <div class="card-body">
@@ -7,7 +8,7 @@
                         <div class="col-2">Select Supplier</div>
                         <div class="col-8">
                             <div class="form-group">
-                                <select class="form-control" id="exampleFormControlSelect1">
+                                <select class="form-control" id="selectSupplier" v-model="selectSupplier">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -17,7 +18,7 @@
                             </div>
                         </div>
                         <div class="col-2">
-                            <button class="btn btn-danger ml-3" style="float: right;" type="submit">Add New Supplier</button>
+                            <router-link to="'/supplier/add" class="btn btn-primary ml-3" style="float: right;" tag="button">Add New Supplier</router-link>
                         </div>
                     </div>
                 </div>
@@ -40,7 +41,7 @@
                     </thead>
                     <tbody>
                         <tr v-for="(item, index) in suppQuotationList" :key="index++">
-                        <td><div class="form-check"><input class="form-check-input position-static" type="checkbox" id="blankCheckbox" aria-label="..."></div></td>
+                        <td><div class="form-check"><input class="form-check-input position-static" type="checkbox" id="blankCheckbox" aria-label="..." :v-model="'getItemID' + item.id"></div></td>
                         <td>{{ item.description }}</td>
                         <td>{{ item.part }}</td>
                         <td>{{ item.model }}</td>
@@ -52,12 +53,14 @@
                     </tbody>
                 </table>
                 
-                <button class="btn btn-danger ml-3" style="float: right;" type="submit">Cancel</button>
-                <button class="btn btn-primary ml-3" style="float: right;" type="submit">Create Supplier Quotation</button>
+                <router-link :to="'/project-detail/' + this.$route.params.pid + '/sq'" class="btn btn-danger ml-3" style="float: right;" tag="button">Cancel</router-link>
+                <router-link :to="'/project-detail/' + this.$route.params.pid + '/sq'" class="btn btn-primary ml-3" style="float: right;" tag="button">Create Supplier Quotation</router-link>
+
 
                 </div>
             </div>
         </div>
+        </form>
     </div>
 </template>
 
