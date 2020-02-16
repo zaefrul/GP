@@ -15,44 +15,52 @@
                         <div class="newForm" v-for="(item, index) in customerEdit" :key="index++">
                             <div class="form-row">
                                 <div class="form-group col-md-8">
-                                <label for="inputEmail4">Company Name</label>
-                                <input type="email" class="form-control" id="inputEmail4" :placeholder="item.company">
+                                <label for="inputCompanyName">Company Name</label>
+                                <input type="text" id="inputCompanyName" class="form-control" placeholder="item.company" v-model="inputCompanyName" required>
                                 </div>
                                 <div class="form-group col-md-4">
-                                <label for="inputPassword4">Phone Number</label>
-                                <input type="password" class="form-control" id="inputPassword4" :placeholder="item.contact">
+                                <label for="inputPhoneNumber">Phone Number</label>
+                                <input type="text" id="inputPhoneNumber" class="form-control" :placeholder="item.contact" v-model="inputPhoneNumber" required>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-8">
-                                <label for="inputEmail4">Address</label>
-                                <input type="email" class="form-control" id="inputEmail4" :placeholder="item.email">
+                                <label for="inputAddressMain">Address</label>
+                                <input type="text" id="inputAddressMain" class="form-control" :placeholder="item.addressMain" v-model="inputAddressMain" required>
                                 </div>
                                 <div class="form-group col-md-4">
-                                <label for="inputEmail4">Email Address</label>
-                                <input type="password" class="form-control" id="inputPassword4" :placeholder="item.email">
+                                <label for="inputEmail">Email Address</label>
+                                <input type="text" id="inputEmail" class="form-control" :placeholder="item.email" v-model="inputEmail" required>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-8">
-                                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                                    <input type="text" id="inputAddressSub" class="form-control" :placeholder="item.addressSub" v-model="inputAddressSub" required>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-3">
-                                    <label for="inputCity">Postcode</label>
-                                    <input type="text" class="form-control" id="inputCity">
+                                    <label for="inputPostcode">Postcode</label>
+                                    <input type="text" id="inputPostcode" class="form-control" placeholder="Postcode" v-model="inputPostcode" required>
                                 </div>
-                                
                                 <div class="form-group col-md-5">
-                                    <label for="inputCity">State</label>
-                                    <input type="text" class="form-control" id="inputCity">
+                                    <label for="inputState">State</label>
+                                    <select id="inputState" class="form-control" v-model="inputState" >
+                                        <option selected>Choose...</option>
+                                        <option>Selangor</option>
+                                        <option>Kuala Lumpur</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-8">
-                                    <label for="inputCity">Country</label>
-                                    <input type="text" class="form-control" id="inputCity">
+                                <label for="inputCountry">Country</label>
+                                <select id="inputCountry" class="form-control" v-model="inputCountry" >
+                                    <option selected>Choose...</option>
+                                    <option>Malaysia</option>
+                                    <option>Indonesia</option>
+                                    <option>Brunei</option>
+                                </select>
                                 </div>
                             </div>
                         </div>

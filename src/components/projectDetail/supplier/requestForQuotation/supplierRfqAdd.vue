@@ -1,5 +1,6 @@
 <template>
-    <div id="piSupplierRfqAdd" class="content-margin-top">
+    <div id="piSupplierRfqAdd">
+        <form action="">
         <div class="container" style="margin-bottom: 60px; margin-top: 30px;">
             <div class="card mb-3">
                 <div class="card-body">
@@ -40,7 +41,7 @@
                     </thead>
                     <tbody>
                         <tr v-for="(item, index) in suppRfqAdd" :key="index++">
-                        <td><div class="form-check"><input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..."></div></td>
+                        <td><div class="form-check"><input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." :v-model="'getItemId' + item.id"></div></td>
                         <td>{{ item.description }}</td>
                         <td>{{ item.part }}</td>
                         <td>{{ item.model }}</td>
@@ -52,12 +53,13 @@
                     </tbody>
                 </table>
                 
-                <button class="btn btn-danger ml-3" style="float: right;" type="submit">Cancel</button>
-                <button class="btn btn-primary ml-3" style="float: right;" type="submit">Create Supplier RFQ</button>
+                <router-link :to="'/project-detail/' + this.$route.params.pid + '/srfq'" class="btn btn-danger ml-3" style="float: right;" tag="button">Cancel</router-link>
+                <router-link :to="'/project-detail/' + this.$route.params.pid + '/srfq'" class="btn btn-primary ml-3" style="float: right;" tag="button">Create Supplier RFQ</router-link>
 
                 </div>
             </div>
         </div>
+        </form>
     </div>
 </template>
 

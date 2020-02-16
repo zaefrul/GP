@@ -1,5 +1,5 @@
 <template>
-    <div id="piCustomerRfqEdit" class="content-margin-top">
+    <div id="piCustomerRfqEdit">
         <div class="container" style="margin-bottom: 60px;margin-top: 30px;">
             <div class="card">
                 <div class="card-body">

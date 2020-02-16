@@ -1,5 +1,5 @@
 <template>
-    <div id="piCustomerPoView" class="content-margin-top">
+    <div id="piCustomerPoView">
         <div class="container" style="margin-bottom: 60px;margin-top: 30px;">
             <div class="card">
                 <div class="card-body">

@@ -1,5 +1,6 @@
 <template>
-    <div id="piSupplierQuotationView" class="content-margin-top">
+    <div id="piSupplierQuotationView">
+        <form action="">
         <div class="container" style="margin-bottom: 60px;margin-top: 30px;">
             <div class="card mb-3">
                 <div class="card-body">
@@ -36,18 +37,18 @@
                         <td>{{ item.drawing }}</td>
                         <td>{{ item.item }}</td>
                         <td>{{ item.quantity }}</td>
-                        <td><input type="text" class="form-control" id="exampleFormControlInput1" :placeholder="item.price"></td>
+                        <td><input type="text" class="form-control" id="exampleFormControlInput1" :placeholder="item.price" :v-model="'inputPrice' + item.id"></td>
                         </tr>
                     </tbody>
                 </table>
                 
-                <button class="btn btn-danger ml-3" style="float: right;" type="submit">Cancel</button>
-                <button class="btn btn-primary ml-3" style="float: right;" type="submit">Save</button>
+                <router-link :to="'/project-detail/' + this.$route.params.pid + '/sq'" class="btn btn-danger ml-3" style="float: right;" tag="button">Cancel</router-link>
+                <router-link :to="'/project-detail/' + this.$route.params.pid + '/sq'" class="btn btn-primary ml-3" style="float: right;" tag="button">Save</router-link>
 
                 </div>
             </div>
-
         </div>
+        </form>
     </div>
 </template>
 

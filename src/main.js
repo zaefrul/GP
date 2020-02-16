@@ -81,7 +81,9 @@ import SettingLanding from './components/setting/settingLanding.vue' //setting m
 import SettingMain from './components/setting/settingMain.vue' //setting main
 
 //metadata
+import MetadataLanding from './components/setting/metadata/metadataLanding.vue' //metadata
 import MetadataList from './components/setting/metadata/metadata.vue' //metadata
+import MetadataAdd from './components/setting/metadata/metadataAdd.vue' //metadata
 
 //user
 import UserList from './components/setting/user/userList.vue' //metadata
@@ -168,7 +170,12 @@ const routes = [
   //Setting
   { path: '/setting', component: SettingLanding,
       children: [
-        { path: 'metadata', component: MetadataList },
+        { path: 'metadata', component: MetadataLanding,
+          children: [
+            { path: '', component: MetadataList },
+            { path: 'add', component: MetadataAdd },
+          ]
+        },
         { path: 'user', component: UserList }
       ] 
   },

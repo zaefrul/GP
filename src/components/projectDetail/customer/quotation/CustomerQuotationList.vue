@@ -1,5 +1,5 @@
 <template>
-    <div id="piCustomerQuotationList" class="content-margin-top">
+    <div id="piCustomerQuotationList">
         <div class="container" style="margin-bottom: 60px;">
             <div class="card">
                 <div class="card-body">
