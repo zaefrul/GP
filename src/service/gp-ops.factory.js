@@ -1,6 +1,7 @@
 import GPLoginFacade from "./login.facade";
 import GetUserFacade from "./getuser.facade";
 import LogoutFacade from "./logout.facade";
+import ProjectsFacade from "./projects.facade";
 
 export default class GPOpsFactory {
   static handleLogin(data) {
@@ -16,5 +17,10 @@ export default class GPOpsFactory {
   static customerLogout() {
     const logoutFacade = new LogoutFacade();
     return logoutFacade.logout();
+  }
+
+  static getAllProjects() {
+    const ProjectsFcd = new ProjectsFacade();
+    return ProjectsFcd.getAllProjects();
   }
 }

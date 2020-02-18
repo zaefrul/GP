@@ -23,7 +23,8 @@ export const store = new Vuex.Store({
     user: state => state.user,
     isLoading: state => state.isLoading,
     success: state => state.success,
-    error: state => state.error
+    error: state => state.error,
+    getLatestProjects: state => state.project.filter((pro, i) => i < 5)
   },
   mutations: {
     setProject: (state, payload) => {
@@ -70,6 +71,7 @@ export const store = new Vuex.Store({
           context.commit("setSuccess", true);
         })
         .catch(err => {
+          context.commit("setLoading", false);
           context.commit("setError", {
             status: true,
             errorMessage: "Invalid login"
@@ -83,6 +85,17 @@ export const store = new Vuex.Store({
     handleLogout: context => {
       GPOpsFactory.customerLogout();
       context.commit("setUser", null);
+    },
+    getAllProjects: state => {
+      context.commit("setLoading", true);
+      GPOpsFactory.getAllProjects()
+        .then(res => {
+          context.commit("setLoading", false);
+          context.commit("setProject", res);
+        })
+        .catch(err => {
+          context.commit("setLoading", false);
+        });
     }
   }
 });
