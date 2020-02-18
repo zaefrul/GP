@@ -8,10 +8,10 @@
               <p class="lead">Welcome to Request For Quotation System</p>
           </div>
           <div class="col-lg-3">
-            <form class="form-inline my-2 my-lg-0" style="padding: 2.6em 0;">
+            <!-- <form class="form-inline my-2 my-lg-0" style="padding: 2.6em 0;">
               <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            </form> -->
           </div>
             </div>
         </div>

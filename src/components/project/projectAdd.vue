@@ -12,50 +12,50 @@
                     <div class="card-body">
                         <div class="form-row mb-3">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="newCustomer">
-                                <label class="form-check-label" for="inlineRadio1">New Customer</label>
+                                <input class="form-check-input" type="radio" name="radioSelection" id="radioSelection" value="newCustomer" :checked="radioClicked === true" @click="addCustomerType()">
+                                <label class="form-check-label" for="radioNew">New Customer</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="existingCustomer">
-                                <label class="form-check-label" for="inlineRadio2">Existing Customer</label>
+                                <input class="form-check-input" type="radio" name="radioSelection" id="radioSelection" value="existingCustomer" :checked="radioClicked === false" @click="addCustomerType()">
+                                <label class="form-check-label" for="radioExisting">Existing Customer</label>
                             </div>
                         </div>
 
-                        <!--New Customer List-->
-                        <div class="newForm">
+                        <!--New Project List-->
+                        <div class="projectAddForm" v-if="radioSelection === true">
                             <div class="form-row">
                                 <div class="form-group col-md-8">
-                                <label for="inputEmail4">Company Name</label>
-                                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                                <label for="inputCompanyName">Company Name</label>
+                                <input type="text" id="inputCompanyName" class="form-control" placeholder="Company Name" v-model="inputCompanyName" required>
                                 </div>
                                 <div class="form-group col-md-4">
-                                <label for="inputPassword4">Phone Number</label>
-                                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                                <label for="inputPhoneNumber">Phone Number</label>
+                                <input type="text" id="inputPhoneNumber" class="form-control" placeholder="Phone Number" v-model="inputPhoneNumber" required>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-8">
-                                <label for="inputEmail4">Address</label>
-                                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                                <label for="inputAddressMain">Address</label>
+                                <input type="text" id="inputAddressMain" class="form-control" placeholder="Address" v-model="inputAddressMain" required>
                                 </div>
                                 <div class="form-group col-md-4">
-                                <label for="inputEmail4">Email Address</label>
-                                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                                <label for="inputEmail">Email Address</label>
+                                <input type="text" id="email" class="form-control" placeholder="Email" v-model="inputEmail" required>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-8">
-                                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                                    <input type="text" id="inputAddressSub" class="form-control" placeholder="Address" v-model="inputAddressSub">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-3">
-                                    <label for="inputCity">Postcode</label>
-                                    <input type="text" class="form-control" id="inputCity">
+                                    <label for="inputPostcode">Postcode</label>
+                                    <input type="text" id="inputPostcode" class="form-control" placeholder="Postcode" v-model="inputPostcode" required>
                                 </div>
                                 <div class="form-group col-md-5">
                                     <label for="inputState">State</label>
-                                    <select id="inputState" class="form-control">
+                                    <select id="inputState" class="form-control" v-model="inputState" >
                                         <option selected>Choose...</option>
                                         <option>Selangor</option>
                                         <option>Kuala Lumpur</option>
@@ -64,8 +64,8 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-8">
-                                <label for="inputState">Country</label>
-                                <select id="inputState" class="form-control">
+                                <label for="inputCountry">Country</label>
+                                <select id="inputCountry" class="form-control" v-model="inputCountry" >
                                     <option selected>Choose...</option>
                                     <option>Malaysia</option>
                                     <option>Indonesia</option>
@@ -76,7 +76,7 @@
                         </div>
 
                         <!--Existing Customer List-->
-                        <div class="currentForm">
+                        <div class="currentForm" v-else>
                             <div class="d-flex flex-row">
                                 <div class="col-2">Select Existing Customer</div>
                                 <div class="col-10">
@@ -154,9 +154,15 @@ export default {
                     item: '<input class="form-control form-control-sm" type="text" placeholder="Item No">', 
                     quantity: '<input class="form-control form-control-sm" type="text" placeholder="Quantity">'
                 }
-            ]
+            ],
+            radioClicked: true
         }
-    }
+    },
+    methods: {
+        addCustomerType() {
+            this.radioClicked = !this.radioClicked;
+        }
+    },
 }
 </script>
 

@@ -81,25 +81,28 @@
             </div>
         </div>
         <div class="informationUploadBox">
+
             <div class="card mb-4">
                 <h5 class="card-header">Supplier Sign of Agreement</h5>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-9">
-                            Welcome to Request For Quotation System
-                        </div>
-                        <div class="col-lg-3">
-                            <form class="form-inline my-2 my-lg-0">
-                                <!-- <button type="button" class="btn btn-primary btn-sm " @click="onFileChange">Upload File</button> -->
-                                <!-- <input type="file" @change="onFileChange"> -->
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" @change="onFileChange">
-                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                    </div>
+                    <div class="col-lg-12" v-if="suppSoaDoc == null">
+                        <form class="form-inline my-2 my-lg-0">
+                            <div class="input-group w-100">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                                 </div>
-                            </form>
-                        </div>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                    aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row uploadRowCustom" v-else>
+                        <div class="col-lg-2">Uploaded at 15/02/2020</div>
+                        <div class="col-lg-9"><a href="#">request_for_quotation_20200215.pdf</a></div>
+                        <div class="col-lg-1 text-right uploadDeleteIcon"><i class="far fa-trash-alt"></i></div>
                     </div>
                 </div>
             </div>
@@ -107,47 +110,24 @@
             <div class="card mb-4">
                 <h5 class="card-header">Customer Sign of Agreement</h5>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-10">
-                            Welcome to Request For Quotation System
-                        </div>
-                        <div class="col-lg-2">
-                            <form class="form-inline my-2 my-lg-0">
-                                <button type="button" class="btn btn-primary btn-sm" style="float: right;">Upload File</button>
-                            </form>
-                        </div>
+                    <div class="col-lg-12" v-if="cusSoaDoc == null">
+                        <form class="form-inline my-2 my-lg-0">
+                            <div class="input-group w-100">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                    aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                </div>
-            </div>
-            
-            <div class="card mb-4">
-                <h5 class="card-header">Delivery Order</h5>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-10">
-                            Welcome to Request For Quotation System
-                        </div>
-                        <div class="col-lg-2">
-                            <form class="form-inline my-2 my-lg-0">
-                                <button type="button" class="btn btn-primary btn-sm" style="float: right;">Upload File</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card mb-4">
-                <h5 class="card-header">Customer Invoice</h5>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-10">
-                            Welcome to Request For Quotation System
-                        </div>
-                        <div class="col-lg-2">
-                            <form class="form-inline my-2 my-lg-0">
-                                <button type="button" class="btn btn-primary btn-sm" style="float: right;">Upload File</button>
-                            </form>
-                        </div>
+                    <div class="row uploadRowCustom" v-else>
+                        <div class="col-lg-2">Uploaded at 15/02/2020</div>
+                        <div class="col-lg-9"><a href="#">request_for_quotation_20200215.pdf</a></div>
+                        <div class="col-lg-1 text-right uploadDeleteIcon"><i class="far fa-trash-alt"></i></div>
                     </div>
                 </div>
             </div>
@@ -155,18 +135,54 @@
             <div class="card mb-4">
                 <h5 class="card-header">Supplier Invoice</h5>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-10">
-                            Welcome to Request For Quotation System
-                        </div>
-                        <div class="col-lg-2">
-                            <form class="form-inline my-2 my-lg-0">
-                                <button type="button" class="btn btn-primary btn-sm" style="float: right;">Upload File</button>
-                            </form>
-                        </div>
+                    <div class="col-lg-12" v-if="suppInvoiceDoc == null">
+                        <form class="form-inline my-2 my-lg-0">
+                            <div class="input-group w-100">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                    aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row uploadRowCustom" v-else>
+                        <div class="col-lg-2">Uploaded at 15/02/2020</div>
+                        <div class="col-lg-9"><a href="#">request_for_quotation_20200215.pdf</a></div>
+                        <div class="col-lg-1 text-right uploadDeleteIcon"><i class="far fa-trash-alt"></i></div>
                     </div>
                 </div>
             </div>
+            
+            <div class="card mb-4">
+                <h5 class="card-header">Customer Invoice</h5>
+                <div class="card-body">
+                    <div class="col-lg-12" v-if="cusInvoiceDoc == null">
+                        <form class="form-inline my-2 my-lg-0">
+                            <div class="input-group w-100">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                    aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row uploadRowCustom" v-else>
+                        <div class="col-lg-2">Uploaded at 15/02/2020</div>
+                        <div class="col-lg-9"><a href="#">request_for_quotation_20200215.pdf</a></div>
+                        <div class="col-lg-1 text-right uploadDeleteIcon"><i class="far fa-trash-alt"></i></div>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </div>
 </template>
@@ -176,8 +192,11 @@ export default {
     name: 'piMain',
     data: function(){
         return {
-            stageStatus: 5,
-            
+            stageStatus: 2,
+            suppSoaDoc: 1,
+            cusSoaDoc: 1,
+            suppInvoiceDoc: null,
+            cusInvoiceDoc: null
         }
     },
     methods: {
@@ -192,6 +211,13 @@ export default {
 </script>
 
 <style scoped>
+.uploadDeleteIcon {
+    color: red;
+}
+.uploadRowCustom {
+    width: 100%;
+    padding: 0 1.25rem;
+}
 .informationUploadBox {
     margin-top: 150px;
 }

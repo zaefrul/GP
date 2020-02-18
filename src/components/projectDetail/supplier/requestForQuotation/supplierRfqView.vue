@@ -1,5 +1,5 @@
 <template>
-    <div id="piSupplierRfqView" class="content-margin-top">
+    <div id="piSupplierRfqView">
         <div class="container" style="margin-bottom: 60px; margin-top: 30px;">
             <div class="card mb-3">
                 <div class="card-body">
@@ -39,8 +39,8 @@
                     </tbody>
                 </table>
                 
-                <button class="btn btn-danger ml-3" style="float: right;" type="submit">Back</button>
-                <button class="btn btn-primary ml-3" style="float: right;" type="submit">Edit</button>
+                <router-link :to="'/project-detail/' + this.$route.params.pid + '/srfq'" class="btn btn-danger ml-3" style="float: right;" tag="button">Back</router-link>
+                <router-link :to="'/project-detail/' + this.$route.params.pid + '/srfq'" class="btn btn-primary ml-3" style="float: right;" tag="button">Edit</router-link>
 
                 </div>
             </div>

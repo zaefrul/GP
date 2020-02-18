@@ -1,5 +1,5 @@
 <template>
-    <div id="piSupplierRfqList" class="content-margin-top">
+    <div id="piSupplierRfqList">
         <div class="container" style="margin-bottom: 60px;">
             <div class="card">
                 <div class="card-body">

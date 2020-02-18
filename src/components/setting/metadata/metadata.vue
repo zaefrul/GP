@@ -4,7 +4,9 @@
 <div class="jumbotron jumbotron-fluid text-center">
   <h1 class="display-4">METADATA</h1>
   <p class="lead">This is the listing of metadata. Each of the item comes with the price history. Click on the history link to check for the price history</p>
-  <p class="lead"> <a class="btn btn-primary btn-lg" href="#" role="button">Register New Item</a> </p>
+  <p class="lead">
+    <router-link to="metadata/add" tag="button" class="btn btn-primary" >Add New Metadata</router-link>
+    </p>
 </div>
 
 <div class="container" style="margin-bottom: 60px;">
