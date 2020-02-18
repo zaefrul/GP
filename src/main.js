@@ -88,6 +88,7 @@ import MetadataAdd from "./components/setting/metadata/metadataAdd.vue"; //metad
 //user
 import UserList from "./components/setting/user/userList.vue"; //metadata
 import Vuelidate from "vuelidate";
+import { getLogin } from "./service/auth-service";
 
 Vue.use(VueRouter);
 
@@ -102,11 +103,21 @@ import { store } from "./service/store";
 
 const routes = [
   //homepage
-  { path: "/", component: DashboardLanding, name: "home" },
+  {
+    path: "/",
+    component: DashboardLanding,
+    name: "home",
+    meta: {
+      loginRequired: true
+    }
+  },
   //Project Listing
   {
     path: "/project",
     component: ProjectAllLanding,
+    meta: {
+      loginRequired: true
+    },
     children: [
       { path: "", component: ProjectListing },
       { path: "add", component: ProjectAdd }
@@ -116,6 +127,9 @@ const routes = [
   {
     path: "/project-detail/:pid",
     component: ProjectDetailLanding,
+    meta: {
+      loginRequired: true
+    },
     children: [
       { path: "", component: ProjectInformation },
       //customer po
@@ -153,6 +167,9 @@ const routes = [
   {
     path: "/invoice",
     component: InvoiceLanding,
+    meta: {
+      loginRequired: true
+    },
     children: [
       { path: "", component: InvoiceList },
       { path: "view/:iid", component: InvoiceDetail }
@@ -162,6 +179,9 @@ const routes = [
   {
     path: "/supplier",
     component: SupplierLanding,
+    meta: {
+      loginRequired: true
+    },
     children: [
       { path: "", component: SupplierList },
       { path: "list", component: SupplierList },
@@ -174,6 +194,9 @@ const routes = [
   {
     path: "/customer",
     component: CustomerLanding,
+    meta: {
+      loginRequired: true
+    },
     children: [
       { path: "", component: CustomerList },
       { path: "list", component: CustomerList },
@@ -186,6 +209,9 @@ const routes = [
   {
     path: "/setting",
     component: SettingLanding,
+    meta: {
+      loginRequired: true
+    },
     children: [
       {
         path: "metadata",
@@ -205,6 +231,16 @@ const routes = [
 const router = new VueRouter({
   routes,
   mode: "history"
+});
+
+// Routing check
+router.beforeEach((to, from, next) => {
+  const loginRequired = to.matched.some(record => record.meta.loginRequired);
+  const token = getLogin();
+  if (token === null && loginRequired) {
+    return next({ name: "login" });
+  }
+  next();
 });
 
 new Vue({
