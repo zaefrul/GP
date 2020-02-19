@@ -22,7 +22,7 @@
                         </div>
 
                         <!--New Project List-->
-                        <div class="projectAddForm" v-if="radioSelection === true">
+                        <div class="projectAddForm" v-if="radioClicked === true">
                             <div class="form-row">
                                 <div class="form-group col-md-8">
                                 <label for="inputCompanyName">Company Name</label>
@@ -128,7 +128,7 @@
 
                         <router-link to="/project" class="btn btn-danger ml-3" style="float: right;">Cancel</router-link>
                         <router-link to="/project" class="btn btn-success ml-3" style="float: right;">Submit</router-link>
-                        <button class="btn btn-warning ml-3" style="float: right;" type="submit">Add New Row</button>
+                        <button class="btn btn-info ml-3" style="float: right;" type="submit">Add New Row</button>
 
                     </div>
                 </div>

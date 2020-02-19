@@ -55,7 +55,7 @@
         </div>
       </div>
 
-      <!--modal box-->
+      <!--metadata View-->
       <div class="metadataHistory" v-if="historyActive === true">
         <div class="popupBox">
             <div class="card mhCard">
@@ -72,21 +72,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                        <td>14 Jan 2020</td>
-                        <td>RM9,999.99</td>
-                        <td>updated from supplier</td>
-                        </tr>
-                        <tr>
-                        <td>14 Jan 2020</td>
-                        <td>RM9,999.99</td>
-                        <td>updated from supplier</td>
-                        </tr>
-                        <tr>
-                        <td>14 Jan 2020</td>
-                        <td>RM9,999.99</td>
-                        <td>updated from supplier</td>
-                        </tr>
                         <tr>
                         <td>14 Jan 2020</td>
                         <td>RM9,999.99</td>

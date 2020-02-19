@@ -102,7 +102,7 @@
                     <div class="row uploadRowCustom" v-else>
                         <div class="col-lg-2">Uploaded at 15/02/2020</div>
                         <div class="col-lg-9"><a href="#">request_for_quotation_20200215.pdf</a></div>
-                        <div class="col-lg-1 text-right uploadDeleteIcon"><i class="far fa-trash-alt"></i></div>
+                        <div class="col-lg-1 text-right text-danger">Delete</div>
                     </div>
                 </div>
             </div>
@@ -127,7 +127,7 @@
                     <div class="row uploadRowCustom" v-else>
                         <div class="col-lg-2">Uploaded at 15/02/2020</div>
                         <div class="col-lg-9"><a href="#">request_for_quotation_20200215.pdf</a></div>
-                        <div class="col-lg-1 text-right uploadDeleteIcon"><i class="far fa-trash-alt"></i></div>
+                        <div class="col-lg-1 text-right text-danger">Delete</div>
                     </div>
                 </div>
             </div>
@@ -152,7 +152,7 @@
                     <div class="row uploadRowCustom" v-else>
                         <div class="col-lg-2">Uploaded at 15/02/2020</div>
                         <div class="col-lg-9"><a href="#">request_for_quotation_20200215.pdf</a></div>
-                        <div class="col-lg-1 text-right uploadDeleteIcon"><i class="far fa-trash-alt"></i></div>
+                        <div class="col-lg-1 text-right text-danger">Delete</div>
                     </div>
                 </div>
             </div>
@@ -177,7 +177,7 @@
                     <div class="row uploadRowCustom" v-else>
                         <div class="col-lg-2">Uploaded at 15/02/2020</div>
                         <div class="col-lg-9"><a href="#">request_for_quotation_20200215.pdf</a></div>
-                        <div class="col-lg-1 text-right uploadDeleteIcon"><i class="far fa-trash-alt"></i></div>
+                        <div class="col-lg-1 text-right text-danger">Delete</div>
                     </div>
                 </div>
             </div>
@@ -246,9 +246,23 @@ export default {
 .progressBarLineActive{
     background: #529688 !important;
 }
+.progressBarLineWarning{
+    background: #FFC107 !important;
+}
+.progressBarLineDanger{
+    background: #F44336 !important;
+}
 .progressIconActive {
     border: 8px solid #009688 !important;
     background: #00dfca !important;
+}
+.progressIconWarning {
+    border: 8px solid #FFC107 !important;
+    background: #d49f00 !important;
+}
+.progressIconDanger {
+    border: 8px solid #F44336 !important;
+    background: #a92d24 !important;
 }
 .level {
     color: white;
