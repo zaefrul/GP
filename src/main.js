@@ -87,7 +87,10 @@ import MetadataAdd from "./components/setting/metadata/metadataAdd.vue"; //metad
 import MetadataEdit from "./components/setting/metadata/metadataEdit.vue"; //metadata Edit
 
 //user
+import UserLanding from "./components/setting/user/userLanding.vue"; //user landing
 import UserList from "./components/setting/user/userList.vue"; //user list
+import UserAdd from "./components/setting/user/userAdd.vue"; //user add
+import UserEdit from "./components/setting/user/userEdit.vue"; //user Edit
 
 import Vuelidate from "vuelidate";
 import { getLogin } from "./service/auth-service";
@@ -224,7 +227,13 @@ const routes = [
           { path: "edit/:mid", component: MetadataEdit }
         ]
       },
-      { path: "user", component: UserList }
+      { path: "user", component: UserLanding,
+        children: [
+          { path: "", component: UserList },
+          { path: "add", component: UserAdd },
+          { path: "edit/:uid", component: UserEdit },
+        ]
+      }
     ]
   },
   //login

@@ -4,7 +4,9 @@
 <div class="jumbotron jumbotron-fluid text-center">
   <h1 class="display-4">USER</h1>
   <p class="lead">This is the listing of users</p>
-  <p class="lead"> <a class="btn btn-primary btn-lg" href="#" role="button">Register New User</a> </p>
+  <p class="lead">
+      <router-link to="user/add" tag="button" class="btn btn-primary" >Add New User</router-link>
+  </p>
 </div>
 
 <div class="container" style="margin-bottom: 60px;">
