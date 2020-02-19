@@ -48,32 +48,32 @@ import PiCustomerPoEdit from "./components/projectDetail/customer/purchaseOrder/
 
 //customer quotation
 import PiCustomerQuotationView from "./components/projectDetail/customer/quotation/customerQuotationView.vue"; //customer quotation view
-import PiCustomerQuotationAdd from "./components/projectDetail/customer/quotation/customerQuotationAdd.vue"; //customer quotation view
-import PiCustomerQuotationList from "./components/projectDetail/customer/quotation/customerQuotationList.vue"; //customer quotation view
-import PiCustomerQuotationEdit from "./components/projectDetail/customer/quotation/customerQuotationEdit.vue"; //customer quotation view
+import PiCustomerQuotationAdd from "./components/projectDetail/customer/quotation/customerQuotationAdd.vue"; //customer quotation add
+import PiCustomerQuotationList from "./components/projectDetail/customer/quotation/customerQuotationList.vue"; //customer quotation list
+import PiCustomerQuotationEdit from "./components/projectDetail/customer/quotation/customerQuotationEdit.vue"; //customer quotation edit
 
 //customer rfq
 import PiCustomerRfqView from "./components/projectDetail/customer/requestForQuotation/customerRfqView.vue"; //customer rfq view
-import PiCustomerRfqList from "./components/projectDetail/customer/requestForQuotation/customerRfqList.vue"; //customer rfq view
-import PiCustomerRfqEdit from "./components/projectDetail/customer/requestForQuotation/customerRfqEdit.vue"; //customer rfq view
+import PiCustomerRfqList from "./components/projectDetail/customer/requestForQuotation/customerRfqList.vue"; //customer rfq list
+import PiCustomerRfqEdit from "./components/projectDetail/customer/requestForQuotation/customerRfqEdit.vue"; //customer rfq edit
 
 //supplier po
 import PiSupplierPoView from "./components/projectDetail/supplier/purchaseOrder/supplierPoView.vue"; //supplier po view
-import PiSupplierPoAdd from "./components/projectDetail/supplier/purchaseOrder/supplierPoAdd.vue"; //supplier po view
-import PiSupplierPoList from "./components/projectDetail/supplier/purchaseOrder/supplierPoList.vue"; //supplier po view
-import PiSupplierPoEdit from "./components/projectDetail/supplier/purchaseOrder/supplierPoEdit.vue"; //supplier po view
+import PiSupplierPoAdd from "./components/projectDetail/supplier/purchaseOrder/supplierPoAdd.vue"; //supplier po add
+import PiSupplierPoList from "./components/projectDetail/supplier/purchaseOrder/supplierPoList.vue"; //supplier po list
+import PiSupplierPoEdit from "./components/projectDetail/supplier/purchaseOrder/supplierPoEdit.vue"; //supplier po edit
 
 //supplier quotation
 import PiSupplierQuotationView from "./components/projectDetail/supplier/quotation/supplierQuotationView.vue"; //supplier quotation view
-import PiSupplierQuotationAdd from "./components/projectDetail/supplier/quotation/supplierQuotationAdd.vue"; //supplier quotation view
-import PiSupplierQuotationList from "./components/projectDetail/supplier/quotation/supplierQuotationList.vue"; //supplier quotation view
-import PiSupplierQuotationEdit from "./components/projectDetail/supplier/quotation/supplierQuotationEdit.vue"; //supplier quotation view
+import PiSupplierQuotationAdd from "./components/projectDetail/supplier/quotation/supplierQuotationAdd.vue"; //supplier quotation add 
+import PiSupplierQuotationList from "./components/projectDetail/supplier/quotation/supplierQuotationList.vue"; //supplier quotation list 
+import PiSupplierQuotationEdit from "./components/projectDetail/supplier/quotation/supplierQuotationEdit.vue"; //supplier quotation edit 
 
 //supplier rfq
 import PiSupplierRfqView from "./components/projectDetail/supplier/requestForQuotation/supplierRfqView.vue"; //supplier rfq view
-import PiSupplierRfqAdd from "./components/projectDetail/supplier/requestForQuotation/supplierRfqAdd.vue"; //supplier rfq view
-import PiSupplierRfqList from "./components/projectDetail/supplier/requestForQuotation/supplierRfqList.vue"; //supplier rfq view
-import PiSupplierRfqEdit from "./components/projectDetail/supplier/requestForQuotation/supplierRfqEdit.vue"; //supplier rfq view
+import PiSupplierRfqAdd from "./components/projectDetail/supplier/requestForQuotation/supplierRfqAdd.vue"; //supplier rfq add
+import PiSupplierRfqList from "./components/projectDetail/supplier/requestForQuotation/supplierRfqList.vue"; //supplier rfq list
+import PiSupplierRfqEdit from "./components/projectDetail/supplier/requestForQuotation/supplierRfqEdit.vue"; //supplier rfq edit
 
 //setting page
 //main
@@ -81,12 +81,14 @@ import SettingLanding from "./components/setting/settingLanding.vue"; //setting 
 import SettingMain from "./components/setting/settingMain.vue"; //setting main
 
 //metadata
-import MetadataLanding from "./components/setting/metadata/metadataLanding.vue"; //metadata
-import MetadataList from "./components/setting/metadata/metadata.vue"; //metadata
-import MetadataAdd from "./components/setting/metadata/metadataAdd.vue"; //metadata
+import MetadataLanding from "./components/setting/metadata/metadataLanding.vue"; //metadata landing
+import MetadataList from "./components/setting/metadata/metadata.vue"; //metadata list
+import MetadataAdd from "./components/setting/metadata/metadataAdd.vue"; //metadata Add
+import MetadataEdit from "./components/setting/metadata/metadataEdit.vue"; //metadata Edit
 
 //user
-import UserList from "./components/setting/user/userList.vue"; //metadata
+import UserList from "./components/setting/user/userList.vue"; //user list
+
 import Vuelidate from "vuelidate";
 import { getLogin } from "./service/auth-service";
 
@@ -218,7 +220,8 @@ const routes = [
         component: MetadataLanding,
         children: [
           { path: "", component: MetadataList },
-          { path: "add", component: MetadataAdd }
+          { path: "add", component: MetadataAdd },
+          { path: "edit/:mid", component: MetadataEdit }
         ]
       },
       { path: "user", component: UserList }
