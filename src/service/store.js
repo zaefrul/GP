@@ -24,7 +24,14 @@ export const store = new Vuex.Store({
     isLoading: state => state.isLoading,
     success: state => state.success,
     error: state => state.error,
-    getLatestProjects: state => state.project.filter((pro, i) => i < 5)
+    getLatestProjects: state => {
+      const { project } = state;
+      if (project) {
+        return project.filter((pro, i) => i < 5);
+      }
+
+      return null;
+    }
   },
   mutations: {
     setProject: (state, payload) => {
@@ -86,7 +93,7 @@ export const store = new Vuex.Store({
       GPOpsFactory.customerLogout();
       context.commit("setUser", null);
     },
-    getAllProjects: state => {
+    getAllProjects: context => {
       context.commit("setLoading", true);
       GPOpsFactory.getAllProjects()
         .then(res => {
