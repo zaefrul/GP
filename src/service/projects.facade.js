@@ -12,4 +12,8 @@ export default class ProjectsFacade {
   getAllProjects() {
     return this.GPAPI.getAllProjects().then(res => res.data);
   }
+
+  getDashboardProjects(){
+    return this.GPAPI.getDashboardProjects().then(res => res.data);
+  }
 }

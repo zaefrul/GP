@@ -103,6 +103,17 @@ export const store = new Vuex.Store({
         .catch(err => {
           context.commit("setLoading", false);
         });
+    },
+    getDashboardProjects: context => {
+      context.commit("setLoading", true);
+      GPOpsFactory.getDashboardProjects()
+        .then(res => {
+          context.commit("setLoading", false);
+          context.commit("setProject", res);
+        })
+        .catch(err => {
+          context.commit("setLoading", false);
+        });
     }
   }
 });

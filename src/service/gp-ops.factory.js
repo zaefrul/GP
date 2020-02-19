@@ -23,4 +23,9 @@ export default class GPOpsFactory {
     const ProjectsFcd = new ProjectsFacade();
     return ProjectsFcd.getAllProjects();
   }
+
+  static getDashboardProjects() {
+    const ProjectsFcd = new ProjectsFacade();
+    return ProjectsFcd.getDashboardProjects();
+  }
 }

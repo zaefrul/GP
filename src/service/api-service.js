@@ -27,4 +27,8 @@ export default class GPApiService extends BaseApiService {
   getAllProjects() {
     return this.get("api/projects");
   }
+
+  getDashboardProjects() {
+    return this.get("api/projects/dashboard");
+  }
 }
