@@ -23,4 +23,8 @@ export default class GPApiService extends BaseApiService {
   login(data) {
     return this.post("users/authenticate", data);
   }
+
+  getAllProjects() {
+    return this.get("api/projects");
+  }
 }
