@@ -5,7 +5,7 @@
         <div class="card">
           <div class="card-header">GRIZPOWER SYSTEM</div>
           <div class="card-body">
-            <form @submit.prevent="login()" action="" method="">
+            <form @submit.prevent="login()" action method>
               <div class="form-group row">
                 <label
                   for="username"
@@ -59,7 +59,7 @@
                 </div>
               </div>
 
-              <div class="form-group row">
+              <!-- <div class="form-group row">
                 <div class="col-md-6 offset-md-4">
                   <div class="checkbox">
                     <label>
@@ -67,15 +67,13 @@
                     </label>
                   </div>
                 </div>
-              </div>
+              </div>-->
 
               <div class="col-md-6 offset-md-4">
                 <button type="button" class="btn btn-primary" @click="onLogin">
                   Login
                 </button>
-                <a href="#" class="btn btn-link">
-                  Forgot Your Password?
-                </a>
+                <a href="#" class="btn btn-link">Forgot Your Password?</a>
               </div>
             </form>
           </div>
@@ -109,7 +107,6 @@ export default {
   },
   watch: {
     success(val) {
-      console.log(val, "test");
       if (val) {
         this.$router.push({ name: "home" });
       }
