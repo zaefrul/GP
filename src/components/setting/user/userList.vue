@@ -19,19 +19,17 @@
           <th scope="col" class="text-center">Phone</th>
           <th scope="col" class="text-center">Permission</th>
           <th scope="col" class="text-center">Status</th>
-          <th scope="col" class="text-center">Option</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(item, index) in userItem" :key="index++">
           <th scope="row">{{ index }}</th>
-          <td>{{ item.name }}</td>
+          <td> <a href="#" @click="clickHistory(item.uid)">{{ item.name }}</a></td>
           <td class="text-center">{{ item.username }}</td>
           <td class="text-center">{{ item.email }}</td>
           <td class="text-center">{{ item.phone }}</td>
           <td class="text-center">{{ item.permission }}</td>
           <td class="text-center"><span :class="'userStatus us' + item.status">{{ item.status }}</span></td>
-          <td class="text-center"> <a href="#" @click="clickHistory(item.uid)">View</a></td>
         </tr>
       </tbody>
     </table>
