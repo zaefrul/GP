@@ -2,7 +2,7 @@
 <div id="projectLanding" class="content-margin-top">
       <div class="bg-grey csMenuHeader" >
         <div class="container">
-          <h1 class="font-weight-normal">NCC10024115-19</h1>
+          <h1 class="font-weight-normal text-info">NCC10024115-19</h1>
           <h5>Bersatu Teguh Construction Sdn. Bhd.</h5>
         </div>
       </div>

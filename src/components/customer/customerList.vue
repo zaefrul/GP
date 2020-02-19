@@ -16,18 +16,18 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">ID</th>
-          <th scope="col">Company</th>
-          <th scope="col">License</th>
-          <th scope="col">Contact</th>
+          <th scope="col" class="text-center">Company</th>
+          <th scope="col" class="text-center">License</th>
+          <th scope="col" class="text-center">Contact</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(item, index) in customerItem" :key="index++">
           <th scope="row">{{ index }}</th>
           <td>{{ item.id }}</td>
-          <td><router-link :to="'/customer/view/' + item.id" >{{ item.company }}</router-link></td>
-          <td>{{ item.license }}</td>
-          <td>{{ item.contact }}</td>
+          <td class="text-center"><router-link :to="'/customer/view/' + item.id" >{{ item.company }}</router-link></td>
+          <td class="text-center">{{ item.license }}</td>
+          <td class="text-center">{{ item.contact }}</td>
         </tr>
       </tbody>
     </table>

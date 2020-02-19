@@ -14,20 +14,20 @@
     <table class="table">
       <thead class="thead-dark">
         <tr>
-          <!-- <th scope="col">#</th> -->
+          <th scope="col">#</th>
           <th scope="col">Company Name</th>
-          <th scope="col">Phone Number</th>
-          <th scope="col">Email</th>
-          <th scope="col">Option</th>
+          <th scope="col" class="text-center">Phone Number</th>
+          <th scope="col" class="text-center">Email</th>
+          <th scope="col" class="text-center">Option</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(item, index) in displayedPosts" :key="index++">
-          <!-- <th scope="row">{{ index }}</th> -->
+          <th scope="row">{{ index }}</th>
           <td><router-link :to="'/project-detail/' + item.pid">{{ item.title }}</router-link></td>
-          <td>{{ item.phone }}</td>
-          <td>{{ item.email }}</td>
-          <td><a href="#">Delete</a></td>
+          <td class="text-center">{{ item.phone }}</td>
+          <td class="text-center">{{ item.email }}</td>
+          <td class="text-center"><a href="#" class="text-danger">Delete</a></td>
         </tr>
       </tbody>
     </table>
