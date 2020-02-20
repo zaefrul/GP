@@ -229,7 +229,7 @@ const routes = [
       },
       { path: "user", component: UserLanding,
         children: [
-          { path: "", component: UserList },
+          { path: "", component: UserList, name:"userList" },
           { path: "add", component: UserAdd },
           { path: "edit/:uid", component: UserEdit },
         ]

@@ -44,7 +44,7 @@ export default {
     InvoiceStatus
   },
   mounted() {
-    this.getAllProjects();
+    this.getDashboardProjects();
   },
   data() {
     return {
@@ -64,7 +64,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["getAllProjects"])
+    ...mapActions(["getDashboardProjects"])
   }
 };
 </script>

@@ -24,11 +24,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in userItem" :key="index++">
+        <tr v-for="(item, index) in user" :key="index++">
           <th scope="row">{{ index }}</th>
-          <td> <a href="#" @click="clickHistory(item.uid)">{{ item.name }}</a></td>
+          <td> <a href="#" @click="clickHistory(item.id)">{{ item.firstName }}</a></td>
+          <td class="text-center">{{ item.lastName }}</td>
           <td class="text-center">{{ item.username }}</td>
-          <td class="text-center">{{ item.email }}</td>
           <td class="text-center">{{ item.phone }}</td>
           <td class="text-center">{{ item.permission }}</td>
           <td class="text-center"><span :class="'userStatus us' + item.status">{{ item.status }}</span></td>
@@ -104,6 +104,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
 export default {
     name : "userList",
     data: function(){
@@ -124,6 +125,12 @@ export default {
             selectedUser: '',
         }
     },
+    mounted() {
+      this.getUsers();
+    },
+    computed: {
+      ...mapGetters(["user"])
+    },
     methods: {
       clickHistory(uid){
         this.viewActive = true;
@@ -132,7 +139,8 @@ export default {
       },
       closeHistory(){
         this.viewActive = false;
-      }
+      },
+      ...mapActions(["getUsers"]),
     }
 }
 </script>
