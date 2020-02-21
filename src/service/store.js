@@ -14,7 +14,8 @@ export const store = new Vuex.Store({
     handleError: {
       status: false,
       message: null
-    }
+    },
+    userData:null
   },
   getters: {
     project: state => state.project,
@@ -31,7 +32,8 @@ export const store = new Vuex.Store({
       }
 
       return null;
-    }
+    },
+    userDetails: state => state.userData
   },
   mutations: {
     setProject: (state, payload) => {
@@ -57,6 +59,9 @@ export const store = new Vuex.Store({
     },
     resetSucess: state => {
       state.success = false;
+    },
+    setUserData: (state, payload) => {
+      state.userData = payload;
     }
   },
   actions: {
@@ -131,6 +136,14 @@ export const store = new Vuex.Store({
           context.commit("setLoading", false);
           context.commit("setUser", res);
           console.log(res);
+        })
+    },
+    getUser: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.getUser(payload)
+        .then(res=>{
+          context.commit("setUserData", res);
+          context.commit("setLoading", false);
         })
     }
   }

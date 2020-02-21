@@ -26,12 +26,12 @@
       <tbody>
         <tr v-for="(item, index) in user" :key="index++">
           <th scope="row">{{ index }}</th>
-          <td> <a href="#" @click="clickHistory(item.id)">{{ item.firstName }}</a></td>
-          <td class="text-center">{{ item.lastName }}</td>
+          <td> <a href="#" @click="clickHistory(item.id)">{{ item.firstName }}, {{ item.lastName }}</a></td>
           <td class="text-center">{{ item.username }}</td>
+          <td class="text-center">{{ item.email }}</td>
           <td class="text-center">{{ item.phone }}</td>
-          <td class="text-center">{{ item.permission }}</td>
-          <td class="text-center"><span :class="'userStatus us' + item.status">{{ item.status }}</span></td>
+          <td class="text-center">{{ item.role }}</td>
+          <td class="text-center"><span :class="'userStatus us' + item.status">Active</span></td>
         </tr>
       </tbody>
     </table>
@@ -67,7 +67,7 @@
                   </div>
                   <div class="row mb-4">
                     <div class="col">
-                      Ahmad Firdaus Bin Nor Azhar
+                      {{userDetails.firstName}} {{userDetails.lastName}}
                     </div>
                   </div>
                   <div class="row">
@@ -77,7 +77,7 @@
                   </div>
                   <div class="row mb-4">
                     <div class="col">
-                      afna@gmail.com
+                      {{userDetails.email}}
                     </div>
                   </div>
                   <div class="row">
@@ -87,7 +87,17 @@
                   </div>
                   <div class="row mb-4">
                     <div class="col">
-                      019-370 3745
+                      {{userDetails.phone}}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <h6>Username</h6>
+                    </div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col">
+                      {{userDetails.username}}
                     </div>
                   </div>
                 </div>
@@ -109,18 +119,6 @@ export default {
     name : "userList",
     data: function(){
         return {
-            userItem : [
-                { uid: '1', name: 'Ahmad Firdaus Nor Azhar', username: 'afna', email: 'afna@mail.com', phone: '0193773773', permission: 'administrator', status: 'Active'},
-                { uid: '2', name: 'Ahmad Firdaus Nor Azhar', username: 'afna', email: 'afna@mail.com', phone: '0193773773', permission: 'administrator', status: 'Blocked'},
-                { uid: '3', name: 'Ahmad Firdaus Nor Azhar', username: 'afna', email: 'afna@mail.com', phone: '0193773773', permission: 'administrator', status: 'Active'},
-                { uid: '4', name: 'Ahmad Firdaus Nor Azhar', username: 'afna', email: 'afna@mail.com', phone: '0193773773', permission: 'administrator', status: 'Active'},
-                { uid: '5', name: 'Ahmad Firdaus Nor Azhar', username: 'afna', email: 'afna@mail.com', phone: '0193773773', permission: 'administrator', status: 'Active'},
-                { uid: '6', name: 'Ahmad Firdaus Nor Azhar', username: 'afna', email: 'afna@mail.com', phone: '0193773773', permission: 'administrator', status: 'Active'},
-                { uid: '7', name: 'Ahmad Firdaus Nor Azhar', username: 'afna', email: 'afna@mail.com', phone: '0193773773', permission: 'administrator', status: 'Blocked'},
-                { uid: '8', name: 'Ahmad Firdaus Nor Azhar', username: 'afna', email: 'afna@mail.com', phone: '0193773773', permission: 'administrator', status: 'Active'},
-                { uid: '9', name: 'Ahmad Firdaus Nor Azhar', username: 'afna', email: 'afna@mail.com', phone: '0193773773', permission: 'administrator', status: 'Pending'},
-                { uid: '10', name: 'Ahmad Firdaus Nor Azhar', username: 'afna', email: 'afna@mail.com', phone: '0193773773', permission: 'administrator', status: 'Active'}
-            ],
             viewActive: false,
             selectedUser: '',
         }
@@ -129,18 +127,19 @@ export default {
       this.getUsers();
     },
     computed: {
-      ...mapGetters(["user"])
+      ...mapGetters(["user","userDetails"])
     },
     methods: {
       clickHistory(uid){
         this.viewActive = true;
         this.selectedUser = uid;
+        this.getUser(uid);
         console.log(this.viewActive)
       },
       closeHistory(){
         this.viewActive = false;
       },
-      ...mapActions(["getUsers"]),
+      ...mapActions(["getUsers","getUser"]),
     }
 }
 </script>

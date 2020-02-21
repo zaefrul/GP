@@ -39,4 +39,9 @@ export default class GPOpsFactory {
     const UserFcd = new UserFacade();
     return UserFcd.allUsers();
   }
+
+  static getUser(id) {
+    const UserFcd = new UserFacade();
+    return UserFcd.user(id);
+  }
 }
