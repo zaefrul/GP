@@ -8,6 +8,7 @@ export const store = new Vuex.Store({
     project: null,
     customer: null,
     metadata: null,
+    suppliers: null,
     user: null,
     isLoading: false,
     success: false,
@@ -19,6 +20,7 @@ export const store = new Vuex.Store({
   getters: {
     project: state => state.project,
     customer: state => state.customer,
+    suppliers: state => state.suppliers,
     metadata: state => state.metadata,
     user: state => state.user,
     isLoading: state => state.isLoading,
@@ -57,6 +59,9 @@ export const store = new Vuex.Store({
     },
     resetSucess: state => {
       state.success = false;
+    },
+    setSuppliers: (state, payload) => {
+      state.suppliers = payload;
     }
   },
   actions: {
@@ -86,13 +91,12 @@ export const store = new Vuex.Store({
         });
     },
     registerUser: (context, payload) => {
-      context.commit("setLoading",true);
-      GPOpsFactory.registerUser(payload)
-        .then(res => {
-          context.commit("setUser",res);
-          context.commit("setLoading",false);
-          context.commit("setSuccess",true);
-        })
+      context.commit("setLoading", true);
+      GPOpsFactory.registerUser(payload).then(res => {
+        context.commit("setUser", res);
+        context.commit("setLoading", false);
+        context.commit("setSuccess", true);
+      });
     },
     initializeUserData: context => {
       const user = GPOpsFactory.getUserDetails();
@@ -126,12 +130,57 @@ export const store = new Vuex.Store({
     },
     getUsers: context => {
       context.commit("setLoading", true);
-      GPOpsFactory.getAllUser()
+      GPOpsFactory.getAllUser().then(res => {
+        context.commit("setLoading", false);
+        context.commit("setUser", res);
+        console.log(res);
+      });
+    },
+    createProjectWithCustomer: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.createProjectWithCustomer(payload).then(res => {
+        context.commit("setLoading", false);
+      });
+    },
+    getAllCustomers: context => {
+      context.commit("setLoading", true);
+      GPOpsFactory.getAllCustomers().then(res => {
+        context.commit("setCustomer", res);
+        context.commit("setLoading", false);
+      });
+    },
+    createCustomer: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.createCustomer(payload)
         .then(res => {
           context.commit("setLoading", false);
-          context.commit("setUser", res);
-          console.log(res);
+          context.commit("setSuccess", true);
         })
+        .catch(err => {
+          context.commit("setLoading", false);
+        });
+    },
+    getAllSuppliers: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.getAllSuppliers(payload)
+        .then(res => {
+          context.commit("setSuppliers", res);
+          context.commit("setLoading", false);
+        })
+        .catch(err => {
+          context.commit("setLoading", false);
+        });
+    },
+    createSupplier: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.createSupplier(payload)
+        .then(res => {
+          context.commit("setLoading", false);
+          context.commit("setSuccess", true);
+        })
+        .catch(err => {
+          context.commit("setLoading", false);
+        });
     }
   }
 });

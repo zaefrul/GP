@@ -65,9 +65,9 @@ import PiSupplierPoEdit from "./components/projectDetail/supplier/purchaseOrder/
 
 //supplier quotation
 import PiSupplierQuotationView from "./components/projectDetail/supplier/quotation/supplierQuotationView.vue"; //supplier quotation view
-import PiSupplierQuotationAdd from "./components/projectDetail/supplier/quotation/supplierQuotationAdd.vue"; //supplier quotation add 
-import PiSupplierQuotationList from "./components/projectDetail/supplier/quotation/supplierQuotationList.vue"; //supplier quotation list 
-import PiSupplierQuotationEdit from "./components/projectDetail/supplier/quotation/supplierQuotationEdit.vue"; //supplier quotation edit 
+import PiSupplierQuotationAdd from "./components/projectDetail/supplier/quotation/supplierQuotationAdd.vue"; //supplier quotation add
+import PiSupplierQuotationList from "./components/projectDetail/supplier/quotation/supplierQuotationList.vue"; //supplier quotation list
+import PiSupplierQuotationEdit from "./components/projectDetail/supplier/quotation/supplierQuotationEdit.vue"; //supplier quotation edit
 
 //supplier rfq
 import PiSupplierRfqView from "./components/projectDetail/supplier/requestForQuotation/supplierRfqView.vue"; //supplier rfq view
@@ -184,6 +184,7 @@ const routes = [
   {
     path: "/supplier",
     component: SupplierLanding,
+    name: "supplier",
     meta: {
       loginRequired: true
     },
@@ -199,6 +200,7 @@ const routes = [
   {
     path: "/customer",
     component: CustomerLanding,
+    name: "customer",
     meta: {
       loginRequired: true
     },
@@ -227,11 +229,13 @@ const routes = [
           { path: "edit/:mid", component: MetadataEdit }
         ]
       },
-      { path: "user", component: UserLanding,
+      {
+        path: "user",
+        component: UserLanding,
         children: [
-          { path: "", component: UserList, name:"userList" },
+          { path: "", component: UserList, name: "userList" },
           { path: "add", component: UserAdd },
-          { path: "edit/:uid", component: UserEdit },
+          { path: "edit/:uid", component: UserEdit }
         ]
       }
     ]
