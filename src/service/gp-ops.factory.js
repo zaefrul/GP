@@ -3,6 +3,8 @@ import GetUserFacade from "./getuser.facade";
 import LogoutFacade from "./logout.facade";
 import ProjectsFacade from "./projects.facade";
 import UserFacade from "./user.facade";
+import CustomerFacade from "./customer.facade";
+import SupplierFacade from "./supplier.facade";
 
 export default class GPOpsFactory {
   static handleLogin(data) {
@@ -43,5 +45,30 @@ export default class GPOpsFactory {
   static getUser(id) {
     const UserFcd = new UserFacade();
     return UserFcd.user(id);
+  }
+  
+  static createProjectWithCustomer(data) {
+    const ProjectsFcd = new ProjectsFacade();
+    return ProjectsFcd.createProject(data);
+  }
+
+  static getAllCustomers() {
+    const CustomerFcd = new CustomerFacade();
+    return CustomerFcd.getAllCustomers();
+  }
+
+  static createCustomer(data) {
+    const CustomerFcd = new CustomerFacade();
+    return CustomerFcd.createCustomer(data);
+  }
+
+  static getAllSuppliers() {
+    const SupplierFcd = new SupplierFacade();
+    return SupplierFcd.getAllSuppliers();
+  }
+
+  static createSupplier(data) {
+    const SupplierFcd = new SupplierFacade();
+    return SupplierFcd.createSupplier(data);
   }
 }
