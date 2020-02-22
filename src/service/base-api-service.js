@@ -1,4 +1,5 @@
 import Http from "./httpservice";
+import axios from "axios";
 
 export default class BaseApiService {
   constructor() {}
@@ -13,5 +14,9 @@ export default class BaseApiService {
 
   put(url, data, config) {
     return Http.put(url, data, config);
+  }
+
+  combineAnd(operations) {
+    return axios.all([...operations]);
   }
 }

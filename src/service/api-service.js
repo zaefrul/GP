@@ -32,13 +32,13 @@ export default class GPApiService extends BaseApiService {
   }
 
   getUser(id) {
-    return this.get("users/"+id);
+    return this.get("users/" + id);
   }
 
   modifyUser(id, data) {
-    return this.put("users/"+id, data);
+    return this.put("users/" + id, data);
   }
-  
+
   createCustomer(data) {
     return this.post("api/customers", data);
   }
@@ -57,5 +57,13 @@ export default class GPApiService extends BaseApiService {
 
   createSupplier(data) {
     return this.post("api/suppliers", data);
+  }
+
+  createCustomerRFQ(data) {
+    return this.post("api/rfqs/customer", data);
+  }
+
+  createSupplierRFQ(data) {
+    return this.post("api/rfqs/supplier", data);
   }
 }

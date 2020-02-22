@@ -212,6 +212,7 @@
                   <th scope="col">Tag No</th>
                   <th scope="col">Model Number</th>
                   <th scope="col">Remarks</th>
+                  <th scope="col">Revision No</th>
                 </tr>
               </thead>
               <tbody>
@@ -298,6 +299,16 @@
                       @change="v.remarks.$touch"
                     />
                   </td>
+                  <td>
+                    <input
+                      class="form-control form-control-sm"
+                      type="text"
+                      placeholder="Revision No"
+                      v-model.trim="v.revisionNumber.$model"
+                      @blur="v.revisionNumber.$touch"
+                      @change="v.revisionNumber.$touch"
+                    />
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -365,7 +376,15 @@ export default {
       projectTitle: "",
       items: [
         {
-          partName: ""
+          partName: "",
+          partNumber: "",
+          partPosition: "",
+          serialNumber: "",
+          drawingNumber: "",
+          tagNumber: "",
+          modelNumber: "",
+          remarks: "",
+          revisionNumber: ""
         }
       ]
     };
@@ -427,10 +446,20 @@ export default {
         },
         remarks: {
           required
+        },
+        revisionNumber: {
+          required
         }
-        // revisionNumber: {
-        //   required
-        // }
+      }
+    }
+  },
+  computed: {
+    ...mapGetters(["success"])
+  },
+  watch: {
+    success(val) {
+      if (val) {
+        this.$router.push({ name: "projectList" });
       }
     }
   },
@@ -439,11 +468,11 @@ export default {
       this.radioClicked = !this.radioClicked;
     },
     onSubmitWithCustomer() {
-      console.log(this.customer, "customer");
       if (this.$v.$invalid === false) {
         this.createProjectWithCustomer({
           customer: { ...this.customer },
-          title: { title: this.projectTitle }
+          title: { title: this.projectTitle },
+          items: [...this.items]
         });
       } else {
         this.$v.$touch();
@@ -452,7 +481,11 @@ export default {
     onAddNewItem() {
       this.items.push({ partName: "" });
     },
-    ...mapActions(["createProjectWithCustomer"])
+    ...mapActions(["createProjectWithCustomer"]),
+    ...mapMutations(["resetSucess"])
+  },
+  destroyed() {
+    this.resetSucess();
   }
 };
 </script>
