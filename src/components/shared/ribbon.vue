@@ -1,12 +1,9 @@
 <template>
   <div id="ribbon">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <img src="././dist/img/gp-white-logo.png" alt="" width="230px" />
+      <img src="../../assets/img/gp-white-logo.png" alt width="230px" />
 
-      <div
-        class="collapse navbar-collapse userButton"
-        id="navbarSupportedContent"
-      >
+      <div class="collapse navbar-collapse userButton" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto" v-if="user !== null">
           <li class="nav-item dropdown">
             <a
@@ -17,21 +14,14 @@
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-            >
-              Welcome, {{ user.firstName }} {{ user.lastName }}
-            </a>
+            >Welcome, {{ user.firstName }} {{ user.lastName }}</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <router-link to="/setting"
-                ><a class="dropdown-item" href="#">Setting</a></router-link
-              >
+              <router-link to="/setting">
+                <a class="dropdown-item" href="#">Setting</a>
+              </router-link>
 
               <div class="dropdown-divider"></div>
-              <a
-                class="dropdown-item"
-                href="javascript:void(0)"
-                @click="handleLogout"
-                >Sign Out</a
-              >
+              <a class="dropdown-item" href="javascript:void(0)" @click="handleLogout">Sign Out</a>
             </div>
           </li>
         </ul>

@@ -13,7 +13,16 @@ export default class ProjectsFacade {
     return this.GPAPI.getAllProjects().then(res => res.data);
   }
 
-  getDashboardProjects(){
+  getDashboardProjects() {
     return this.GPAPI.getDashboardProjects().then(res => res.data);
+  }
+
+  createProject(data) {
+    return this.GPAPI.createCustomer(data.customer).then(res => {
+      return this.GPAPI.createProject({
+        ...data.title,
+        customerId: res.data.id
+      });
+    });
   }
 }

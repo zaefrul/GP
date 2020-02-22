@@ -48,16 +48,6 @@ export default {
       return data;
     }
   }
-  // data : function(){
-  //     return {
-  //     projectStatusItem : [
-  //         { pid: '10', date: '12/10/2019', company: 'Bersatu Teguh Construction Sdn. Bhd.', status: 'Waiting for SOA' },
-  //         { pid: '11', date: '14/10/2019', company: 'Bersatu Teguh Construction Sdn. Bhd.', status: 'Completed' },
-  //         { pid: '12', date: '15/10/2019', company: 'Bersatu Teguh Construction Sdn. Bhd.', status: 'Pending LOA' },
-  //         { pid: '13', date: '16/10/2019', company: 'Bersatu Teguh Construction Sdn. Bhd.', status: 'In Progress' }
-  //     ]
-  //     }
-  // }
 };
 </script>
 
