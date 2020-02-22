@@ -85,6 +85,15 @@ export const store = new Vuex.Store({
           });
         });
     },
+    registerUser: (context, payload) => {
+      context.commit("setLoading",true);
+      GPOpsFactory.registerUser(payload)
+        .then(res => {
+          context.commit("setUser",res);
+          context.commit("setLoading",false);
+          context.commit("setSuccess",true);
+        })
+    },
     initializeUserData: context => {
       const user = GPOpsFactory.getUserDetails();
       context.commit("setUser", user);
@@ -103,6 +112,26 @@ export const store = new Vuex.Store({
         .catch(err => {
           context.commit("setLoading", false);
         });
+    },
+    getDashboardProjects: context => {
+      context.commit("setLoading", true);
+      GPOpsFactory.getDashboardProjects()
+        .then(res => {
+          context.commit("setLoading", false);
+          context.commit("setProject", res);
+        })
+        .catch(err => {
+          context.commit("setLoading", false);
+        });
+    },
+    getUsers: context => {
+      context.commit("setLoading", true);
+      GPOpsFactory.getAllUser()
+        .then(res => {
+          context.commit("setLoading", false);
+          context.commit("setUser", res);
+          console.log(res);
+        })
     }
   }
 });
