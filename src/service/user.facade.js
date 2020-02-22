@@ -21,4 +21,8 @@ export default class UserFacade {
     console.log(id);
     return this.GPAPI.getUser(id).then(res=>res.data);
   }
+
+  modifyUser(id, data) {
+    return this.GPAPI.modifyUser(id, data).then(res=>res.status);
+  }
 }
