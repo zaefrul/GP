@@ -160,7 +160,7 @@ export const store = new Vuex.Store({
       context.commit("setLoading", true);
       GPOpsFactory.createProjectWithCustomer(payload).then(res => {
         context.commit("setLoading", false);
-        context.commit("setSuccess", false);
+        context.commit("setSuccess", true);
       });
     },
     getAllCustomers: context => {

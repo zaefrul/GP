@@ -469,7 +469,6 @@ export default {
     },
     onSubmitWithCustomer() {
       if (this.$v.$invalid === false) {
-        console.log(this.$v, "customer 3");
         this.createProjectWithCustomer({
           customer: { ...this.customer },
           title: { title: this.projectTitle },
