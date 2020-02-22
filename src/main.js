@@ -126,7 +126,7 @@ const routes = [
       loginRequired: true
     },
     children: [
-      { path: "", component: ProjectListing },
+      { path: "", component: ProjectListing, name: "projectList" },
       { path: "add", component: ProjectAdd }
     ]
   },

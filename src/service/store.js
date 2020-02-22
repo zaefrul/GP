@@ -18,8 +18,8 @@ export const store = new Vuex.Store({
       status: false,
       message: null
     },
-    userData:null,
-    userSettings:null
+    userData: null,
+    userSettings: null
   },
   getters: {
     project: state => state.project,
@@ -27,7 +27,7 @@ export const store = new Vuex.Store({
     suppliers: state => state.suppliers,
     metadata: state => state.metadata,
     metadatas: state => state.metadataList,
-    metadataPrices: state=> state.metadataPrices,
+    metadataPrices: state => state.metadataPrices,
     user: state => state.user,
     isLoading: state => state.isLoading,
     success: state => state.success,
@@ -160,6 +160,7 @@ export const store = new Vuex.Store({
       context.commit("setLoading", true);
       GPOpsFactory.createProjectWithCustomer(payload).then(res => {
         context.commit("setLoading", false);
+        context.commit("setSuccess", false);
       });
     },
     getAllCustomers: context => {
@@ -171,16 +172,15 @@ export const store = new Vuex.Store({
     },
     createCustomer: (context, payload) => {
       context.commit("setLoading", true);
-      GPOpsFactory.createCustomer(payload)
-        .then(res => {
-          context.commit("setLoading", false);
-          context.commit("setSuccess", true);
-        })
+      GPOpsFactory.createCustomer(payload).then(res => {
+        context.commit("setLoading", false);
+        context.commit("setSuccess", true);
+      });
     },
     getUser: (context, payload) => {
       context.commit("setLoading", true);
       GPOpsFactory.getUser(payload)
-        .then(res=>{
+        .then(res => {
           context.commit("setUserData", res);
           context.commit("setLoading", false);
         })
@@ -211,44 +211,47 @@ export const store = new Vuex.Store({
         });
     },
     modifyUser: (context, payload) => {
-      context.commit("setLoading",true);
-      GPOpsFactory.modifyUser(payload.id, payload)
-        .then(res=>{
-          context.commit("setSuccess", true);
-          context.commit("setLoading", false);
-        })
+      context.commit("setLoading", true);
+      GPOpsFactory.modifyUser(payload.id, payload).then(res => {
+        context.commit("setSuccess", true);
+        context.commit("setLoading", false);
+      });
     },
     getMetadatas: context => {
       context.commit("setLoading", true);
-      GPOpsFactory.handleMetadata().metadataList()
+      GPOpsFactory.handleMetadata()
+        .metadataList()
         .then(res => {
           context.commit("setMetadatas", res);
           context.commit("setLoading", false);
-        })
+        });
     },
     getMetadata: (context, payload) => {
       context.commit("setLoading", true);
-      GPOpsFactory.handleMetadata().metadata(payload)
-        .then(res=> {
+      GPOpsFactory.handleMetadata()
+        .metadata(payload)
+        .then(res => {
           context.commit("setMetadata", res);
           context.commit("setLoading", false);
-        })
+        });
     },
     getMetadataPrices: (context, payload) => {
       context.commit("setLoading", true);
-      GPOpsFactory.handleMetadata().metadataPrices(payload)
-      .then(res=> {
-        context.commit("setMetadataPrices", res);
-        context.commit("setLoading", false);
-      })
+      GPOpsFactory.handleMetadata()
+        .metadataPrices(payload)
+        .then(res => {
+          context.commit("setMetadataPrices", res);
+          context.commit("setLoading", false);
+        });
     },
     newMetadata: (context, payload) => {
       context.commit("setLoading", true);
-      GPOpsFactory.handleMetadata().newMetadata(payload)
-        .then(res=>{
+      GPOpsFactory.handleMetadata()
+        .newMetadata(payload)
+        .then(res => {
           context.commit("setSuccess", true);
           context.commit("setLoading", false);
-        })
+        });
     }
   }
 });
