@@ -5,6 +5,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import App from "./App.vue";
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
 
 //Login Page
 import LoginLanding from "./components/login/loginLanding.vue"; //login
@@ -47,10 +49,10 @@ import PiCustomerPoList from "./components/projectDetail/customer/purchaseOrder/
 import PiCustomerPoEdit from "./components/projectDetail/customer/purchaseOrder/CustomerPoEdit.vue"; //customer po edit
 
 //customer quotation
-import PiCustomerQuotationView from "./components/projectDetail/customer/quotation/customerQuotationView.vue"; //customer quotation view
-import PiCustomerQuotationAdd from "./components/projectDetail/customer/quotation/customerQuotationAdd.vue"; //customer quotation add
-import PiCustomerQuotationList from "./components/projectDetail/customer/quotation/customerQuotationList.vue"; //customer quotation list
-import PiCustomerQuotationEdit from "./components/projectDetail/customer/quotation/customerQuotationEdit.vue"; //customer quotation edit
+import PiCustomerQuotationView from "./components/projectDetail/customer/quotation/CustomerQuotationView.vue"; //customer quotation view
+import PiCustomerQuotationAdd from "./components/projectDetail/customer/quotation/CustomerQuotationAdd.vue"; //customer quotation add
+import PiCustomerQuotationList from "./components/projectDetail/customer/quotation/CustomerQuotationList.vue"; //customer quotation list
+import PiCustomerQuotationEdit from "./components/projectDetail/customer/quotation/CustomerQuotationEdit.vue"; //customer quotation edit
 
 //customer rfq
 import PiCustomerRfqView from "./components/projectDetail/customer/requestForQuotation/customerRfqView.vue"; //customer rfq view
@@ -184,12 +186,12 @@ const routes = [
   {
     path: "/supplier",
     component: SupplierLanding,
-    name: "supplier",
+
     meta: {
       loginRequired: true
     },
     children: [
-      { path: "", component: SupplierList },
+      { path: "", component: SupplierList, name: "supplier" },
       { path: "list", component: SupplierList },
       { path: "view/:sid", component: SupplierView },
       { path: "edit/:sid", component: SupplierEdit },
@@ -200,12 +202,12 @@ const routes = [
   {
     path: "/customer",
     component: CustomerLanding,
-    name: "customer",
+
     meta: {
       loginRequired: true
     },
     children: [
-      { path: "", component: CustomerList },
+      { path: "", component: CustomerList, name: "customer" },
       { path: "list", component: CustomerList },
       { path: "view/:cid", component: CustomerView },
       { path: "edit/:cid", component: CustomerEdit },
@@ -224,7 +226,7 @@ const routes = [
         path: "metadata",
         component: MetadataLanding,
         children: [
-          { path: "", component: MetadataList, name:"metadataList" },
+          { path: "", component: MetadataList, name: "metadataList" },
           { path: "add", component: MetadataAdd },
           { path: "edit/:mid", component: MetadataEdit }
         ]
