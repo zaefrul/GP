@@ -23,7 +23,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(item, index) in user" :key="index++">
+            <tr v-for="(item, index) in userSettings" :key="index++">
               <th scope="row">{{ index }}</th>
               <td>
                 <a href="#" @click="clickHistory(item.id)">{{ item.firstName }}, {{ item.lastName }}</a>
@@ -132,7 +132,7 @@ export default {
     this.getUsers();
   },
   computed: {
-    ...mapGetters(["user", "userDetails"])
+    ...mapGetters(["userSettings", "userDetails"])
   },
   methods: {
     clickHistory(uid) {

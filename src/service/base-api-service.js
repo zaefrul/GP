@@ -11,7 +11,7 @@ export default class BaseApiService {
     return Http.get(url, config);
   }
 
-  patch(url, data, config) {
-    return Http.patch(url, data, config);
+  put(url, data, config) {
+    return Http.put(url, data, config);
   }
 }

@@ -34,6 +34,10 @@ export default class GPApiService extends BaseApiService {
   getUser(id) {
     return this.get("users/"+id);
   }
+
+  modifyUser(id, data) {
+    return this.put("users/"+id, data);
+  }
   
   createCustomer(data) {
     return this.post("api/customers", data);

@@ -224,7 +224,7 @@ const routes = [
         path: "metadata",
         component: MetadataLanding,
         children: [
-          { path: "", component: MetadataList },
+          { path: "", component: MetadataList, name:"metadataList" },
           { path: "add", component: MetadataAdd },
           { path: "edit/:mid", component: MetadataEdit }
         ]

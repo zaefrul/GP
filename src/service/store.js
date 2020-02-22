@@ -8,6 +8,8 @@ export const store = new Vuex.Store({
     project: null,
     customer: null,
     metadata: null,
+    metadataList: null,
+    metadataPrices: null,
     suppliers: null,
     user: null,
     isLoading: false,
@@ -16,13 +18,16 @@ export const store = new Vuex.Store({
       status: false,
       message: null
     },
-    userData:null
+    userData:null,
+    userSettings:null
   },
   getters: {
     project: state => state.project,
     customer: state => state.customer,
     suppliers: state => state.suppliers,
     metadata: state => state.metadata,
+    metadatas: state => state.metadataList,
+    metadataPrices: state=> state.metadataPrices,
     user: state => state.user,
     isLoading: state => state.isLoading,
     success: state => state.success,
@@ -35,7 +40,8 @@ export const store = new Vuex.Store({
 
       return null;
     },
-    userDetails: state => state.userData
+    userDetails: state => state.userData,
+    userSettings: state => state.userSettings
   },
   mutations: {
     setProject: (state, payload) => {
@@ -67,6 +73,15 @@ export const store = new Vuex.Store({
     },
     setSuppliers: (state, payload) => {
       state.suppliers = payload;
+    },
+    setUserSettings: (state, payload) => {
+      state.userSettings = payload;
+    },
+    setMetadatas: (state, payload) => {
+      state.metadataList = payload;
+    },
+    setMetadataPrices: (state, payload) => {
+      state.metadataPrices = payload;
     }
   },
   actions: {
@@ -137,7 +152,7 @@ export const store = new Vuex.Store({
       context.commit("setLoading", true);
       GPOpsFactory.getAllUser().then(res => {
         context.commit("setLoading", false);
-        context.commit("setUser", res);
+        context.commit("setUserSettings", res);
         console.log(res);
       });
     },
@@ -194,6 +209,46 @@ export const store = new Vuex.Store({
         .catch(err => {
           context.commit("setLoading", false);
         });
+    },
+    modifyUser: (context, payload) => {
+      context.commit("setLoading",true);
+      GPOpsFactory.modifyUser(payload.id, payload)
+        .then(res=>{
+          context.commit("setSuccess", true);
+          context.commit("setLoading", false);
+        })
+    },
+    getMetadatas: context => {
+      context.commit("setLoading", true);
+      GPOpsFactory.handleMetadata().metadataList()
+        .then(res => {
+          context.commit("setMetadatas", res);
+          context.commit("setLoading", false);
+        })
+    },
+    getMetadata: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.handleMetadata().metadata(payload)
+        .then(res=> {
+          context.commit("setMetadata", res);
+          context.commit("setLoading", false);
+        })
+    },
+    getMetadataPrices: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.handleMetadata().metadataPrices(payload)
+      .then(res=> {
+        context.commit("setMetadataPrices", res);
+        context.commit("setLoading", false);
+      })
+    },
+    newMetadata: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.handleMetadata().newMetadata(payload)
+        .then(res=>{
+          context.commit("setSuccess", true);
+          context.commit("setLoading", false);
+        })
     }
   }
 });

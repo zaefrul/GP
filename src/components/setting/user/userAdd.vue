@@ -30,6 +30,12 @@
                                 <div class="form-group col-md-2"><label for="inputEmail">Email Address</label></div>
                                 <div class="form-group col-md-10">
                                     <input type="text" id="inputEmail" class="form-control" placeholder="" v-model="email" required>
+                                    <p
+                                        class="text-danger"
+                                        v-if="!$v.email.require && !$v.email.email"
+                                    >
+                                        Email is require and must be in correct format
+                                    </p>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -109,7 +115,7 @@
 </template>
 
 <script>
-import {required, sameAs, minLength} from 'vuelidate/lib/validators'
+import {required, sameAs, minLength, email} from 'vuelidate/lib/validators'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 export default {
     name: 'userAdd',
@@ -133,7 +139,7 @@ export default {
             required
         },
         email: {
-            required
+            required, email
         },
         phone: {
             required
@@ -174,6 +180,8 @@ export default {
                     lastName: this.lastName,
                     username: this.username,
                     password: this.password,
+                    email:this.email,
+                    phone:this.phone,
                     role: this.permission
                 })
             }

@@ -26,15 +26,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(item, index) in metadataItem" :key="index++">
+              <tr v-for="(item, index) in metadatas" :key="index++">
                 <th scope="row">{{ index }}</th>
-                <td class="text-center"> <a href="#" @click="clickHistory(item.mid)">{{ item.description }}</a></td>
-                <td class="text-center">{{ item.part }}</td>
-                <td class="text-center">{{ item.model }}</td>
-                <td class="text-center">{{ item.serial }}</td>
-                <td class="text-center">{{ item.drawing }}</td>
-                <td class="text-center">{{ item.item }}</td>
-                <td class="text-center">{{ item.price }}</td>
+                <td class="text-center"> <a href="#" @click="clickHistory(item.id)">{{ item.partName }}</a></td>
+                <td class="text-center">{{ item.partNumber }}</td>
+                <td class="text-center">{{ item.modelNumber }}</td>
+                <td class="text-center">{{ item.serialNumber }}</td>
+                <td class="text-center">{{ item.drawingNumber }}</td>
+                <td class="text-center">{{ item.tagNumber }}</td>
+                <td class="text-center">{{ item.prices[0].currency }}{{ item.prices[0].amount }}</td>
                 <td class="text-center">
                     <a href="#" class="text-danger">Delete</a>
                 </td>
@@ -66,46 +66,14 @@
                 <table class="table">
                     <thead>
                         <tr>
-                        <th scope="col">Date</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Remarks</th>
+                          <th scope="col">Date</th>
+                          <th scope="col">Price</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                        <td>14 Jan 2020</td>
-                        <td>RM9,999.99</td>
-                        <td>updated from supplier</td>
-                        </tr>
-                        <tr>
-                        <td>14 Jan 2020</td>
-                        <td>RM9,999.99</td>
-                        <td>updated from supplier</td>
-                        </tr>
-                        <tr>
-                        <td>14 Jan 2020</td>
-                        <td>RM9,999.99</td>
-                        <td>updated from supplier</td>
-                        </tr>
-                        <tr>
-                        <td>14 Jan 2020</td>
-                        <td>RM9,999.99</td>
-                        <td>updated from supplier</td>
-                        </tr>
-                        <tr>
-                        <td>14 Jan 2020</td>
-                        <td>RM9,999.99</td>
-                        <td>updated from supplier</td>
-                        </tr>
-                        <tr>
-                        <td>14 Jan 2020</td>
-                        <td>RM9,999.99</td>
-                        <td>updated from supplier</td>
-                        </tr>
-                        <tr>
-                        <td>14 Jan 2020</td>
-                        <td>RM9,999.99</td>
-                        <td>updated from supplier</td>
+                        <tr v-for="(item, index) in metadataPrices" :key="index++">
+                          <td>{{item.dateCreated}}</td>
+                          <td>{{item.currency}} {{item.amount}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -121,34 +89,28 @@
 </template>
 
 <script>
+import { mapGetters, mapActions, mapMutations } from 'vuex';
 export default {
     name : "metadata",
     data: function(){
         return {
-            metadataItem : [
-                { mid: '1', description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99' },
-                { mid: '2', description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99' },
-                { mid: '3', description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99' },
-                { mid: '4', description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99' },
-                { mid: '5', description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99' },
-                { mid: '6', description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99' },
-                { mid: '7', description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99' },
-                { mid: '8', description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99' },
-                { mid: '9', description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99' },
-                { mid: '10', description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99' },
-                { mid: '11', description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99' },
-                { mid: '12', description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', price: '9001.99' },
-            ],
             historyActive: false,
             selectedMetadata: '',
         }
         
     },
+    mounted(){
+      this.getMetadatas();
+    },
+    computed:  {
+      ...mapGetters(["metadatas","metadataPrices"])
+    },
     methods: {
+      ...mapActions(["getMetadatas","getMetadataPrices"]),
       clickHistory(mid){
+        this.getMetadataPrices(mid);
         this.historyActive = true;
-        this.selectedMetadata = mid;
-        console.log(this.historyActive)
+        console.log(this.metadataPrices);
       },
       closeHistory(){
         this.historyActive = false;
