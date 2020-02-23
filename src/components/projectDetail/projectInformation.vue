@@ -100,8 +100,11 @@
                                 </div>
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                    aria-describedby="inputGroupFileAddon01">
+                                    aria-describedby="inputGroupFileAddon01" ref="file" v-on:change="handleFileUpload()">
                                     <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                </div>
+                                <div class="input-group w-100">
+                                    <button type="button" class="btn btn-success" @click="submitFile()">Upload</button>
                                 </div>
                             </div>
                         </form>
@@ -196,13 +199,14 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import Http from '../../service/httpservice';
 export default {
     name: 'piMain',
     data: function(){
         return {
             stageStatus: 2,
-            suppSoaDoc: 1,
-            cusSoaDoc: 1,
+            suppSoaDoc: null,
+            cusSoaDoc: null,
             suppInvoiceDoc: null,
             cusInvoiceDoc: null
         }
@@ -220,7 +224,28 @@ export default {
             return;
         this.createImage(files[0]);
         },
-        ...mapActions(["getProjectDetail"])
+        ...mapActions(["getProjectDetail"]),
+        handleFileUpload() {
+            this.suppSoaDoc = this.$refs.file.files[0];
+            this.submitFile();
+        },
+        submitFile() {
+            var reader = new FileReader()
+            reader.readAsDataURL(this.suppSoaDoc)
+            console.log(reader);
+
+            // Http.post("/api/soas",
+            //     {
+            //         file:reader.result,
+            //         projectId:this.$route.params.pid,
+            //         type:1
+            //     }
+            // ).then(res=>{
+            //     console.log(res);
+            // }).catch(re=>{
+            //     console.log(re);
+            // })
+        }
     }
 }
 </script>

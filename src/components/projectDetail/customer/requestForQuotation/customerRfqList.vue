@@ -18,14 +18,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(item, index) in custRfqList" :key="index++">
+                        <tr v-for="(item, index) in projectRFQ.items" :key="index++">
                         <td scope="row">{{ index }}</td>
-                        <td>{{ item.description }}</td>
-                        <td>{{ item.part }}</td>
-                        <td>{{ item.model }}</td>
-                        <td>{{ item.serial }}</td>
-                        <td>{{ item.drawing }}</td>
-                        <td>{{ item.item }}</td>
+                        <td>{{ item.partName }}</td>
+                        <td>{{ item.partNumber }}</td>
+                        <td>{{ item.modelNumber }}</td>
+                        <td>{{ item.serialNumber }}</td>
+                        <td>{{ item.drawingNumber }}</td>
+                        <td>{{ item.tagNumber }}</td>
                         <td>{{ item.quantity }}</td>
                         </tr>
                     </tbody>
@@ -41,23 +41,21 @@
 </template>
 
 <script>
+import {mapGetters, mapActions} from "vuex"
 export default {
     name: 'piCustomerRfqList',
     data: function(){
         return {
-            custRfqList : [
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', quantity: '999'},
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', quantity: '999'},
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', quantity: '999'},
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', quantity: '999'},
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', quantity: '999'},
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', quantity: '999'},
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', quantity: '999'},
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', quantity: '999'},
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', quantity: '999'},
-                { description: 'Item Description', part: 'Part No', model: 'Model No', serial: 'Serial No', drawing: 'Drawing No', item: 'Item No', quantity: '999'}
-            ]
         }
+    },
+    mounted() {
+        console.log(this.getProjectCustomerRFQ(this.$route.params.pid));
+    },
+    computed: {
+        ...mapGetters(["projectRFQ"])
+    },
+    methods: {
+        ...mapActions(["getProjectCustomerRFQ"])
     }
 }
 </script>

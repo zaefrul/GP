@@ -21,6 +21,7 @@ export const store = new Vuex.Store({
     userData: null,
     userSettings: null,
     projectDetail: null,
+    rfq:null
   },
   getters: {
     project: state => state.project,
@@ -43,7 +44,8 @@ export const store = new Vuex.Store({
     },
     userDetails: state => state.userData,
     userSettings: state => state.userSettings,
-    projectDetail: state => state.projectDetail
+    projectDetail: state => state.projectDetail,
+    projectRFQ: state => state.rfq
   },
   mutations: {
     setProject: (state, payload) => {
@@ -87,6 +89,9 @@ export const store = new Vuex.Store({
     },
     setProjectDetail: (state, payload) => {
       state.projectDetail = payload;
+    },
+    setProjectRFQ: (state, payload) => {
+      state.rfq = payload;
     }
   },
   actions: {
@@ -270,6 +275,20 @@ export const store = new Vuex.Store({
       GPOpsFactory.handlerProject().getProjectDetail(payload).then(res=> {
         context.commit("setProjectDetail", res);
         context.commit("setLoading",false);
+      })
+    },
+    getProjectCustomerRFQ: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.handlerProject().getProjectCustomerRFQ(payload).then(res => {
+        context.commit("setProjectRFQ", res[res.length-1]);
+        context.commit("setLoading", false);
+      })
+    },
+    getProjectSupplierRFQ: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.handlerProject().getProjectSupplierRFQ(payload).then(res => {
+        context.commit("setProjectRFQ", res[res.length-1]);
+        context.commit("setLoading", false);
       })
     }
   }
