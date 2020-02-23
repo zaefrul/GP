@@ -40,4 +40,10 @@ export default class ProjectsFacade {
         // return this.GPAPI.createCustomerRFQ(rfq);
       });
   }
+
+  getProjectDetail(id)
+  {
+    console.log("from facade"+id);
+    return this.GPAPI.get("/api/projects/"+id).then(res=> res.data);
+  }
 }

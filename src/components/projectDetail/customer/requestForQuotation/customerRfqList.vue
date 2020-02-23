@@ -31,6 +31,7 @@
                     </tbody>
                 </table>
                 
+                <button class="btn btn-success" style="float: right;" type="button">Add</button>
                 <button class="btn btn-primary" style="float: right;" type="submit">Edit Request Item</button>
 
                 </div>
