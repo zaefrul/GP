@@ -111,6 +111,7 @@ export default {
       this.$router.push({ name: "customerQuotationList" });
     },
     onSubmit() {
+      console.log(this.currentProject, "hahaha");
       let formattedQuotation = [];
       this.suppQuotationAdd.map(q => {
         let data = new QuotationItem(q);
