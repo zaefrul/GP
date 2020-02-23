@@ -35,7 +35,7 @@
             v-if="!generateQuotation"
             class="btn btn-primary"
             style="float: right;"
-            @click="selectedComponent = 'piSupplierPoList'"
+            @click="goToAddQuotation"
           >Edit Quotation</button>
         </div>
       </div>
@@ -58,7 +58,9 @@ export default {
     ...mapGetters(["currentProject"])
   },
   watch: {
-    currentProject(val) {}
+    currentProject(val) {
+      console.log(val);
+    }
   },
   mounted() {
     // this.getRfq();
