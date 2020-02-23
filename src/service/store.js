@@ -418,6 +418,7 @@ export const store = new Vuex.Store({
     createCustomerPO: (context, payload) => {
       context.commit("setLoading", true);
       GPOpsFactory.createCustomerPO(payload).then(res => {
+        context.commit("setCurrentCustomerPO", res);
         context.commit("setSuccess", true);
         context.commit("setLoading", false);
       });
@@ -425,6 +426,7 @@ export const store = new Vuex.Store({
     createSupplierPO: (context, payload) => {
       context.commit("setLoading", true);
       GPOpsFactory.createSupplierPO(payload).then(res => {
+        context.commit("setCurrentSupplierPO", res);
         context.commit("setSuccess", true);
         context.commit("setLoading", false);
       });

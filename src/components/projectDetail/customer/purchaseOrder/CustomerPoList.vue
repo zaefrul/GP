@@ -54,7 +54,8 @@ export default {
   name: "piCustomerPoList",
   data: function() {
     return {
-      customerPoList: []
+      customerPoList: [],
+      create: true
     };
   },
   computed: {
