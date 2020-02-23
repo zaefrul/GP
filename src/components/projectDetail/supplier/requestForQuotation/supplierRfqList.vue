@@ -19,7 +19,7 @@
                                 <td>{{ item.date }}</td>
                                 <td>{{ item.supplier }}</td>
                                 <td>{{ item.status }}</td>
-                                <td>{{ item.option }}</td>
+                                <td class="text-center"><router-link to="srfq/view/" class="nav-link">View RFQ</router-link></td>
                                 </tr>
                             </tbody>
                         </table>

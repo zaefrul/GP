@@ -81,6 +81,7 @@ import PiSupplierRfqView from "./components/projectDetail/supplier/requestForQuo
 import PiSupplierRfqAdd from "./components/projectDetail/supplier/requestForQuotation/supplierRfqAdd.vue"; //supplier rfq add
 import PiSupplierRfqList from "./components/projectDetail/supplier/requestForQuotation/supplierRfqList.vue"; //supplier rfq list
 import PiSupplierRfqEdit from "./components/projectDetail/supplier/requestForQuotation/supplierRfqEdit.vue"; //supplier rfq edit
+import PiSupplierRfqReport from "./components/projectDetail/supplier/requestForQuotation/supplierRfqReport.vue"; //supplier rfq report
 
 //setting page
 //main
@@ -177,7 +178,8 @@ const routes = [
       { path: "srfq", component: PiSupplierRfqList },
       { path: "srfq/view", component: PiSupplierRfqView },
       { path: "srfq/add", component: PiSupplierRfqAdd },
-      { path: "srfq/edit", component: PiSupplierRfqEdit }
+      { path: "srfq/edit", component: PiSupplierRfqEdit },
+      { path: "srfq/report/:srfqid", component: PiSupplierRfqReport }
     ]
   },
   //Invoice

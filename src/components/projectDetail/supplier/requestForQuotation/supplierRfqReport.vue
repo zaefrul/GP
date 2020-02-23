@@ -1,10 +1,10 @@
 <template>
-<div id="customerRfqLetterForm">
+<div id="supplierRfqLetterForm">
 
     <div class="container">
       <div class="card" style="margin-top: 50px; margin-bottom: 100px;">
         <h3 class="card-header">
-          Customer Request For Quotation Detail
+          Supplier Request For Quotation Detail
           <router-link to="/crfq/list" class="btn btn-danger ml-3" style="float: right;">Back</router-link>
           <button
             id="printInvoice"
@@ -186,7 +186,7 @@
 
 <script>
 export default {
-    name: 'customerRfqLetterForm'
+    name: 'supplierRfqLetterForm'
 }
 </script>
 

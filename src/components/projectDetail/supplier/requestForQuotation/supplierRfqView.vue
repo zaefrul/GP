@@ -39,7 +39,8 @@
                     </tbody>
                 </table>
                 
-                <router-link :to="'/project-detail/' + this.$route.params.pid + '/srfq'" class="btn btn-danger ml-3" style="float: right;" tag="button">Back</router-link>
+                <router-link :to="'/project-detail/' + this.$route.params.pid + '/srfq/report/srfqid'" class="btn btn-info ml-3" style="float: right;" tag="button">Generate</router-link>
+                <router-link :to="'/project-detail/' + this.$route.params.pid + '/srfq'" class="btn btn-danger ml-3" style="float: right;" tag="button">Cancel</router-link>
                 <router-link :to="'/project-detail/' + this.$route.params.pid + '/srfq'" class="btn btn-primary ml-3" style="float: right;" tag="button">Edit</router-link>
 
                 </div>
