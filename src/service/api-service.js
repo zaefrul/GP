@@ -92,6 +92,22 @@ export default class GPApiService extends BaseApiService {
   }
 
   updateQuotation(data) {
-    return this.put(`api/quotations/customer`, data);
+    return this.put(`api/quotations/${data.id}`, data.data);
+  }
+
+  createSupplierQuotation(data) {
+    return this.post(`api/quotations/supplier`, data);
+  }
+
+  updateSupplierQuotation(data) {
+    return this.put(`api/quotations/${data.id}`, data.data);
+  }
+
+  getSupplierQuotation(id) {
+    return this.get(`api/quotations/project/supplier/${id}`);
+  }
+
+  getSupplierRFQ(id) {
+    return this.get(`api/rfqs/suppliers/${id}`);
   }
 }
