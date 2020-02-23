@@ -121,7 +121,7 @@ export default {
       if (this.create) this.createQuotation(data);
       else
         this.updateQuotation({
-          data: data,
+          data: { ...data, id: this.currentProject.quotations[0].id },
           id: this.currentProject.quotations[0].id
         });
     },
