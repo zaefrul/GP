@@ -14,13 +14,20 @@
               </tr>
             </thead>
             <tbody>
-              <template v-if="generateQuotation === false">
+              <template v-if="!generateQuotation">
                 <tr v-for="(item, index) in customerQuotationList" :key="index++">
                   <td scope="row">{{ index }}</td>
                   <td>{{ item.dateCreated }}</td>
                   <td>{{ item.remarks }}</td>
                   <td>{{ item.active }}</td>
                   <!-- <td>{{ item.option }}</td> -->
+                </tr>
+              </template>
+              <template v-if="generateQuotation">
+                <tr>
+                  <td colspan="4">
+                    <p class="text-center">No data available</p>
+                  </td>
                 </tr>
               </template>
             </tbody>
