@@ -13,6 +13,11 @@ export default class GPOpsFactory {
     return metadataFacade;
   }
 
+  static handlerProject() {
+    const projectFacade = new ProjectsFacade();
+    return projectFacade;
+  }
+
   static handleLogin(data) {
     const loginFacade = new GPLoginFacade();
     return loginFacade.handleLogin(data);

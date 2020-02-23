@@ -1,13 +1,15 @@
 export const stages = Object.freeze({
-  1: "Supplier RFQ",
-  2: "Customer Quotation",
-  3: "Supplier Quotation",
-  4: "Customer Purchase Order",
-  5: "Supplier Purchase Order",
-  6: "Supplier SOA",
-  7: "Customer SOA",
-  8: "Supplier Delivery Order",
-  9: "Customer Delivery Order",
-  10: "Supplier Invoice",
-  11: "Customer Invoice"
+  0: "Initiated",
+  1: "Customer RFQ",
+  2: "Supplier RFQ",
+  3: "Customer Quotation",
+  4: "Supplier Quotation",
+  5: "Customer Purchase Order",
+  6: "Supplier Purchase Order",
+  7: "Supplier SOA",
+  8: "Customer SOA",
+  9: "Supplier Delivery Order",
+  10: "Customer Delivery Order",
+  11: "Supplier Invoice",
+  12: "Customer Invoice"
 });
