@@ -24,3 +24,12 @@ export class RFQItem {
     this.unitOfMeasurement = data.unitOfMeasurement;
   }
 }
+export class QuotationItem extends RFQItem {
+  constructor(data) {
+    super(data);
+    this.currency = data.currency;
+    this.amount = (Number(data.amount).toFixed(2) * 100) / 100;
+    this.revision = "";
+    this.unitOfMeasurement = "";
+  }
+}

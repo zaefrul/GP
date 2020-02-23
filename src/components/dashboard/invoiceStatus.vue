@@ -3,18 +3,11 @@
     <div class="card">
       <h5 class="card-header">Invoice Status</h5>
       <div class="card-body" style="position: relative; height: 500px;">
-        <div
-          class="chart-item"
-          style="width: 600px;height:400px;position: absolute;left:-23%;"
-        >
+        <div class="chart-item" style="width: 600px;height:400px;position: absolute;left:-23%;">
           <canvas id="planet-chart"></canvas>
         </div>
         <div class="chartLegend">
-          <div
-            class="legendRow"
-            v-for="(item, key, index) in projectsData"
-            :key="index"
-          >
+          <div class="legendRow" v-for="(item, key, index) in projectsData" :key="index">
             <i class="fas fa-circle legendColorBlue"></i>
             <span class="legendStatus">{{ key }}</span>
             <span class="legendTotal">{{ item }}</span>
@@ -28,7 +21,7 @@
             <i class="fas fa-circle legendColorRed"></i>
             <span class="legendStatus">Completed</span>
             <span class="legendTotal">213</span>
-          </div> -->
+          </div>-->
         </div>
       </div>
     </div>
@@ -82,7 +75,6 @@ export default {
         keys.push(key);
         values.push(this.projectsData[key]);
       }
-      // console.log(keys, "test");
       this.planetChartData.data.labels = [...keys];
       this.planetChartData.data.datasets[0].data = [...values];
       this.createChart("planet-chart", this.planetChartData);

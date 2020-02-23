@@ -67,7 +67,7 @@ export default class ProjectsFacade {
     console.log("from facade"+id);
     return this.GPAPI.get("/api/projects/"+id).then(res=> res.data);
   }
-  
+
   getProjectDetail(id) {
     console.log("from facade" + id);
     return this.GPAPI.get("/api/projects/" + id).then(res => res.data);
@@ -89,5 +89,20 @@ export default class ProjectsFacade {
   getProjectSupplierRFQ(projectId)
   {
     return this.GPAPI.get("/api/rfqs/suppliers/"+projectId).then(res=>res.data);
+  }
+  
+  handleBothCustomerRFQQuo(id) {
+    return this.GPAPI.combineAnd([
+      this.GPAPI.getRFQ(id),
+      this.GPAPI.getQuotation(id)
+    ]);
+  }
+
+  createQuotation(data) {
+    return this.GPAPI.createQuotation(data).then(res => res.data);
+  }
+
+  updateQuotation(data) {
+    return this.GPAPI.updateQuotation(data).then(res => res.data);
   }
 }
