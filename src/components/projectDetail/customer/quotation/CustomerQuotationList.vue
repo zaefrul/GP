@@ -19,7 +19,7 @@
                             <td>{{ item.date }}</td>
                             <td>{{ item.remarks }}</td>
                             <td>{{ item.status }}</td>
-                            <td>{{ item.option }}</td>
+                            <td class="text-center"><router-link to="cq/view/" class="nav-link">View Quotation</router-link></td>
                             </tr>
                         </tbody>
                     </table>

@@ -54,11 +54,13 @@ import PiCustomerQuotationView from "./components/projectDetail/customer/quotati
 import PiCustomerQuotationAdd from "./components/projectDetail/customer/quotation/CustomerQuotationAdd.vue"; //customer quotation add
 import PiCustomerQuotationList from "./components/projectDetail/customer/quotation/CustomerQuotationList.vue"; //customer quotation list
 import PiCustomerQuotationEdit from "./components/projectDetail/customer/quotation/CustomerQuotationEdit.vue"; //customer quotation edit
+import PiCustomerQuotationReport from "./components/projectDetail/customer/quotation/CustomerQuotationReport.vue"; //customer quotation report
 
 //customer rfq
 import PiCustomerRfqView from "./components/projectDetail/customer/requestForQuotation/customerRfqView.vue"; //customer rfq view
 import PiCustomerRfqList from "./components/projectDetail/customer/requestForQuotation/customerRfqList.vue"; //customer rfq list
 import PiCustomerRfqEdit from "./components/projectDetail/customer/requestForQuotation/customerRfqEdit.vue"; //customer rfq edit
+import PiCustomerRfqReport from "./components/projectDetail/customer/requestForQuotation/customerRfqReport.vue"; //customer rfq report
 
 //supplier po
 import PiSupplierPoView from "./components/projectDetail/supplier/purchaseOrder/supplierPoView.vue"; //supplier po view
@@ -72,6 +74,7 @@ import PiSupplierQuotationView from "./components/projectDetail/supplier/quotati
 import PiSupplierQuotationAdd from "./components/projectDetail/supplier/quotation/supplierQuotationAdd.vue"; //supplier quotation add
 import PiSupplierQuotationList from "./components/projectDetail/supplier/quotation/supplierQuotationList.vue"; //supplier quotation list
 import PiSupplierQuotationEdit from "./components/projectDetail/supplier/quotation/supplierQuotationEdit.vue"; //supplier quotation edit
+import PiSupplierQuotationReport from "./components/projectDetail/supplier/quotation/supplierQuotationReport.vue"; //supplier quotation report
 
 //supplier rfq
 import PiSupplierRfqView from "./components/projectDetail/supplier/requestForQuotation/supplierRfqView.vue"; //supplier rfq view
@@ -152,10 +155,12 @@ const routes = [
       { path: "cq/view", component: PiCustomerQuotationView },
       { path: "cq/add", component: PiCustomerQuotationAdd },
       { path: "cq/edit", component: PiCustomerQuotationEdit },
+      { path: "cq/report/:cqid", component: PiCustomerQuotationReport },
       //customer rfq
       { path: "crfq", component: PiCustomerRfqList },
       { path: "crfq/view", component: PiCustomerRfqView },
       { path: "crfq/edit", component: PiCustomerRfqEdit },
+      { path: "crfq/report/:crfqid", component: PiCustomerRfqReport },
       //supplier po
       { path: "spo", component: PiSupplierPoList },
       { path: "spo/view", component: PiSupplierPoView },
@@ -167,6 +172,7 @@ const routes = [
       { path: "sq/view", component: PiSupplierQuotationView },
       { path: "sq/add", component: PiSupplierQuotationAdd },
       { path: "sq/edit", component: PiSupplierQuotationEdit },
+      { path: "sq/report/:sqid", component: PiSupplierQuotationReport },
       //supplier rfq
       { path: "srfq", component: PiSupplierRfqList },
       { path: "srfq/view", component: PiSupplierRfqView },

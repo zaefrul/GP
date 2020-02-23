@@ -15,6 +15,7 @@
                             <th scope="col">Drawing Number</th>
                             <th scope="col">Item Number</th>
                             <th scope="col">Quantity</th>
+                            <th scope="col">Option</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -27,7 +28,8 @@
                         <td>{{ item.drawing }}</td>
                         <td>{{ item.item }}</td>
                         <td>{{ item.quantity }}</td>
-                        </tr>
+                        <td class="text-center"><router-link to="crfq/view/" class="nav-link">View RFQ</router-link></td>
+                            </tr>
                     </tbody>
                 </table>
                 
