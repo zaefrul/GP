@@ -1,57 +1,82 @@
 <template>
-<div id="projectLanding" class="content-margin-top">
-      <div class="bg-grey csMenuHeader" >
-        <div class="container">
-          <h1 class="font-weight-normal text-info">NCC10024115-19</h1>
-          <h5>Bersatu Teguh Construction Sdn. Bhd.</h5>
-        </div>
+  <div id="projectLanding" class="content-margin-top">
+    <div class="bg-grey csMenuHeader">
+      <div class="container">
+        <h1 class="font-weight-normal text-info">NCC10024115-19</h1>
+        <h5>Bersatu Teguh Construction Sdn. Bhd.</h5>
       </div>
-      
+    </div>
+
     <div class="container csMenuMargin">
-        <div class="row">
-          <div class="col-lg-12">
-            <ul class="nav nav-tabs nav-fill">
+      <div class="row">
+        <div class="col-lg-12">
+          <ul class="nav nav-tabs nav-fill">
             <li class="nav-item">
-              <router-link :to="'/project-detail/' + this.$route.params.pid" class="nav-link">Project Information</router-link>
+              <router-link
+                :to="'/project-detail/' + this.$route.params.pid"
+                class="nav-link"
+              >Project Information</router-link>
             </li>
             <li class="nav-item">
-              <router-link :to="'/project-detail/' + this.$route.params.pid + '/crfq'" class="nav-link">Cust RFQ</router-link>
+              <router-link
+                :to="'/project-detail/' + this.$route.params.pid + '/crfq'"
+                class="nav-link"
+              >Cust RFQ</router-link>
             </li>
             <li class="nav-item">
-              <router-link :to="'/project-detail/' + this.$route.params.pid + '/srfq'" class="nav-link">Supp RFQ</router-link>
+              <router-link
+                :to="'/project-detail/' + this.$route.params.pid + '/srfq'"
+                class="nav-link"
+              >Supp RFQ</router-link>
             </li>
             <li class="nav-item">
-              <router-link :to="'/project-detail/' + this.$route.params.pid + '/cq'" class="nav-link">Cust Quotation</router-link>
+              <router-link
+                :to="'/project-detail/' + this.$route.params.pid + '/cq'"
+                class="nav-link"
+              >Cust Quotation</router-link>
             </li>
             <li class="nav-item">
-              <router-link :to="'/project-detail/' + this.$route.params.pid + '/sq'" class="nav-link">Supp Quotation</router-link>
+              <router-link
+                :to="'/project-detail/' + this.$route.params.pid + '/sq'"
+                class="nav-link"
+              >Supp Quotation</router-link>
             </li>
             <li class="nav-item">
-              <router-link :to="'/project-detail/' + this.$route.params.pid + '/cpo'" class="nav-link">Cust Purchase Order</router-link>
+              <router-link
+                :to="'/project-detail/' + this.$route.params.pid + '/cpo'"
+                class="nav-link"
+              >Cust Purchase Order</router-link>
             </li>
             <li class="nav-item">
-              <router-link :to="'/project-detail/' + this.$route.params.pid + '/spo'" class="nav-link" >Supp Purchase Order</router-link>
+              <router-link
+                :to="'/project-detail/' + this.$route.params.pid + '/spo'"
+                class="nav-link"
+              >Supp Purchase Order</router-link>
             </li>
           </ul>
 
           <router-view></router-view>
-
-          </div>
         </div>
       </div>
-
-</div>
+    </div>
+  </div>
 </template>
 
 <script>
-export default {
-  name : 'projectLanding',
-  data(){
-    return {
-    }
-  }
+import { mapGetters, mapActions, mapMutations } from "vuex";
 
-}
+export default {
+  name: "projectLanding",
+  data() {
+    return {};
+  },
+  mounted() {
+    this.getCurrentProject(this.$route.params.pid);
+  },
+  methods: {
+    ...mapActions(["getCurrentProject"])
+  }
+};
 </script>
 
 <style scoped>
@@ -69,12 +94,13 @@ h1 {
   margin-bottom: 50px;
 }
 .bg-grey {
-      background-color: #e9ecef;
+  background-color: #e9ecef;
 }
-.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {  
-    border-color: transparent;
-    background: #343a40;
-    color: white;
+.nav-tabs .nav-link:hover,
+.nav-tabs .nav-link:focus {
+  border-color: transparent;
+  background: #343a40;
+  color: white;
 }
 a {
   color: #343a40;
@@ -83,5 +109,4 @@ a {
 ul {
   margin-bottom: 30px;
 }
-
 </style>

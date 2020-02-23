@@ -91,4 +91,14 @@ export default class GPOpsFactory {
     const SupplierFcd = new SupplierFacade();
     return SupplierFcd.createSupplier(data);
   }
+
+  static getRfq(id) {
+    const ProjectsFcd = new ProjectsFacade();
+    return ProjectsFcd.getRfq(id);
+  }
+
+  static getCurrentProject(id) {
+    const ProjectsFcd = new ProjectsFacade();
+    return ProjectsFcd.getCurrentProject(id);
+  }
 }

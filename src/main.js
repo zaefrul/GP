@@ -146,9 +146,17 @@ const routes = [
       { path: "cpo/add", component: PiCustomerPoAdd },
       { path: "cpo/edit", component: PiCustomerPoEdit },
       //customer quotation
-      { path: "cq", component: PiCustomerQuotationList },
+      {
+        path: "cq",
+        component: PiCustomerQuotationList,
+        name: "customerQuotationList"
+      },
       { path: "cq/view", component: PiCustomerQuotationView },
-      { path: "cq/add", component: PiCustomerQuotationAdd },
+      {
+        path: "cq/add",
+        component: PiCustomerQuotationAdd,
+        name: "customerQuotation"
+      },
       { path: "cq/edit", component: PiCustomerQuotationEdit },
       //customer rfq
       { path: "crfq", component: PiCustomerRfqList },
