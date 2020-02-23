@@ -4,6 +4,7 @@
       <div class="container">
         <h1 class="font-weight-normal text-info">{{currentProject.number}}</h1>
         <h5>{{currentProject.customer.companyName}}</h5>
+        <h7>{{currentProject.title}}</h7>
       </div>
     </div>
 
