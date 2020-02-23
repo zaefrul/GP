@@ -20,19 +20,20 @@
             <tbody>
               <tr v-for="(item, index) in suppQuotationAdd" :key="index++">
                 <td>{{ index }}</td>
-                <td>{{ item.description }}</td>
-                <td>{{ item.part }}</td>
-                <td>{{ item.model }}</td>
-                <td>{{ item.serial }}</td>
-                <td>{{ item.drawing }}</td>
-                <td>{{ item.item }}</td>
-                <td>{{ item.quantity }}</td>
+                <td>{{ item.partName }}</td>
+                <td>{{ item.partNumber }}</td>
+                <td>{{ item.partPosition }}</td>
+                <td>{{ item.drawingNumber }}</td>
+                <td>{{ item.tagNumber }}</td>
+                <td>{{ item.modelNumber }}</td>
+                <td>{{ item.remarks }}</td>
                 <td>
                   <input
                     type="text"
                     class="form-control"
                     id="exampleFormControlInput1"
                     placeholder="Price"
+                    v-model="item.amount"
                   />
                 </td>
               </tr>
@@ -48,8 +49,9 @@
           <button
             class="btn btn-primary ml-3"
             style="float: right;"
+            @click="onSubmit"
             type="button"
-          >Create Customer Quotation</button>
+          >{{ buttonTitle()}}</button>
         </div>
       </div>
     </div>
@@ -57,58 +59,74 @@
 </template>
 
 <script>
+import { mapGetters, mapActions, mapMutations } from "vuex";
+import { QuotationItem } from "../../../../classess/projects";
 export default {
   name: "piCustomerQuotationAdd",
   data: function() {
     return {
-      suppQuotationAdd: [
-        {
-          id: "1",
-          description: "Item Description",
-          part: "Part No",
-          model: "Model No",
-          serial: "Serial No",
-          drawing: "Drawing No",
-          item: "Item No",
-          quantity: "999"
-        },
-        {
-          id: "2",
-          description: "Item Description",
-          part: "Part No",
-          model: "Model No",
-          serial: "Serial No",
-          drawing: "Drawing No",
-          item: "Item No",
-          quantity: "999"
-        },
-        {
-          id: "3",
-          description: "Item Description",
-          part: "Part No",
-          model: "Model No",
-          serial: "Serial No",
-          drawing: "Drawing No",
-          item: "Item No",
-          quantity: "999"
-        },
-        {
-          id: "4",
-          description: "Item Description",
-          part: "Part No",
-          model: "Model No",
-          serial: "Serial No",
-          drawing: "Drawing No",
-          item: "Item No",
-          quantity: "999"
-        }
-      ]
+      create: true,
+      suppQuotationAdd: []
     };
+  },
+  computed: {
+    ...mapGetters(["currentCustomerRfq", "currentCustomerQuotation", "success"])
+  },
+  watch: {
+    currentCustomerRfq(val) {
+      if (val) {
+        this.create = true;
+        const rfq = val.items.map(i => {
+          let data = { ...i, amount: 0, currency: "MYR" };
+          delete data["id"];
+          return data;
+        });
+        this.suppQuotationAdd = [...rfq];
+      }
+    },
+    currentCustomerQuotation(val) {
+      if (val) {
+        this.create = false;
+        this.suppQuotationAdd = [...val.items];
+      }
+    },
+    success(val) {
+      if (val) {
+        this.$router.push({ name: "customerQuotationList" });
+      }
+    }
+  },
+  mounted() {
+    this.getBothRfq(this.$route.params.pid);
   },
   methods: {
     cancel() {
       this.$router.push({ name: "customerQuotationList" });
-    }
+    },
+    onSubmit() {
+      let formattedQuotation = [];
+      this.suppQuotationAdd.map(q => {
+        console.log(new QuotationItem(q), "test");
+        let data = new QuotationItem(q);
+        formattedQuotation.push(data);
+      });
+      console.log(formattedQuotation, "test");
+      const data = {
+        projectId: Number(this.$route.params.pid),
+        items: formattedQuotation
+      };
+      if (this.create) this.createQuotation(data);
+      else this.updateQuotation(data);
+    },
+    buttonTitle() {
+      return this.create ? "Create Quotation" : "Edit Quotation";
+    },
+    ...mapActions(["getBothRfq", "createQuotation", "updateQuotation"]),
+    ...mapMutations(["resetSucess", "resetCurrentQuotationRfq"])
+  },
+  destroyed() {
+    this.resetCurrentQuotationRfq();
+    this.resetSucess();
   }
 };
 </script>

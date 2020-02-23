@@ -99,9 +99,7 @@ export default {
     }
   },
   methods: {
-    login() {
-      console.log(this.username, this.password);
-    },
+    login() {},
     onLogin() {
       if (this.$v.$invalid === false) {
         this.handleLogin({ username: this.username, password: this.password });

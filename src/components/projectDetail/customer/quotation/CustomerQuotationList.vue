@@ -35,7 +35,7 @@
             v-if="!generateQuotation"
             class="btn btn-primary"
             style="float: right;"
-            @click="selectedComponent = 'piSupplierPoList'"
+            @click="goToAddQuotation"
           >Edit Quotation</button>
         </div>
       </div>
@@ -59,12 +59,11 @@ export default {
   },
   watch: {
     currentProject(val) {
-      console.log(val, "current project");
+      console.log(val);
     }
   },
   mounted() {
     // this.getRfq();
-    console.log(this.currentProject, "current project");
     if (this.currentProject.quotations.length > 0) {
       this.generateQuotation = false;
       this.customerQuotationList = [...this.currentProject.quotations];

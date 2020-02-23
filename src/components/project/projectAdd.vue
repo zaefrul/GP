@@ -494,12 +494,10 @@ export default {
       }
     },
     radioClicked(val) {
-      console.log(this.$v.customerData.companyName, "validation");
       if (val == false) {
         if (this.customer.length === 0) {
           this.getAllCustomers();
         } else {
-          console.log(this.customer);
         }
       }
     }
@@ -509,8 +507,6 @@ export default {
       this.radioClicked = !this.radioClicked;
     },
     onSubmitWithCustomer() {
-      console.log(this.radioClicked, "radio");
-      console.log(this.$v, "form");
       if (this.$v.$invalid === false) {
         if (this.radioClicked)
           this.createProjectWithCustomer({
