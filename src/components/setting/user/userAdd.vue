@@ -217,9 +217,7 @@ export default {
     }
   },
   methods: {
-    addUser() {
-      console.log(this.username, this.password);
-    },
+    addUser() {},
     onRegister() {
       if (this.$v.$invalid === false) {
         this.registerUser({

@@ -58,13 +58,10 @@ export default {
     ...mapGetters(["currentProject"])
   },
   watch: {
-    currentProject(val) {
-      console.log(val, "current project");
-    }
+    currentProject(val) {}
   },
   mounted() {
     // this.getRfq();
-    console.log(this.currentProject, "current project");
     if (this.currentProject.quotations.length > 0) {
       this.generateQuotation = false;
       this.customerQuotationList = [...this.currentProject.quotations];

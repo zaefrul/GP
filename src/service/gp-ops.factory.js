@@ -101,4 +101,19 @@ export default class GPOpsFactory {
     const ProjectsFcd = new ProjectsFacade();
     return ProjectsFcd.getCurrentProject(id);
   }
+
+  static getCustomerRfqQuo(id) {
+    const ProjectsFcd = new ProjectsFacade();
+    return ProjectsFcd.handleBothCustomerRFQQuo(id);
+  }
+
+  static createQuotation(data) {
+    const ProjectsFcd = new ProjectsFacade();
+    return ProjectsFcd.createQuotation(data);
+  }
+
+  static updateQuotation(data) {
+    const ProjectsFcd = new ProjectsFacade();
+    return ProjectsFcd.updateQuotation(data);
+  }
 }
