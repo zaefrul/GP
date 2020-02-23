@@ -61,5 +61,9 @@ export default class ProjectsFacade {
       this.GPAPI.createCustomerRFQ(rfq),
       this.GPAPI.createSupplierRFQ(rfq)
     ]);
+  getProjectDetail(id)
+  {
+    console.log("from facade"+id);
+    return this.GPAPI.get("/api/projects/"+id).then(res=> res.data);
   }
 }
