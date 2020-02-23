@@ -22,7 +22,6 @@
               <th scope="col" class="text-center">Serial</th>
               <th scope="col" class="text-center">Drawing</th>
               <th scope="col" class="text-center">Item</th>
-              <th scope="col" class="text-center">Price</th>
               <th scope="col" class="text-center">Option</th>
             </tr>
           </thead>
@@ -37,7 +36,6 @@
               <td class="text-center">{{ item.serialNumber }}</td>
               <td class="text-center">{{ item.drawingNumber }}</td>
               <td class="text-center">{{ item.tagNumber }}</td>
-              <td class="text-center">{{ item.prices[0].currency }}{{ item.prices[0].amount }}</td>
               <td class="text-center">
                 <a href="#" class="text-danger">Delete</a>
               </td>
