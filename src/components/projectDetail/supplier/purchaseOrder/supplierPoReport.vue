@@ -22,186 +22,102 @@
 
         <div class="card-body">
         
-        <div class="header mb-5">
+        <div class="header mb-3">
             <div class="container">
-                <div class="row">
-                    <div class="col"></div>
-                    <div class="col-5 text-center">
-                        <div class="row">
-                            <h6 class="text-danger text-uppercase">GRIZPOWER SDN BHD (713693-T)</h6>
-                            <div>No 18 & 18-1, Jalan Seti Rejang 3</div>
-                            <div>Taman Sri Rampai</div>
-                            <div>53300 Kuala Lumpur, Malaysia</div>
-                        </div>
-                    </div>
-                    <div class="col text-right">
-                        <div class="row align-items-end">
-                            <p>
-                                Tel: 603-4144 3365<br/>
-                                Fax: 603-4144 3430<br/>
-                                E-Mail: info@grizpower.com
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <h6 class="text-danger text-uppercase">GRIZPOWER SDN BHD (713693-T)</h6>
+                                <p>No 18 & 18-1, Jalan Seti Rejang 3<br/>
+                                    Taman Sri Rampai<br/>
+                                    53300 Kuala Lumpur, Malaysia
+                                </p>
+                            </td>
+                            <td>
+                                <p class="text-right">
+                                    Tel: 603-4144 3365<br/>
+                                    Fax: 603-4144 3430<br/>
+                                    E-Mail: info@grizpower.com
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-
+        
         <div class="contact">
-            <div class="body">
+            <div class="container">
+                <table class="spoOffice table table-sm">
+                    <tbody>
+                        <tr>
+                            <td colspan="2"><h6 class="text-uppercase">XXXXX XXXXXXX XXXX Sdn Bhd</h6><p>
+                                    18th KM<br/>
+                                    P.O.<br/>
+                                    97008 Bintulu, Sarawak, Malaysia
+                                    </p></td>
+                            <td colspan="2" class="text-right"><b>Date of Quote : </b>01st Jan 2019</td>
+                        </tr>
+                    </tbody>
+                </table>
 
-                    <div class="row mb-3">
-                      <div class="col">
-                        <h5>XXXXX XXXXXXX XXXX Sdn Bhd</h5>
-                        <p>
-                            18th KM<br/>
-                            P.O.<br/>
-                            97008 Bintulu, Sarawak, Malaysia
-                        </p>
-                      </div>
-                      <div class="col">
-                        <div class="row">
-                            <div class="col">
-                                <b>Date of Quote :</b>
-                            </div>
-                            <div class="col">
-                                01st Jan 2019
-                            </div>
-                        </div>
-                      </div>
-                    </div>
+                <table class="spoContact table table-sm">
+                    <tbody>
+                        <tr>
+                            <td><b>Attention :</b></td>
+                            <td>XXXXXXXXXX</td>
+                            <td><p class="text-right"><b>Prepared by :</b></p></td>
+                            <td><p class="text-right">XXXXXXXXXXX</p></td>
+                        </tr>
 
-                    <div class="row mb-3">
-                      <div class="col">
-                        <div class="row">
-                            <div class="col-4">
-                                <b>Attention :</b>
-                            </div>
-                            <div class="col">
-                                XXXXXXXXXXXXX
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-4">
-                                <b>Contact :</b>
-                            </div>
-                            <div class="col">
-                                086-XXX XXXX
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-4">
-                                <b>E-Mail :</b>
-                            </div>
-                            <div class="col">
-                                scholastica.siman@petronas.com.my
-                            </div>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="row">
-                            <div class="col-4">
-                                <b>Prepared by :</b>
-                            </div>
-                            <div class="col">
-                                XXXXXXXXXXXXX
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-4">
-                                <b>Contact :</b>
-                            </div>
-                            <div class="col">
-                                086-XXX XXXX
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-4">
-                                <b>E-Mail :</b>
-                            </div>
-                            <div class="col">
-                                sales@grizpower.com.my
-                            </div>
-                        </div>
-                      </div>
-                    </div>
+                        <tr>
+                            <td><b>Contact :</b></td>
+                            <td>086-XXX XXXX</td>
+                            <td><p class="text-right"><b>Contact :</b></p></td>
+                            <td><p class="text-right">086-XXX XXXX</p></td>
+                        </tr>
 
+                        <tr>
+                            <td><b>E-Mail :</b></td>
+                            <td>scholastica.siman@petronas.com.my</td>
+                            <td><p class="text-right"><b>E-Mail :</b></p></td>
+                            <td><p class="text-right">sales@grizpower.com.my</p></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><b>RFQ No :</b></td>
+                            <td>XXXXXXXXXXXXX</td>
+                            <td><p class="text-right"><b>GP Ref No :</b></p></td>
+                            <td><p class="text-right">GP3582</p></td>
+                        </tr>
 
-                    <div class="row mb-3">
-                        <div class="col">
-                          <div class="row">
-                              <div class="col-5">
-                                  <b>RFQ No. :</b>
-                              </div>
-                              <div class="col">
-                                  XXXXXXXXXXXXX
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-5">
-                                  <b>RFQ Name :</b>
-                              </div>
-                              <div class="col">
-                                  086-XXX XXXX
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-5">
-                                  <b>SUS Portal ID :</b>
-                              </div>
-                              <div class="col">
-                                  GRIZPOWER
-                              </div>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="row">
-                              <div class="col-5">
-                                  <b>GP Ref No :</b>
-                              </div>
-                              <div class="col">
-                                  GP3582
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-5">
-                                  <b>Petronas License :</b>
-                              </div>
-                              <div class="col">
-                                  713693-T
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-5">
-                                  <b>Closing Date :</b>
-                              </div>
-                              <div class="col">
-                                  18th May 2019
-                              </div>
-                          </div>
-                        </div>
-                      </div>
+                        <tr>
+                            <td><b>RFQ Name :</b></td>
+                            <td>086-XXX XXXX</td>
+                            <td><p class="text-right"><b>Petronas License :</b></p></td>
+                            <td><p class="text-right">713693-T</p></td>
+                        </tr>
 
-                      <div class="row">
-                        <div class="col">
-                            <h6 class="text-danger">GP3582 - TECHNICAL PROPOSAL (UNPRICED)</h6>
-                        </div>
-                        <div class="col">
-                          <div class="row">
-                              <div class="col">
-                                  <b>CURRENCY :</b>
-                              </div>
-                              <div class="col">
-                                  MALAYSIAN RINGGIT (MYR)
-                              </div>
-                          </div>
-                        </div>
-                      </div>
+                        <tr>
+                            <td><b>SUS Portal ID :</b></td>
+                            <td>GRIZPOWER</td>
+                            <td><p class="text-right"><b>Closing Date :</b></p></td>
+                            <td><p class="text-right">18th May 2019</p></td>
+                        </tr>
+                    </tbody>
+                </table>
 
+                <table class="spoOther table table-sm">
+                    <tbody>
+                        <tr>
+                            <td colspan="2"><h6 class="text-danger">GP3582 - TECHNICAL PROPOSAL (UNPRICED)</h6></td>
+                            <td colspan="2" class="text-right"><b>CURRENCY : </b>MALAYSIAN RINGGIT (MYR)</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-
-        <hr>
 
         <div class="items">
             <table class="table table-bordered">
@@ -244,8 +160,6 @@
                 </tbody>
             </table>
         </div>
-
-        <hr>
 
         <div class="info mb-5 mt-5">
             <div class="row mb-3">
@@ -302,5 +216,11 @@ export default {
 </script>
 
 <style scoped>
-
+.spoOffice td{
+border: 0 !important;
+}
+.spoContact td{
+border: 0 !important;
+line-height: .5px;
+}
 </style>

@@ -47,6 +47,7 @@ import PiCustomerPoView from "./components/projectDetail/customer/purchaseOrder/
 import PiCustomerPoAdd from "./components/projectDetail/customer/purchaseOrder/CustomerPoAdd.vue"; //customer po add
 import PiCustomerPoList from "./components/projectDetail/customer/purchaseOrder/CustomerPoList.vue"; //customer po list
 import PiCustomerPoEdit from "./components/projectDetail/customer/purchaseOrder/CustomerPoEdit.vue"; //customer po edit
+import PiCustomerPoReport from "./components/projectDetail/customer/purchaseOrder/CustomerPoReport.vue"; //customer po report
 
 //customer quotation
 import PiCustomerQuotationView from "./components/projectDetail/customer/quotation/CustomerQuotationView.vue"; //customer quotation view
@@ -145,6 +146,7 @@ const routes = [
       { path: "cpo/view", component: PiCustomerPoView },
       { path: "cpo/add", component: PiCustomerPoAdd },
       { path: "cpo/edit", component: PiCustomerPoEdit },
+      { path: "cpo/report/:cpoid", component: PiCustomerPoReport },
       //customer quotation
       { path: "cq", component: PiCustomerQuotationList },
       { path: "cq/view", component: PiCustomerQuotationView },

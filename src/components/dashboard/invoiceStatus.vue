@@ -5,7 +5,7 @@
       <div class="card-body" style="position: relative; height: 500px;">
         <div
           class="chart-item"
-          style="width: 600px;height:400px;position: absolute;left:-23%;"
+          style="width: 500px;height:400px;position: absolute;left:-23%;"
         >
           <canvas id="planet-chart"></canvas>
         </div>

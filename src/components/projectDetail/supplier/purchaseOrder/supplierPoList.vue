@@ -9,8 +9,8 @@
                             <th scope="col">No</th>
                             <th scope="col">Date</th>
                             <th scope="col">Remarks</th>
-                            <th scope="col">PO Status</th>
-                            <th scope="col">Option</th>
+                            <th scope="col" class="text-center">PO Status</th>
+                            <th scope="col" class="text-center">Option</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -18,8 +18,8 @@
                             <td scope="row">{{ index }}</td>
                             <td>{{ item.date }}</td>
                             <td>{{ item.supplier }}</td>
-                            <td>{{ item.status }}</td>
-                            <td><router-link to="spo/view/" class="nav-link">View</router-link></td>
+                            <td class="text-center">{{ item.status }}</td>
+                            <td class="text-center"><router-link to="spo/view/" class="nav-link">View PO</router-link></td>
                             </tr>
                         </tbody>
                     </table>

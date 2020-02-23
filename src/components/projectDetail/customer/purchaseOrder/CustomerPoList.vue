@@ -19,8 +19,7 @@
                             <td>{{ item.date }}</td>
                             <td>{{ item.remarks }}</td>
                             <td>{{ item.status }}</td>
-                            <!-- <td><router-link :to="'po/view/' + item.poid" class="nav-link">View</router-link></td> -->
-                            <td><router-link to="cpo/view/" class="nav-link">View</router-link></td>
+                            <td class="text-center"><router-link to="cpo/view/" class="nav-link">View PO</router-link></td>
                             </tr>
                         </tbody>
                     </table>

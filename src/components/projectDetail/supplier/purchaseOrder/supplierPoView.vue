@@ -17,35 +17,35 @@
                         <tr>
                             <th scope="col"></th>
                             <th scope="col">Description</th>
-                            <th scope="col">Part No</th>
-                            <th scope="col">Model No</th>
-                            <th scope="col">Serial No</th>
-                            <th scope="col">Drawing No</th>
-                            <th scope="col">Item No</th>
-                            <th scope="col">Qty</th>
-                            <th scope="col">Price</th>
+                            <th scope="col" class="text-center">Part No</th>
+                            <th scope="col" class="text-center">Model No</th>
+                            <th scope="col" class="text-center">Serial No</th>
+                            <th scope="col" class="text-center">Drawing No</th>
+                            <th scope="col" class="text-center">Item No</th>
+                            <th scope="col" class="text-center">Qty</th>
+                            <th scope="col" class="text-center">Price</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="(item, index) in suppPoView" :key="index++">
                         <td>{{ index }}</td>
                         <td>{{ item.description }}</td>
-                        <td>{{ item.part }}</td>
-                        <td>{{ item.model }}</td>
-                        <td>{{ item.serial }}</td>
-                        <td>{{ item.drawing }}</td>
-                        <td>{{ item.item }}</td>
-                        <td>{{ item.quantity }}</td>
-                        <td>{{ item.price }}</td>
+                        <td class="text-center">{{ item.part }}</td>
+                        <td class="text-center">{{ item.model }}</td>
+                        <td class="text-center">{{ item.serial }}</td>
+                        <td class="text-center">{{ item.drawing }}</td>
+                        <td class="text-center">{{ item.item }}</td>
+                        <td class="text-center">{{ item.quantity }}</td>
+                        <td class="text-center">{{ item.price }}</td>
                         </tr>
                         <tr>
-                            <td colspan="8" class="text-right">Total</td>
-                            <td><input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Total" readonly></td>
+                            <td colspan="8" class="text-right"><b>Total</b></td>
+                            <td class="text-center"><b>999</b></td>
                         </tr>
                     </tbody>
                 </table>
                 
-                <router-link :to="'/project-detail/' + this.$route.params.pid + '/spo/report/:spoid'" class="btn btn-info ml-3" style="float: right;" tag="button">Generate</router-link>
+                <router-link :to="'/project-detail/' + this.$route.params.pid + '/spo/report/spoid'" class="btn btn-info ml-3" style="float: right;" tag="button">Generate</router-link>
                 <router-link :to="'/project-detail/' + this.$route.params.pid + '/spo/view'" class="btn btn-danger ml-3" style="float: right;" tag="button">Back</router-link>
                 <router-link :to="'/project-detail/' + this.$route.params.pid + '/spo/edit'" class="btn btn-primary ml-3" style="float: right;" tag="button">Edit</router-link>
 
