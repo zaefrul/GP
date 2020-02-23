@@ -20,7 +20,9 @@ export const store = new Vuex.Store({
     },
     userData: null,
     userSettings: null,
-    projectDetail: null,
+    projectRfq: [],
+    currentProject: null,
+    projectDetail: null
   },
   getters: {
     project: state => state.project,
@@ -43,6 +45,8 @@ export const store = new Vuex.Store({
     },
     userDetails: state => state.userData,
     userSettings: state => state.userSettings,
+    projectRfq: state => state.projectRfq,
+    currentProject: state => state.currentProject,
     projectDetail: state => state.projectDetail
   },
   mutations: {
@@ -84,6 +88,12 @@ export const store = new Vuex.Store({
     },
     setMetadataPrices: (state, payload) => {
       state.metadataPrices = payload;
+    },
+    setRfq: (state, payload) => {
+      state.projectRfq = payload;
+    },
+    setCurrentProject: (state, payload) => {
+      state.currentProject = payload;
     },
     setProjectDetail: (state, payload) => {
       state.projectDetail = payload;
@@ -265,12 +275,28 @@ export const store = new Vuex.Store({
           context.commit("setLoading", false);
         });
     },
+    getRfq: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.getRfq(payload).then(res => {
+        context.commit("setRfq", res);
+        context.commit("setLoading", false);
+      });
+    },
+    getCurrentProject: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.getCurrentProject(payload).then(res => {
+        context.commit("setCurrentProject", res);
+        context.commit("setLoading", false);
+      });
+    },
     getProjectDetail: (context, payload) => {
       context.commit("setLoading", false);
-      GPOpsFactory.handlerProject().getProjectDetail(payload).then(res=> {
-        context.commit("setProjectDetail", res);
-        context.commit("setLoading",false);
-      })
+      GPOpsFactory.handlerProject()
+        .getProjectDetail(payload)
+        .then(res => {
+          context.commit("setProjectDetail", res);
+          context.commit("setLoading", false);
+        });
     }
   }
 });

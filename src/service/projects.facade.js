@@ -36,8 +36,7 @@ export default class ProjectsFacade {
     return this.GPAPI.createProject({
       ...data.title,
       customerId: data.customerId
-    })
-    .then(res => {
+    }).then(res => {
       let rfq = this.processRfqData(res.data.id, data.items);
       return this.handleBothRFQ(rfq);
       // return this.GPAPI.createCustomerRFQ(rfq);
@@ -61,9 +60,18 @@ export default class ProjectsFacade {
       this.GPAPI.createCustomerRFQ(rfq),
       this.GPAPI.createSupplierRFQ(rfq)
     ]);
-  getProjectDetail(id)
-  {
-    console.log("from facade"+id);
-    return this.GPAPI.get("/api/projects/"+id).then(res=> res.data);
+  }
+
+  getProjectDetail(id) {
+    console.log("from facade" + id);
+    return this.GPAPI.get("/api/projects/" + id).then(res => res.data);
+  }
+
+  getRfq(id) {
+    return this.GPAPI.getRFQ(id).then(res => res.data);
+  }
+
+  getCurrentProject(id) {
+    return this.GPAPI.getCurrentProject(id).then(res => res.data);
   }
 }
