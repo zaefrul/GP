@@ -19,7 +19,9 @@ export const store = new Vuex.Store({
       message: null
     },
     userData: null,
-    userSettings: null
+    userSettings: null,
+    projectRfq: [],
+    currentProject: null
   },
   getters: {
     project: state => state.project,
@@ -41,7 +43,9 @@ export const store = new Vuex.Store({
       return null;
     },
     userDetails: state => state.userData,
-    userSettings: state => state.userSettings
+    userSettings: state => state.userSettings,
+    projectRfq: state => state.projectRfq,
+    currentProject: state => state.currentProject
   },
   mutations: {
     setProject: (state, payload) => {
@@ -82,6 +86,12 @@ export const store = new Vuex.Store({
     },
     setMetadataPrices: (state, payload) => {
       state.metadataPrices = payload;
+    },
+    setRfq: (state, payload) => {
+      state.projectRfq = payload;
+    },
+    setCurrentProject: (state, payload) => {
+      state.currentProject = payload;
     }
   },
   actions: {
@@ -259,6 +269,20 @@ export const store = new Vuex.Store({
           context.commit("setSuccess", true);
           context.commit("setLoading", false);
         });
+    },
+    getRfq: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.getRfq(payload).then(res => {
+        context.commit("setRfq", res);
+        context.commit("setLoading", false);
+      });
+    },
+    getCurrentProject: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.getCurrentProject(payload).then(res => {
+        context.commit("setCurrentProject", res);
+        context.commit("setLoading", false);
+      });
     }
   }
 });

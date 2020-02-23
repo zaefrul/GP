@@ -70,4 +70,12 @@ export default class GPApiService extends BaseApiService {
   createSupplierRFQ(data) {
     return this.post("api/rfqs/supplier", data);
   }
+
+  getRFQ(id) {
+    return this.get(`api/rfqs/${id}`);
+  }
+
+  getCurrentProject(id) {
+    return this.get(`api/projects/${id}`);
+  }
 }
