@@ -75,6 +75,7 @@ export default {
   },
   $watch: {
     currentProject(val) {
+      this.currentProject = val;
     }
   },
   mounted() {
