@@ -1,121 +1,149 @@
 <template>
-    <div id="piSupplierQuotationAdd">
-        <form action="">
-        <div class="container" style="margin-bottom: 60px;margin-top: 30px;">
-            <div class="card mb-3">
-                <div class="card-body">
-                    <div class="d-flex flex-row">
-                        <div class="col-2">Select Supplier</div>
-                        <div class="col-8">
-                            <div class="form-group">
-                                <select class="form-control" id="selectSupplier" v-model="selectSupplier">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <router-link to="'/supplier/add" class="btn btn-primary ml-3" style="float: right;" tag="button">Add New Supplier</router-link>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
+  <div id="piSupplierQuotationAdd">
+    <div class="container" style="margin-bottom: 60px;margin-top: 30px;">
+      <div class="card">
+        <div class="card-body">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Description</th>
+                <th scope="col">Part No</th>
+                <th scope="col">Model No</th>
+                <th scope="col">Serial No</th>
+                <th scope="col">Drawing No</th>
+                <th scope="col">Item No</th>
+                <th scope="col">Qty</th>
+                <th scope="col">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(item, index) in suppQuotationAdd" :key="index++">
+                <td>{{ index }}</td>
+                <td>{{ item.partName }}</td>
+                <td>{{ item.partNumber }}</td>
+                <td>{{ item.partPosition }}</td>
+                <td>{{ item.drawingNumber }}</td>
+                <td>{{ item.tagNumber }}</td>
+                <td>{{ item.modelNumber }}</td>
+                <td>{{ item.remarks }}</td>
+                <td>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="Price"
+                    v-model="item.amount"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
-                <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Part No</th>
-                            <th scope="col">Model No</th>
-                            <th scope="col">Serial No</th>
-                            <th scope="col">Drawing No</th>
-                            <th scope="col">Item No</th>
-                            <th scope="col">Qty</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(item, index) in suppQuotationList" :key="index++">
-                        <td><div class="form-check"><input class="form-check-input position-static" type="checkbox" id="blankCheckbox" aria-label="..." :v-model="'getItemID' + item.id"></div></td>
-                        <td>{{ item.description }}</td>
-                        <td>{{ item.part }}</td>
-                        <td>{{ item.model }}</td>
-                        <td>{{ item.serial }}</td>
-                        <td>{{ item.drawing }}</td>
-                        <td>{{ item.item }}</td>
-                        <td>{{ item.quantity }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <router-link :to="'/project-detail/' + this.$route.params.pid + '/sq'" class="btn btn-danger ml-3" style="float: right;" tag="button">Cancel</router-link>
-                <router-link :to="'/project-detail/' + this.$route.params.pid + '/sq'" class="btn btn-primary ml-3" style="float: right;" tag="button">Create Supplier Quotation</router-link>
-
-
-                </div>
-            </div>
+          <button
+            type="button"
+            class="btn btn-danger ml-3"
+            style="float: right;"
+            @click="cancel"
+          >Cancel</button>
+          <button
+            class="btn btn-primary ml-3"
+            style="float: right;"
+            @click="onSubmit"
+            type="button"
+          >{{ buttonTitle()}}</button>
         </div>
-        </form>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
+import { mapGetters, mapActions, mapMutations } from "vuex";
+import { QuotationItem } from "../../../../classess/projects";
+
 export default {
-    name: 'piSupplierQuotationAdd',
-    data: function(){
-        return {
-            suppQuotationList : [
-                {
-                    id: '1',
-                    description: 'Item Description', 
-                    part: 'Part No', 
-                    model: 'Model No', 
-                    serial: 'Serial No', 
-                    drawing: 'Drawing No', 
-                    item: 'Item No', 
-                    quantity: '999'
-                },
-                {
-                    id: '2',
-                    description: 'Item Description', 
-                    part: 'Part No', 
-                    model: 'Model No', 
-                    serial: 'Serial No', 
-                    drawing: 'Drawing No', 
-                    item: 'Item No', 
-                    quantity: '999'
-                },
-                {
-                    id: '3',
-                    description: 'Item Description', 
-                    part: 'Part No', 
-                    model: 'Model No', 
-                    serial: 'Serial No', 
-                    drawing: 'Drawing No', 
-                    item: 'Item No', 
-                    quantity: '999'
-                },
-                {
-                    id: '4',
-                    description: 'Item Description', 
-                    part: 'Part No', 
-                    model: 'Model No', 
-                    serial: 'Serial No', 
-                    drawing: 'Drawing No', 
-                    item: 'Item No', 
-                    quantity: '999'
-                }
-             ]
-        }
+  name: "piSupplierQuotationAdd",
+  data: function() {
+    return {
+      create: true,
+      suppQuotationAdd: []
+    };
+  },
+  computed: {
+    ...mapGetters([
+      "currentSupplierRfq",
+      "currentSupplierQuotation",
+      "success",
+      "currentProject"
+    ])
+  },
+  watch: {
+    currentSupplierRfq(val) {
+      if (val) {
+        console.log(val, "supplier quotation");
+        this.create = true;
+        const rfq = val.items.map(i => {
+          let data = { ...i, amount: 0, currency: "MYR" };
+          delete data["id"];
+          return data;
+        });
+        this.suppQuotationAdd = [...rfq];
+      }
+    },
+    currentSupplierQuotation(val) {
+      if (val) {
+        this.create = false;
+        this.suppQuotationAdd = [...val.items];
+      }
+    },
+    success(val) {
+      if (val) {
+        this.$router.push({ name: "supplierQuotationList" });
+      }
     }
-}
+  },
+  mounted() {
+    this.getBothSupplierRfq(this.$route.params.pid);
+  },
+  methods: {
+    cancel() {
+      this.$router.push({ name: "customerQuotationList" });
+    },
+    onSubmit() {
+      console.log(this.currentProject, "hahaha");
+      let formattedQuotation = [];
+      this.suppQuotationAdd.map(q => {
+        let data = new QuotationItem(q);
+        formattedQuotation.push(data);
+      });
+      const data = {
+        projectId: Number(this.$route.params.pid),
+        items: formattedQuotation
+      };
+      if (this.create) this.createQuotation(data);
+      else
+        this.updateQuotation({
+          data: { ...data, id: this.currentProject.quotations[0].id },
+          id: this.currentProject.quotations[0].id
+        });
+    },
+    buttonTitle() {
+      return this.create ? "Create Quotation" : "Edit Quotation";
+    },
+    ...mapActions([
+      "getBothSupplierRfq",
+      "createSupplierQuotation",
+      "updateQuotation"
+    ]),
+    ...mapMutations(["resetSucess", "resetCurrentQuotationRfq"])
+  },
+  destroyed() {
+    this.resetCurrentQuotationRfq();
+    this.resetSucess();
+  }
+};
 </script>
 
 <style scoped>
-
 </style>

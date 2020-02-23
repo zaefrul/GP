@@ -169,9 +169,17 @@ const routes = [
       { path: "spo/edit", component: PiSupplierPoEdit },
       { path: "spo/report/:spoid", component: PiSupplierPoReport },
       //supplier quotation
-      { path: "sq", component: PiSupplierQuotationList },
+      {
+        path: "sq",
+        component: PiSupplierQuotationList,
+        name: "supplierQuotationList"
+      },
       { path: "sq/view", component: PiSupplierQuotationView },
-      { path: "sq/add", component: PiSupplierQuotationAdd },
+      {
+        path: "sq/add",
+        component: PiSupplierQuotationAdd,
+        name: "supplierQuotation"
+      },
       { path: "sq/edit", component: PiSupplierQuotationEdit },
       //supplier rfq
       { path: "srfq", component: PiSupplierRfqList },

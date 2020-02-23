@@ -70,7 +70,12 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["currentCustomerRfq", "currentCustomerQuotation", "success"])
+    ...mapGetters([
+      "currentCustomerRfq",
+      "currentCustomerQuotation",
+      "success",
+      "currentProject"
+    ])
   },
   watch: {
     currentCustomerRfq(val) {
@@ -106,17 +111,19 @@ export default {
     onSubmit() {
       let formattedQuotation = [];
       this.suppQuotationAdd.map(q => {
-        console.log(new QuotationItem(q), "test");
         let data = new QuotationItem(q);
         formattedQuotation.push(data);
       });
-      console.log(formattedQuotation, "test");
       const data = {
         projectId: Number(this.$route.params.pid),
         items: formattedQuotation
       };
       if (this.create) this.createQuotation(data);
-      else this.updateQuotation(data);
+      else
+        this.updateQuotation({
+          data: { ...data, id: this.currentProject.quotations[0].id },
+          id: this.currentProject.quotations[0].id
+        });
     },
     buttonTitle() {
       return this.create ? "Create Quotation" : "Edit Quotation";
