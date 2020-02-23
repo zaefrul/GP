@@ -26,7 +26,9 @@ export const store = new Vuex.Store({
     currentCustomerRfq: null,
     currentCustomerQuotation: null,
     currentSupplierRfq: null,
-    currentSupplierQuotation: null
+    currentSupplierQuotation: null,
+    currentCustomerPO: null,
+    currentSupplierPO: null
   },
   getters: {
     project: state => state.project,
@@ -55,7 +57,9 @@ export const store = new Vuex.Store({
     currentCustomerRfq: state => state.currentCustomerRfq,
     currentCustomerQuotation: state => state.currentCustomerQuotation,
     currentSupplierRfq: state => state.currentSupplierRfq,
-    currentSupplierQuotation: state => state.currentSupplierQuotation
+    currentSupplierQuotation: state => state.currentSupplierQuotation,
+    currentCustomerPO: state => state.currentCustomerPO,
+    currentSupplierPO: state => state.currentSupplierPO
   },
   mutations: {
     setProject: (state, payload) => {
@@ -125,6 +129,16 @@ export const store = new Vuex.Store({
     resetCurrentQuotationRfq: state => {
       state.currentSupplierRfq = null;
       state.currentSupplierQuotation = null;
+    },
+    setCurrentCustomerPO: (state, payload) => {
+      state.currentCustomerPO = payload;
+    },
+    setCurrentSupplierPO: (state, payload) => {
+      state.currentSupplierPO = payload;
+    },
+    resetCurrentCustomerPO: state => {
+      state.currentCustomerPO = null;
+      state.currentCustomerQuotation = null;
     }
   },
   actions: {
@@ -397,6 +411,74 @@ export const store = new Vuex.Store({
           context.commit("setCurrentSupplierQuotation", quotation);
         } else {
           context.commit("setCurrentSupplierrfq", rfq);
+        }
+        context.commit("setLoading", false);
+      });
+    },
+    createCustomerPO: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.createCustomerPO(payload).then(res => {
+        context.commit("setSuccess", true);
+        context.commit("setLoading", false);
+      });
+    },
+    createSupplierPO: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.createSupplierPO(payload).then(res => {
+        context.commit("setSuccess", true);
+        context.commit("setLoading", false);
+      });
+    },
+    getBothCustomerPO: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.getBothCustomerPO(payload).then(res => {
+        console.log(res, "real data");
+        let rfq = null;
+        let quotation = null;
+        res.map(r => {
+          console.log(r.config.url.indexOf("rfq"), "test url");
+          if (r.config.url.indexOf("purchaseorders") >= 0) {
+            rfq = r.data.length > 0 ? r.data[0] : null;
+            console.log(r.data.length, "test");
+            // rfq = data;
+          } else {
+            // r.data.length > 0 ? r.data[0] : null;
+            quotation = r.data.length > 0 ? r.data[0] : null;
+            // context.commit("setCurrentCustomerQuotation", data);
+          }
+        });
+        console.log(rfq, "test");
+        if (rfq) {
+          context.commit("setCurrentCustomerPO", rfq);
+        } else {
+          context.commit("setCurrentCustomerQuotation", quotation);
+        }
+        context.commit("setLoading", false);
+      });
+    },
+    getBothSupplierPO: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.getBothSupplierPO(payload).then(res => {
+        console.log(res, "real data");
+        let rfq = null;
+        let quotation = null;
+        res.map(r => {
+          console.log(r.config.url.indexOf("rfq"), "test url");
+          if (r.config.url.indexOf("purchaseorders") >= 0) {
+            rfq = r.data.length > 0 ? r.data[0] : null;
+            console.log(r.data.length, "test");
+            // rfq = data;
+          } else {
+            // r.data.length > 0 ? r.data[0] : null;
+            quotation = r.data.length > 0 ? r.data[0] : null;
+            // context.commit("setCurrentCustomerQuotation", data);
+          }
+        });
+        console.log(rfq, "test");
+        if (rfq) {
+          context.commit("setCurrentSupplierPO", rfq);
+        } else {
+          context.commit("setCurrentSupplierQuotation", quotation);
         }
         context.commit("setLoading", false);
       });
