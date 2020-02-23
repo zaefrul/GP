@@ -127,7 +127,7 @@ const routes = [
     },
     children: [
       { path: "", component: ProjectListing, name: "projectList" },
-      { path: "add", component: ProjectAdd }
+      { path: "add", component: ProjectAdd, name: "projectAdd" }
     ]
   },
   //Project Detail

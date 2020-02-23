@@ -26,18 +26,40 @@ export default class ProjectsFacade {
         });
       })
       .then(res => {
-        let rfq = new RFQ({ id: res.data.id });
-        let rfqItem = [];
-        data.items.map(d => {
-          console.log(d, "items");
-          rfqItem.push(new RFQItem(d));
-        });
-        rfq.setItems(rfqItem);
-        return this.GPAPI.combineAnd([
-          this.GPAPI.createCustomerRFQ(rfq),
-          this.GPAPI.createSupplierRFQ(rfq)
-        ]);
+        let rfq = this.processRfqData(res.data.id, data.items);
+        return this.handleBothRFQ(rfq);
         // return this.GPAPI.createCustomerRFQ(rfq);
       });
+  }
+
+  createExistingProject(data) {
+    return this.GPAPI.createProject({
+      ...data.title,
+      customerId: data.customerId
+    })
+    .then(res => {
+      let rfq = this.processRfqData(res.data.id, data.items);
+      return this.handleBothRFQ(rfq);
+      // return this.GPAPI.createCustomerRFQ(rfq);
+    });
+  }
+
+  processRfqData(data, items) {
+    let rfq = new RFQ({ id: data });
+    let rfqItem = [];
+    items.map(d => {
+      console.log(d, "items");
+      rfqItem.push(new RFQItem(d));
+    });
+    rfq.setItems(rfqItem);
+
+    return rfq;
+  }
+
+  handleBothRFQ(rfq) {
+    return this.GPAPI.combineAnd([
+      this.GPAPI.createCustomerRFQ(rfq),
+      this.GPAPI.createSupplierRFQ(rfq)
+    ]);
   }
 }
