@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   state: {
     project: null,
-    customer: null,
+    customer: [],
     metadata: null,
     metadataList: null,
     metadataPrices: null,
@@ -164,6 +164,13 @@ export const store = new Vuex.Store({
     createProjectWithCustomer: (context, payload) => {
       context.commit("setLoading", true);
       GPOpsFactory.createProjectWithCustomer(payload).then(res => {
+        context.commit("setLoading", false);
+        context.commit("setSuccess", true);
+      });
+    },
+    createProjectExistingCustomer: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.createProjectExistingCustomer(payload).then(res => {
         context.commit("setLoading", false);
         context.commit("setSuccess", true);
       });

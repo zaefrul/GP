@@ -64,6 +64,7 @@ import PiSupplierPoView from "./components/projectDetail/supplier/purchaseOrder/
 import PiSupplierPoAdd from "./components/projectDetail/supplier/purchaseOrder/supplierPoAdd.vue"; //supplier po add
 import PiSupplierPoList from "./components/projectDetail/supplier/purchaseOrder/supplierPoList.vue"; //supplier po list
 import PiSupplierPoEdit from "./components/projectDetail/supplier/purchaseOrder/supplierPoEdit.vue"; //supplier po edit
+import PiSupplierPoReport from "./components/projectDetail/supplier/purchaseOrder/supplierPoReport.vue"; //supplier po report
 
 //supplier quotation
 import PiSupplierQuotationView from "./components/projectDetail/supplier/quotation/supplierQuotationView.vue"; //supplier quotation view
@@ -127,7 +128,7 @@ const routes = [
     },
     children: [
       { path: "", component: ProjectListing, name: "projectList" },
-      { path: "add", component: ProjectAdd }
+      { path: "add", component: ProjectAdd, name: "projectAdd" }
     ]
   },
   //Project Detail
@@ -158,6 +159,7 @@ const routes = [
       { path: "spo/view", component: PiSupplierPoView },
       { path: "spo/add", component: PiSupplierPoAdd },
       { path: "spo/edit", component: PiSupplierPoEdit },
+      { path: "spo/report/:spoid", component: PiSupplierPoReport },
       //supplier quotation
       { path: "sq", component: PiSupplierQuotationList },
       { path: "sq/view", component: PiSupplierQuotationView },

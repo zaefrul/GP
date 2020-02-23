@@ -43,6 +43,10 @@ export default class GPApiService extends BaseApiService {
     return this.post("api/customers", data);
   }
 
+  getCustomer(data) {
+    return this.get("/api/customers");
+  }
+
   createProject(data) {
     return this.post("api/projects", data);
   }

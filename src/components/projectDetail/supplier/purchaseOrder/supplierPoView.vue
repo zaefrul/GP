@@ -45,6 +45,7 @@
                     </tbody>
                 </table>
                 
+                <router-link :to="'/project-detail/' + this.$route.params.pid + '/spo/report/:spoid'" class="btn btn-info ml-3" style="float: right;" tag="button">Generate</router-link>
                 <router-link :to="'/project-detail/' + this.$route.params.pid + '/spo/view'" class="btn btn-danger ml-3" style="float: right;" tag="button">Back</router-link>
                 <router-link :to="'/project-detail/' + this.$route.params.pid + '/spo/edit'" class="btn btn-primary ml-3" style="float: right;" tag="button">Edit</router-link>
 
