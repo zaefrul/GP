@@ -121,7 +121,7 @@ export default {
         projectId: Number(this.$route.params.pid),
         items: formattedQuotation
       };
-      if (this.create) this.createQuotation(data);
+      if (this.create) this.createSupplierQuotation(data);
       else
         this.updateQuotation({
           data: { ...data, id: this.currentProject.quotations[0].id },

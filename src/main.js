@@ -141,7 +141,7 @@ const routes = [
     children: [
       { path: "", component: ProjectInformation },
       //customer po
-      { path: "cpo", component: PiCustomerPoList },
+      { path: "cpo", component: PiCustomerPoList, name: "customerPOList" },
       { path: "cpo/view", component: PiCustomerPoView },
       { path: "cpo/add", component: PiCustomerPoAdd },
       { path: "cpo/edit", component: PiCustomerPoEdit },

@@ -126,4 +126,24 @@ export default class GPOpsFactory {
     const ProjectsFcd = new ProjectsFacade();
     return ProjectsFcd.handleBothCSupplierRFQQuo(id);
   }
+
+  static createCustomerPO(data) {
+    const ProjectsFcd = new ProjectsFacade();
+    return ProjectsFcd.createCustomerPo(data);
+  }
+
+  static createSupplierPO(data) {
+    const ProjectsFcd = new ProjectsFacade();
+    return ProjectsFcd.createSupplierPo(data);
+  }
+
+  static getBothCustomerPO(id) {
+    const ProjectsFcd = new ProjectsFacade();
+    return ProjectsFcd.handleBothCustomerQuoPO(id);
+  }
+
+  static getBothSupplierPO(id) {
+    const ProjectsFcd = new ProjectsFacade();
+    return ProjectsFcd.handleBothSupplierQuoPO(id);
+  }
 }

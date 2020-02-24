@@ -110,4 +110,20 @@ export default class GPApiService extends BaseApiService {
   getSupplierRFQ(id) {
     return this.get(`api/rfqs/suppliers/${id}`);
   }
+
+  createCustomerPO(data) {
+    return this.post("api/purchaseorders/customer", data);
+  }
+
+  createSupplierPO(data) {
+    return this.post("api/purchaseorders/supplier", data);
+  }
+
+  getCustomerPO(id) {
+    return this.get(`api/purchaseorders/project/customer/${id}`);
+  }
+
+  getSupplierPO(id) {
+    return this.get(`api/purchaseorders/project/supplier/${id}`);
+  }
 }
