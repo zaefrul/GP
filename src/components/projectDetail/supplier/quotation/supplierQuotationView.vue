@@ -27,14 +27,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(item, index) in suppQuotationView" :key="index++">
+                        <tr v-for="(item, index) in currentSupplierQuotation.items" :key="index++">
                         <td>{{ index }}</td>
-                        <td>{{ item.description }}</td>
-                        <td>{{ item.part }}</td>
-                        <td>{{ item.model }}</td>
-                        <td>{{ item.serial }}</td>
-                        <td>{{ item.drawing }}</td>
-                        <td>{{ item.item }}</td>
+                        <td>{{ item.partName }}</td>
+                        <td>{{ item.partNumber }}</td>
+                        <td>{{ item.modelNumber }}</td>
+                        <td>{{ item.serialNumber }}</td>
+                        <td>{{ item.drawingNumber }}</td>
+                        <td>{{ item.tagNumber }}</td>
                         <td>{{ item.quantity }}</td>
                         <td>{{ item.price }}</td>
                         </tr>
@@ -52,6 +52,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
     name: 'piSupplierQuotationView',
     data: function(){
@@ -103,6 +104,15 @@ export default {
                 }
              ]
         }
+    },
+    mounted() {
+        this.getDetailProjectSupplierQuotation(this.$route.params.sqid);
+    },
+    computed: {
+        ...mapGetters(["currentSupplierQuotation"])
+    },
+    methods: {
+        ...mapActions(["getDetailProjectSupplierQuotation"])
     }
 }
 </script>
