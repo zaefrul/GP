@@ -123,10 +123,14 @@ export default {
       };
       if (this.create) this.createSupplierQuotation(data);
       else
-        this.updateQuotation({
+        console.log({
           data: { ...data, id: this.currentProject.quotations[0].id },
           id: this.currentProject.quotations[0].id
-        });
+        })
+        // this.updateQuotation({
+          // data: { ...data, id: this.currentProject.quotations[0].id },
+          // id: this.currentProject.quotations[0].id
+        // });
     },
     buttonTitle() {
       return this.create ? "Create Quotation" : "Edit Quotation";

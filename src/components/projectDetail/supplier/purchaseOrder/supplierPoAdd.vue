@@ -38,19 +38,21 @@
                             <th scope="col">Item No</th>
                             <th scope="col">Qty</th>
                             <th scope="col">Price</th>
+                            <th scope="col">Total</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(item, index) in suppPoAdd" :key="index++">
-                        <td><div class="form-check"><input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="..." :v-model="getItemID + item.id"></div></td>
-                        <td>{{ item.description }}</td>
-                        <td>{{ item.part }}</td>
-                        <td>{{ item.model }}</td>
-                        <td>{{ item.serial }}</td>
-                        <td>{{ item.drawing }}</td>
-                        <td>{{ item.item }}</td>
+                        <tr v-for="(item, index) in currentSupplierPO.items" :key="index++">
+                        <td>{{ index }}</td>
+                        <td>{{ item.partName }}</td>
+                        <td>{{ item.partNumber }}</td>
+                        <td>{{ item.modelNumber }}</td>
+                        <td>{{ item.serialNumber }}</td>
+                        <td>{{ item.drawingNumber }}</td>
+                        <td>{{ item.remarks }}</td>
                         <td>{{ item.quantity }}</td>
-                        <td><input type="text" class="form-control" id="exampleFormControlInput1" placeholder="price"></td>
+                        <td><input type="text" class="form-control" id="exampleFormControlInput1" v-model="item.amount" placeholder="Price"></td>
+                        <td>{{ item.quantity * item.amount }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -66,6 +68,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
     name: 'piSupplierPoAdd',
     data: function(){
@@ -116,6 +119,28 @@ export default {
                     price: '999'
                 }
              ]
+        }
+    },
+    computed:{
+        ...mapGetters(["currentSupplierPO","success"])
+    },
+    methods: {
+        ...mapActions(["getLatestQuoForSupPo","createSupplierPO"]),
+        onSave() {
+            this.currentSupplierPO.id = 0;
+            this.currentSupplierPO.items.forEach(x => {
+                x.id = 0;
+                x.quotationId = 0;    
+            });
+            this.createSupplierPO(this.currentSupplierPO);
+        }
+    },
+    mounted() {
+        this.getLatestQuoForSupPo(this.$route.params.pid);
+    },
+    watch: {
+        success(val) {
+            this.$router.push({name:""})
         }
     }
 }

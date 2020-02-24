@@ -198,7 +198,7 @@ const routes = [
       { path: "spo/report/:spoid", component: PiSupplierPoReport },
       //supplier do
       { path: "sdo", component: PiSupplierDoList },
-      { path: "sdo/view", component: PiSupplierDoView },
+      { path: "sdo/view/:sdoid", component: PiSupplierDoView },
       { path: "sdo/add", component: PiSupplierDoAdd },
       { path: "sdo/edit", component: PiSupplierDoEdit },
       { path: "sdo/report/:sdoid", component: PiSupplierDoReport },

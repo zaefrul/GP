@@ -57,6 +57,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
     name: 'piSupplierDoView',
     data: function(){
@@ -108,6 +109,15 @@ export default {
                 }
              ]
         }
+    },
+    mounted(){
+        
+    },
+    computed: {
+        ...mapGetters([""])
+    },
+    methods: {
+        ...mapActions([""])
     }
 }
 </script>

@@ -16,26 +16,34 @@
                             <th scope="col">Item No</th>
                             <th scope="col">Qty</th>
                             <th scope="col">Price</th>
+                            <th scope="col">Total</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(item, index) in customerPoAdd" :key="index++">
+                        <tr v-for="(item, index) in currentCustomerPO.items" :key="index++">
                         <td>{{ index }}</td>
-                        <td>{{ item.description }}</td>
-                        <td>{{ item.part }}</td>
-                        <td>{{ item.model }}</td>
-                        <td>{{ item.serial }}</td>
-                        <td>{{ item.drawing }}</td>
-                        <td>{{ item.item }}</td>
+                        <td>{{ item.partName }}</td>
+                        <td>{{ item.partNumber }}</td>
+                        <td>{{ item.modelNumber }}</td>
+                        <td>{{ item.serialNumber }}</td>
+                        <td>{{ item.drawingNumber }}</td>
+                        <td>{{ item.remarks }}</td>
                         <td>{{ item.quantity }}</td>
-                        <td><input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Price"></td>
+                        <td><input type="text" class="form-control" id="exampleFormControlInput1" v-model="item.amount" placeholder="Price"></td>
+                        <td>{{ item.quantity * item.amount }}</td>
                         </tr>
                     </tbody>
                 </table>
                 
                 <router-link :to="'/project-detail/' + this.$route.params.pid + '/cpo'" class="btn btn-danger ml-3" style="float: right;" tag="button">Cancel</router-link>
                 <router-link to="cpo/add/" class="btn btn-primary ml-3" style="float: right;" tag="button">Create Customer PO</router-link>
-
+                <button 
+                    type="button"
+                    class="btn btn-success"
+                    @click="onSave()"
+                >
+                    Create
+                </button>
                 </div>
             </div>
         </div>
@@ -43,6 +51,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
     name: 'piCustomerPoAdd',
     data: function(){
@@ -56,7 +65,8 @@ export default {
                     serial: 'Serial No', 
                     drawing: 'Drawing No', 
                     item: 'Item No', 
-                    quantity: '999'
+                    quantity: '999',
+                    price:0
                 },
                 { 
                     id: '2',
@@ -66,7 +76,8 @@ export default {
                     serial: 'Serial No', 
                     drawing: 'Drawing No', 
                     item: 'Item No', 
-                    quantity: '999'
+                    quantity: '999',
+                    price:0
                 },
                 { 
                     id: '3',
@@ -76,9 +87,32 @@ export default {
                     serial: 'Serial No', 
                     drawing: 'Drawing No', 
                     item: 'Item No', 
-                    quantity: '999'
+                    quantity: '999',
+                    price:0
                 }
              ]
+        }
+    },
+    computed: {
+        ...mapGetters(["currentCustomerPO","success"])
+    },
+    methods: {
+        ...mapActions(["getLatestQuoForPo","createCustomerPO"]),
+        onSave() {
+            this.currentCustomerPO.id = 0;
+            this.currentCustomerPO.items.forEach(x => {
+                x.id = 0;
+                x.quotationId = 0;    
+            });
+            this.createCustomerPO(this.currentCustomerPO);
+        }
+    },
+    mounted() {
+        this.getLatestQuoForPo(this.$route.params.pid)
+    },
+    watch: {
+        success(val){
+            this.$router.push({name:"customerPOList"})
         }
     }
 }

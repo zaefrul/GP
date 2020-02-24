@@ -9,17 +9,17 @@
                             <th scope="col">No</th>
                             <th scope="col">Date</th>
                             <th scope="col">Remarks</th>
-                            <th scope="col" class="text-center">DO Status</th>
+                            <th scope="col" class="text-center">Dateline</th>
                             <th scope="col" class="text-center">Option</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(item, index) in supplierDoList" :key="index++">
+                            <tr v-for="(item, index) in currentSupplierDO" :key="index++">
                             <td scope="row">{{ index }}</td>
-                            <td>{{ item.date }}</td>
-                            <td>{{ item.supplier }}</td>
-                            <td class="text-center">{{ item.status }}</td>
-                            <td class="text-center"><router-link to="sdo/view/" class="nav-link">View DO</router-link></td>
+                            <td>{{ item.dateCreated }}</td>
+                            <td>{{ item.number }}</td>
+                            <td class="text-center">{{ item.dateline }}</td>
+                            <td class="text-center"><router-link :to="'sdo/view/'+item.id" class="nav-link">View DO</router-link></td>
                             </tr>
                         </tbody>
                     </table>
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
     name: 'piSupplierDoList',
     data: function(){
@@ -43,6 +44,15 @@ export default {
                 { date: '12/01/2020', supplier: 'Kim Tiles Corp', status: 'Accepted', option: 'View'}
             ]
         }
+    },
+    mounted() {
+        this.getLatestProjectSupplierDO(this.$route.params.pid);
+    },
+    computed: {
+        ...mapGetters(["currentSupplierDO"])
+    },
+    methods: {
+        ...mapActions(["getLatestProjectSupplierDO"])
     }
 }
 </script>
