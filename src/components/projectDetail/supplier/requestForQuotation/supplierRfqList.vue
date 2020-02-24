@@ -2,7 +2,10 @@
     <div id="piSupplierRfqList">
         <div class="container-fluid" style="margin-bottom: 60px;">
             <div class="card">
-                <div class="card-body">
+                <div v-if="projectRFQ == null" class="card-body">
+                    <button class="btn btn-success" style="float: middle;" type="button" @click="gSRFQ()">Generate Supplier RFQ</button>
+                </div>
+                <div v-else class="card-body">
 
                 <table class="table">
                     <thead class="thead-dark">
@@ -32,30 +35,7 @@
                 </table>
                 
                 <button class="btn btn-success" style="float: right;" type="button">Add</button>
-                <button class="btn btn-primary" style="float: right;" type="submit">Edit Request Item</button>
-                        <table class="table">
-                            <thead class="thead-dark">
-                                <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Supplier</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Option</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="(item, index) in supplierRfqList" :key="index++">
-                                <td scope="row">{{ index }}</td>
-                                <td>{{ item.date }}</td>
-                                <td>{{ item.supplier }}</td>
-                                <td>{{ item.status }}</td>
-                                <td class="text-center"><router-link to="srfq/view/" class="nav-link">View RFQ</router-link></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        
-                    <button class="btn btn-primary" style="float: right;" type="submit">Add New Supplier RFQ</button>
-
+                <button class="btn btn-primary" style="float: right;" type="button">Edit Request Item</button>
                 </div>
             </div>
         </div>
@@ -77,7 +57,10 @@ export default {
         ...mapGetters(["projectRFQ"])
     },
     methods: {
-        ...mapActions(["getProjectSupplierRFQ"])
+        ...mapActions(["getProjectSupplierRFQ"]),
+        gSRFQ() {
+            this.$router.push({name:"ASRFQ"});
+        }
     }
 }
 </script>

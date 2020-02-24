@@ -393,6 +393,14 @@ export const store = new Vuex.Store({
           context.commit("setLoading", false);
         });
     },
+    generateSupplierRFQ: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.handlerProject().generateSupplierRFQ(payload).then(res=>{
+        context.commit("setCurrentSupplierrfq", res);
+        console.log(context);
+        context.commit("setLoading", false);
+      });
+    },
     getBothRfq: (context, payload) => {
       context.commit("setLoading", true);
       GPOpsFactory.getCustomerRfqQuo(payload).then(res => {
@@ -573,6 +581,47 @@ export const store = new Vuex.Store({
         context.commit("setLoading", false);
         context.commit("setSuccess", true);
       });
+    },
+    createSupplierRFQ: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.handlerProject().createSupplierRfq(payload)
+      .then(res=>{
+        context.commit("setSuccess", true);
+        context.commit("setLoading", false);
+      })
+      .catch(res=>{
+        context.commit("setLoading", false);
+        console.log(res);
+      })
+    },
+    getProjectSupplierQuotation: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.handlerProject().getProjectSupplierQuotation(payload).then(res=>{
+        context.commit("setCurrentSupplierQuotation", res);
+        context.commit("setLoading",false);
+      })
+    },
+    getDetailProjectSupplierQuotation: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.handlerProject().getDetailProQuo(payload).then(res=>{
+        console.log(res);
+        context.commit("setCurrentSupplierQuotation", res);
+        context.commit("setLoading", false);
+      })
+    },
+    getProjectCustomerQuotation: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.handlerProject().getProjectCustomerQuotation(payload).then(res=>{
+        context.commit("setCurrentCustomerQuotation", res);
+        context.commit("setLoading", false);
+      })
+    },
+    getDetailProjectCustomerQuotation: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.handlerProject().getDetailProQuo(payload).then(res=>{
+        context.commit("setCurrentCustomerQuotation", res);
+        context.commit("setLoading", false);
+      })
     }
   }
 });

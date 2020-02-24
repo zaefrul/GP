@@ -9,12 +9,11 @@
                 <th scope="col"></th>
                 <th scope="col">Description</th>
                 <th scope="col">Part No</th>
-                <th scope="col">Model No</th>
-                <th scope="col">Serial No</th>
-                <th scope="col">Drawing No</th>
-                <th scope="col">Item No</th>
+                <th scope="col">Tag No</th>
+                <th scope="col">Remarks</th>
                 <th scope="col">Qty</th>
                 <th scope="col">Price</th>
+                <th scope="col">Total</th>
               </tr>
             </thead>
             <tbody>
@@ -22,11 +21,9 @@
                 <td>{{ index }}</td>
                 <td>{{ item.partName }}</td>
                 <td>{{ item.partNumber }}</td>
-                <td>{{ item.partPosition }}</td>
-                <td>{{ item.drawingNumber }}</td>
                 <td>{{ item.tagNumber }}</td>
-                <td>{{ item.modelNumber }}</td>
                 <td>{{ item.remarks }}</td>
+                <td>{{ item.quantity }}</td>
                 <td>
                   <input
                     type="text"
@@ -35,6 +32,9 @@
                     placeholder="Price"
                     v-model="item.amount"
                   />
+                </td>
+                <td>
+                  {{item.quantity * item.amount}}
                 </td>
               </tr>
             </tbody>
