@@ -9,6 +9,7 @@ export const store = new Vuex.Store({
     project: null,
     customer: [],
     currentCustomer: null,
+    currentSupplier: null,
     metadata: null,
     metadataList: null,
     metadataPrices: null,
@@ -66,7 +67,8 @@ export const store = new Vuex.Store({
     currentSupplierQuotation: state => state.currentSupplierQuotation,
     currentCustomerPO: state => state.currentCustomerPO,
     currentSupplierPO: state => state.currentSupplierPO,
-    currentCustomer: state => state.currentCustomer
+    currentCustomer: state => state.currentCustomer,
+    currentSupplier: state => state.currentSupplier
   },
   mutations: {
     setProject: (state, payload) => {
@@ -158,6 +160,9 @@ export const store = new Vuex.Store({
     },
     setCurrentCustomer: (state, payload) => {
       state.currentCustomer = payload;
+    },
+    setCurrentSupplier: (state, payload) => {
+      state.currentSupplier = payload;
     }
   },
   actions: {
@@ -569,6 +574,22 @@ export const store = new Vuex.Store({
     updateCustomer: (context, payload) => {
       context.commit("setLoading", true);
       GPOpsFactory.updateCustomer(payload).then(res => {
+        // context.commit("setCurrentCustomer", res);
+        context.commit("setLoading", false);
+        context.commit("setSuccess", true);
+      });
+    },
+    getSupplier: (context, payload) => {
+      console.log(payload, "test");
+      context.commit("setLoading", true);
+      GPOpsFactory.getSupplier(payload).then(res => {
+        context.commit("setCurrentSupplier", res);
+        context.commit("setLoading", false);
+      });
+    },
+    updateSupplier: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.updateSupplier(payload).then(res => {
         // context.commit("setCurrentCustomer", res);
         context.commit("setLoading", false);
         context.commit("setSuccess", true);
