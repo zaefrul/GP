@@ -286,7 +286,7 @@ export default {
 }
 .progressBarLine{
     height: 10px;
-    width: 200%;
+    width: 8vw;
     background: #d8d8d8;
     position: absolute;
     top: 50%;

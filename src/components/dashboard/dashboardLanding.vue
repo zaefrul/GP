@@ -1,7 +1,7 @@
 <template>
   <div id="dashboardLanding" class="content-margin-top">
     <div class="jumbotron jumbotron-fluid">
-      <div class="container">
+      <div class="container-fluid">
         <div class="row">
           <div class="col-lg-9">
             <h1 class="display-4">DASHBOARD</h1>
@@ -17,13 +17,13 @@
       </div>
     </div>
 
-    <div class="container" style="margin-bottom: 60px;">
+    <div class="container-fluid" style="margin-bottom: 60px;">
       <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-9">
           <!--project status-->
           <project-status :projects="projects"></project-status>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
           <!--invoice status-->
           <invoice-status :projects="allProjects"></invoice-status>
         </div>

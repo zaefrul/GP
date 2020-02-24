@@ -1,6 +1,6 @@
 <template>
   <div id="piCustomerQuotationList">
-    <div class="container" style="margin-bottom: 60px;">
+    <div class="container-fluid" style="margin-bottom: 60px;">
       <div class="card">
         <div class="card-body">
           <table class="table">
@@ -44,7 +44,7 @@
             style="float: right;"
             @click="goToAddQuotation"
           >Edit Quotation</button>
-    <div id="piCustomerQuotationList">
+    <!-- <div id="piCustomerQuotationList">
         <div class="container" style="margin-bottom: 60px;">
             <div class="card">
                 <div class="card-body">
@@ -72,9 +72,10 @@
                 </div>
             </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
+    </div></div>
 </template>
 
 <script>

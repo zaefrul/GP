@@ -1,6 +1,6 @@
 <template>
     <div id="piCustomerQuotationView">
-        <div class="container" style="margin-bottom: 60px;margin-top: 30px;">
+        <div class="container-fluid" style="margin-bottom: 60px;margin-top: 30px;">
             <div class="card">
                 <div class="card-body">
 

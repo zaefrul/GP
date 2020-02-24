@@ -1,6 +1,6 @@
 <template>
   <div id="piSupplierPoList">
-    <div class="container" style="margin-bottom: 60px;margin-top: 30px;">
+    <div class="container-fluid" style="margin-bottom: 60px;margin-top: 30px;">
       <div class="card">
         <div class="card-body">
           <table class="table">
@@ -41,7 +41,7 @@
             type="button"
             v-if="!create"
           >Print Report</button>
-    <div id="piSupplierPoList">
+    <!-- <div id="piSupplierPoList">
         <div class="container" style="margin-bottom: 60px;margin-top: 30px;">
             <div class="card">
                 <div class="card-body">
@@ -71,7 +71,9 @@
                 </div>
             </div>
         </div>
-      </div>
+      </div> -->
+    </div>
+  </div>
     </div>
   </div>
 </template>

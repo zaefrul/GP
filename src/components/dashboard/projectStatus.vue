@@ -1,5 +1,5 @@
 <template>
-  <div id="projectStatus" class="content-margin-top">
+  <div id="projectStatus">
     <div class="card">
       <h5 class="card-header">
         Project Status

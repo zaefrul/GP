@@ -1,6 +1,6 @@
 <template>
     <div id="piSupplierRfqList">
-        <div class="container" style="margin-bottom: 60px;">
+        <div class="container-fluid" style="margin-bottom: 60px;">
             <div class="card">
                 <div class="card-body">
 

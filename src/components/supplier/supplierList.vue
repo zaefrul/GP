@@ -10,8 +10,10 @@
       </p>
     </div>
 
-    <div class="container" style="margin-bottom: 60px;">
-      <div class="row">
+    <div class="container-fluid" style="margin-bottom: 60px;">
+      <div class="card">
+        <div class="card-body">
+
         <table class="table">
           <thead class="thead-dark">
             <tr>
@@ -34,8 +36,7 @@
             </tr>
           </tbody>
         </table>
-      </div>
-      <div class="row">
+
         <nav aria-label="..." style="margin: auto;">
           <ul class="pagination">
             <li class="page-item disabled">
@@ -58,7 +59,9 @@
             </li>
           </ul>
         </nav>
+        </div>
       </div>
+
     </div>
   </div>
 </template>

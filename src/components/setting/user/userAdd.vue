@@ -5,7 +5,7 @@
       <p class="lead">Register new user to the system</p>
     </div>
 
-    <div class="container" style="margin-bottom: 60px;margin-top: 30px;">
+    <div class="container-fluid" style="margin-bottom: 60px;margin-top: 30px;">
       <form @submit.prevent="addUser()" action method>
         <div class="card">
           <div class="card-body">
