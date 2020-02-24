@@ -1,11 +1,11 @@
 <template>
-    <div id="piSupplierPoView">
+    <div id="piCustomerDoView">
         <div class="container" style="margin-bottom: 60px;margin-top: 30px;">
             <div class="card mb-3">
                 <div class="card-body">
                     <div class="d-flex flex-row">
-                        <div class="col-2">Purchase Order To:</div>
-                        <div class="col-8">Supplier Company Name</div>
+                        <div class="col-2">Delivery Order To:</div>
+                        <div class="col-8">Customer Name</div>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(item, index) in suppPoView" :key="index++">
+                        <tr v-for="(item, index) in custDoView" :key="index++">
                         <td>{{ index }}</td>
                         <td>{{ item.description }}</td>
                         <td class="text-center">{{ item.part }}</td>
@@ -45,9 +45,9 @@
                     </tbody>
                 </table>
                 
-                <router-link :to="'/project-detail/' + this.$route.params.pid + '/spo/report/spoid'" class="btn btn-info ml-3" style="float: right;" tag="button">Generate</router-link>
-                <router-link :to="'/project-detail/' + this.$route.params.pid + '/spo/view'" class="btn btn-danger ml-3" style="float: right;" tag="button">Back</router-link>
-                <router-link :to="'/project-detail/' + this.$route.params.pid + '/spo/edit'" class="btn btn-primary ml-3" style="float: right;" tag="button">Edit</router-link>
+                <router-link :to="'/project-detail/' + this.$route.params.pid + '/cdo/report/cdoid'" class="btn btn-info ml-3" style="float: right;" tag="button">Generate</router-link>
+                <router-link :to="'/project-detail/' + this.$route.params.pid + '/cdo/view'" class="btn btn-danger ml-3" style="float: right;" tag="button">Back</router-link>
+                <router-link :to="'/project-detail/' + this.$route.params.pid + '/cdo/edit'" class="btn btn-primary ml-3" style="float: right;" tag="button">Edit</router-link>
 
                 </div>
             </div>
@@ -57,10 +57,10 @@
 
 <script>
 export default {
-    name: 'piSupplierPoView',
+    name: 'piCustomerDoView',
     data: function(){
         return {
-            suppPoView : [
+            custDoView : [
                 { 
                     id: '1',
                     description: 'Item Description', 

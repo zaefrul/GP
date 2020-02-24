@@ -1,11 +1,11 @@
 <template>
-<div id="supplierPoLetterForm">
+<div id="supplierDoLetterForm">
 
     <div class="container">
       <div class="card" style="margin-top: 50px; margin-bottom: 100px;">
         <h3 class="card-header">
-          Supplier Purchase Order Detail
-          <router-link to="/spo/list" class="btn btn-danger ml-3" style="float: right;">Back</router-link>
+          Customer Delivery Order Detail
+          <router-link to="/cdo/list" class="btn btn-danger ml-3" style="float: right;">Back</router-link>
           <button
             id="printInvoice"
             type="button"
@@ -211,7 +211,7 @@
 
 <script>
 export default {
-    name: 'supplierPoLetterForm'
+    name: 'CustomerDoLetterForm'
 }
 </script>
 

@@ -71,6 +71,16 @@
                 :to="'/project-detail/' + this.$route.params.pid + '/spo'"
                 class="nav-link"
               >Invoice</router-link>
+              <router-link :to="'/project-detail/' + this.$route.params.pid + '/cpo'" class="nav-link">Cust PO</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link :to="'/project-detail/' + this.$route.params.pid + '/spo'" class="nav-link" >Supp PO</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link :to="'/project-detail/' + this.$route.params.pid + '/cdo'" class="nav-link">Cust DO</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link :to="'/project-detail/' + this.$route.params.pid + '/sdo'" class="nav-link" >Supp DO</router-link>
             </li>
           </ul>
 

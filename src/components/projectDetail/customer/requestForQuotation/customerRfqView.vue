@@ -31,7 +31,9 @@
                     </tbody>
                 </table>
                 
-                <button class="btn btn-primary" style="float: right;" type="submit">Edit Request Item</button>
+                <router-link :to="'/project-detail/' + this.$route.params.pid + '/crfq/report/cqid'" class="btn btn-info ml-3" style="float: right;" tag="button">Generate</router-link>
+                <router-link :to="'/project-detail/' + this.$route.params.pid + '/crfq'" class="btn btn-danger ml-3" style="float: right;" tag="button">Cancel</router-link>
+                <router-link :to="'/project-detail/' + this.$route.params.pid + '/crfq'" class="btn btn-primary ml-3" style="float: right;" tag="button">Edit</router-link>
 
                 </div>
             </div>

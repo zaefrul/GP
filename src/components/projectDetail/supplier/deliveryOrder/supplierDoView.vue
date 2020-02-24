@@ -1,10 +1,10 @@
 <template>
-    <div id="piSupplierPoView">
+    <div id="piSupplierDoView">
         <div class="container" style="margin-bottom: 60px;margin-top: 30px;">
             <div class="card mb-3">
                 <div class="card-body">
                     <div class="d-flex flex-row">
-                        <div class="col-2">Purchase Order To:</div>
+                        <div class="col-2">delivery Order To:</div>
                         <div class="col-8">Supplier Company Name</div>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(item, index) in suppPoView" :key="index++">
+                        <tr v-for="(item, index) in suppDoView" :key="index++">
                         <td>{{ index }}</td>
                         <td>{{ item.description }}</td>
                         <td class="text-center">{{ item.part }}</td>
@@ -45,9 +45,9 @@
                     </tbody>
                 </table>
                 
-                <router-link :to="'/project-detail/' + this.$route.params.pid + '/spo/report/spoid'" class="btn btn-info ml-3" style="float: right;" tag="button">Generate</router-link>
-                <router-link :to="'/project-detail/' + this.$route.params.pid + '/spo/view'" class="btn btn-danger ml-3" style="float: right;" tag="button">Back</router-link>
-                <router-link :to="'/project-detail/' + this.$route.params.pid + '/spo/edit'" class="btn btn-primary ml-3" style="float: right;" tag="button">Edit</router-link>
+                <router-link :to="'/project-detail/' + this.$route.params.pid + '/sdo/report/sdoid'" class="btn btn-info ml-3" style="float: right;" tag="button">Generate</router-link>
+                <router-link :to="'/project-detail/' + this.$route.params.pid + '/sdo/view'" class="btn btn-danger ml-3" style="float: right;" tag="button">Back</router-link>
+                <router-link :to="'/project-detail/' + this.$route.params.pid + '/sdo/edit'" class="btn btn-primary ml-3" style="float: right;" tag="button">Edit</router-link>
 
                 </div>
             </div>
@@ -57,10 +57,10 @@
 
 <script>
 export default {
-    name: 'piSupplierPoView',
+    name: 'piSupplierDoView',
     data: function(){
         return {
-            suppPoView : [
+            suppDoView : [
                 { 
                     id: '1',
                     description: 'Item Description', 

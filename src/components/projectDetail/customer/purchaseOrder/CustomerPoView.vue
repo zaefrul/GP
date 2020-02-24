@@ -33,6 +33,7 @@
                     </tbody>
                 </table>
                 
+                <router-link :to="'/project-detail/' + this.$route.params.pid + '/cpo/report/cpoid'" class="btn btn-info ml-3" style="float: right;" tag="button">Generate</router-link>
                 <router-link :to="'/project-detail/' + this.$route.params.pid + '/cpo'" class="btn btn-danger ml-3" style="float: right;" tag="button">Back</router-link>
                 <router-link :to="'/project-detail/' + this.$route.params.pid + '/cpo/edit'" class="btn btn-primary ml-3" style="float: right;" tag="button">Edit</router-link>
 

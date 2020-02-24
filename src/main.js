@@ -47,17 +47,27 @@ import PiCustomerPoView from "./components/projectDetail/customer/purchaseOrder/
 import PiCustomerPoAdd from "./components/projectDetail/customer/purchaseOrder/CustomerPoAdd.vue"; //customer po add
 import PiCustomerPoList from "./components/projectDetail/customer/purchaseOrder/CustomerPoList.vue"; //customer po list
 import PiCustomerPoEdit from "./components/projectDetail/customer/purchaseOrder/CustomerPoEdit.vue"; //customer po edit
+import PiCustomerPoReport from "./components/projectDetail/customer/purchaseOrder/CustomerPoReport.vue"; //customer po report
+
+//customer do
+import PiCustomerDoView from "./components/projectDetail/customer/deliveryOrder/CustomerDoView.vue"; //customer do view
+import PiCustomerDoAdd from "./components/projectDetail/customer/deliveryOrder/CustomerDoAdd.vue"; //customer do add
+import PiCustomerDoList from "./components/projectDetail/customer/deliveryOrder/CustomerDoList.vue"; //customer do list
+import PiCustomerDoEdit from "./components/projectDetail/customer/deliveryOrder/CustomerDoEdit.vue"; //customer do edit
+import PiCustomerDoReport from "./components/projectDetail/customer/deliveryOrder/CustomerDoReport.vue"; //customer do report
 
 //customer quotation
 import PiCustomerQuotationView from "./components/projectDetail/customer/quotation/CustomerQuotationView.vue"; //customer quotation view
 import PiCustomerQuotationAdd from "./components/projectDetail/customer/quotation/CustomerQuotationAdd.vue"; //customer quotation add
 import PiCustomerQuotationList from "./components/projectDetail/customer/quotation/CustomerQuotationList.vue"; //customer quotation list
 import PiCustomerQuotationEdit from "./components/projectDetail/customer/quotation/CustomerQuotationEdit.vue"; //customer quotation edit
+import PiCustomerQuotationReport from "./components/projectDetail/customer/quotation/CustomerQuotationReport.vue"; //customer quotation report
 
 //customer rfq
 import PiCustomerRfqView from "./components/projectDetail/customer/requestForQuotation/customerRfqView.vue"; //customer rfq view
 import PiCustomerRfqList from "./components/projectDetail/customer/requestForQuotation/customerRfqList.vue"; //customer rfq list
 import PiCustomerRfqEdit from "./components/projectDetail/customer/requestForQuotation/customerRfqEdit.vue"; //customer rfq edit
+import PiCustomerRfqReport from "./components/projectDetail/customer/requestForQuotation/customerRfqReport.vue"; //customer rfq report
 
 //supplier po
 import PiSupplierPoView from "./components/projectDetail/supplier/purchaseOrder/supplierPoView.vue"; //supplier po view
@@ -66,17 +76,26 @@ import PiSupplierPoList from "./components/projectDetail/supplier/purchaseOrder/
 import PiSupplierPoEdit from "./components/projectDetail/supplier/purchaseOrder/supplierPoEdit.vue"; //supplier po edit
 import PiSupplierPoReport from "./components/projectDetail/supplier/purchaseOrder/supplierPoReport.vue"; //supplier po report
 
+//supplier do
+import PiSupplierDoView from "./components/projectDetail/supplier/deliveryOrder/supplierDoView.vue"; //supplier do view
+import PiSupplierDoAdd from "./components/projectDetail/supplier/deliveryOrder/supplierDoAdd.vue"; //supplier do add
+import PiSupplierDoList from "./components/projectDetail/supplier/deliveryOrder/supplierDoList.vue"; //supplier do list
+import PiSupplierDoEdit from "./components/projectDetail/supplier/deliveryOrder/supplierDoEdit.vue"; //supplier do edit
+import PiSupplierDoReport from "./components/projectDetail/supplier/deliveryOrder/supplierDoReport.vue"; //supplier do report
+
 //supplier quotation
 import PiSupplierQuotationView from "./components/projectDetail/supplier/quotation/supplierQuotationView.vue"; //supplier quotation view
 import PiSupplierQuotationAdd from "./components/projectDetail/supplier/quotation/supplierQuotationAdd.vue"; //supplier quotation add
 import PiSupplierQuotationList from "./components/projectDetail/supplier/quotation/supplierQuotationList.vue"; //supplier quotation list
 import PiSupplierQuotationEdit from "./components/projectDetail/supplier/quotation/supplierQuotationEdit.vue"; //supplier quotation edit
+import PiSupplierQuotationReport from "./components/projectDetail/supplier/quotation/supplierQuotationReport.vue"; //supplier quotation report
 
 //supplier rfq
 import PiSupplierRfqView from "./components/projectDetail/supplier/requestForQuotation/supplierRfqView.vue"; //supplier rfq view
 import PiSupplierRfqAdd from "./components/projectDetail/supplier/requestForQuotation/supplierRfqAdd.vue"; //supplier rfq add
 import PiSupplierRfqList from "./components/projectDetail/supplier/requestForQuotation/supplierRfqList.vue"; //supplier rfq list
 import PiSupplierRfqEdit from "./components/projectDetail/supplier/requestForQuotation/supplierRfqEdit.vue"; //supplier rfq edit
+import PiSupplierRfqReport from "./components/projectDetail/supplier/requestForQuotation/supplierRfqReport.vue"; //supplier rfq report
 
 //setting page
 //main
@@ -145,6 +164,13 @@ const routes = [
       { path: "cpo/view", component: PiCustomerPoView },
       { path: "cpo/add", component: PiCustomerPoAdd },
       { path: "cpo/edit", component: PiCustomerPoEdit },
+      { path: "cpo/report/:cpoid", component: PiCustomerPoReport },
+      //customer do
+      { path: "cdo", component: PiCustomerDoList },
+      { path: "cdo/view", component: PiCustomerDoView },
+      { path: "cdo/add", component: PiCustomerDoAdd },
+      { path: "cdo/edit", component: PiCustomerDoEdit },
+      { path: "cdo/report/:cdoid", component: PiCustomerDoReport },
       //customer quotation
       {
         path: "cq",
@@ -158,16 +184,24 @@ const routes = [
         name: "customerQuotation"
       },
       { path: "cq/edit", component: PiCustomerQuotationEdit },
+      { path: "cq/report/:cqid", component: PiCustomerQuotationReport },
       //customer rfq
       { path: "crfq", component: PiCustomerRfqList },
       { path: "crfq/view", component: PiCustomerRfqView },
       { path: "crfq/edit", component: PiCustomerRfqEdit },
+      { path: "crfq/report/:crfqid", component: PiCustomerRfqReport },
       //supplier po
       { path: "spo", component: PiSupplierPoList },
       { path: "spo/view", component: PiSupplierPoView },
       { path: "spo/add", component: PiSupplierPoAdd },
       { path: "spo/edit", component: PiSupplierPoEdit },
       { path: "spo/report/:spoid", component: PiSupplierPoReport },
+      //supplier do
+      { path: "sdo", component: PiSupplierDoList },
+      { path: "sdo/view", component: PiSupplierDoView },
+      { path: "sdo/add", component: PiSupplierDoAdd },
+      { path: "sdo/edit", component: PiSupplierDoEdit },
+      { path: "sdo/report/:sdoid", component: PiSupplierDoReport },
       //supplier quotation
       {
         path: "sq",
@@ -181,11 +215,13 @@ const routes = [
         name: "supplierQuotation"
       },
       { path: "sq/edit", component: PiSupplierQuotationEdit },
+      { path: "sq/report/:sqid", component: PiSupplierQuotationReport },
       //supplier rfq
       { path: "srfq", component: PiSupplierRfqList },
       { path: "srfq/view", component: PiSupplierRfqView },
       { path: "srfq/add", component: PiSupplierRfqAdd },
-      { path: "srfq/edit", component: PiSupplierRfqEdit }
+      { path: "srfq/edit", component: PiSupplierRfqEdit },
+      { path: "srfq/report/:srfqid", component: PiSupplierRfqReport }
     ]
   },
   //Invoice
