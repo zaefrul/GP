@@ -16,6 +16,10 @@ export default class BaseApiService {
     return Http.put(url, data, config);
   }
 
+  delete(url, config) {
+    return Http.delete(url, config);
+  }
+
   combineAnd(operations) {
     return axios.all([...operations]);
   }

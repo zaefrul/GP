@@ -126,4 +126,12 @@ export default class GPApiService extends BaseApiService {
   getSupplierPO(id) {
     return this.get(`api/purchaseorders/project/supplier/${id}`);
   }
+
+  deleteSupplier(id) {
+    return this.delete(`api/suppliers/${id}`);
+  }
+
+  deleteCustomer(id) {
+    return this.delete(`api/customers/${id}`);
+  }
 }
