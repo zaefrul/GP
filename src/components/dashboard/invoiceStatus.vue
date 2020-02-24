@@ -1,15 +1,17 @@
 <template>
-  <div id="invoiceStatus" class="content-margin-top">
+  <div id="invoiceStatus">
     <div class="card">
       <h5 class="card-header">Invoice Status</h5>
-      <div class="card-body" style="position: relative; height: 500px;">
-        <div class="chart-item" style="width: 600px;height:400px;position: absolute;left:-23%;">
+      <div class="card-body" style="position: relative;">
+        <div class="chart-item">
         <div
           class="chart-item"
-          style="width: 500px;height:400px;position: absolute;left:-23%;"
+          style="width: 100%;margin:auto;"
         >
           <canvas id="planet-chart"></canvas>
         </div>
+      </div>
+      
         <div class="chartLegend">
           <div class="legendRow" v-for="(item, key, index) in projectsData" :key="index">
             <i class="fas fa-circle legendColorBlue"></i>
@@ -27,8 +29,9 @@
             <span class="legendTotal">213</span>
           </div>-->
         </div>
-      </div>
+
     </div>
+  </div>
   </div>
 </template>
 
@@ -89,7 +92,7 @@ export default {
 
 <style>
 .chartLegend {
-  margin-top: 340px;
+  margin-top: 20px;
 }
 .legendColorBlue {
   color: #312de2;

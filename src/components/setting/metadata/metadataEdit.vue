@@ -5,7 +5,7 @@
   <h1 class="display-4">EDIT METADATA</h1>
 </div>
 
-        <div class="container" style="margin-bottom: 60px;margin-top: 30px;">
+        <div class="container-fluid" style="margin-bottom: 60px;margin-top: 30px;">
             <form @submit.prevent="onEdit()" action method>
 
                 <div class="card">

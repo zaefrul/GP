@@ -1,14 +1,14 @@
 <template>
   <div id="projectLanding" class="content-margin-top">
     <div class="bg-grey csMenuHeader">
-      <div class="container">
+      <div class="container-fluid pl-5 pr-5">
         <h1 class="font-weight-normal text-info">{{currentProject.number}}</h1>
         <h5>{{currentProject.customer.companyName}}</h5>
         <h7>{{currentProject.title}}</h7>
       </div>
     </div>
 
-    <div class="container csMenuMargin">
+    <div class="container-fluid pl-5 pr-5 csMenuMargin">
       <div class="row">
         <div class="col-lg-12">
           <ul class="nav nav-tabs nav-fill">
@@ -56,13 +56,13 @@
             </li>
             <li class="nav-item">
               <router-link
-                :to="'/project-detail/' + this.$route.params.pid + '/spo'"
+                :to="'/project-detail/' + this.$route.params.pid + '/sdo'"
                 class="nav-link"
               >Supp DO</router-link>
             </li>
             <li class="nav-item">
               <router-link
-                :to="'/project-detail/' + this.$route.params.pid + '/spo'"
+                :to="'/project-detail/' + this.$route.params.pid + '/cdo'"
                 class="nav-link"
               >Cust DO</router-link>
             </li>
@@ -71,16 +71,6 @@
                 :to="'/project-detail/' + this.$route.params.pid + '/spo'"
                 class="nav-link"
               >Invoice</router-link>
-              <router-link :to="'/project-detail/' + this.$route.params.pid + '/cpo'" class="nav-link">Cust PO</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link :to="'/project-detail/' + this.$route.params.pid + '/spo'" class="nav-link" >Supp PO</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link :to="'/project-detail/' + this.$route.params.pid + '/cdo'" class="nav-link">Cust DO</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link :to="'/project-detail/' + this.$route.params.pid + '/sdo'" class="nav-link" >Supp DO</router-link>
             </li>
           </ul>
 

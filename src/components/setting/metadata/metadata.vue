@@ -10,7 +10,7 @@
       </p>
     </div>
 
-    <div class="container" style="margin-bottom: 60px;">
+    <div class="container-fluid" style="margin-bottom: 60px;">
       <div class="row">
         <table class="table">
           <thead class="thead-dark">

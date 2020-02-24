@@ -1,7 +1,7 @@
 <template>
 <div id="customerQuotationLetterForm">
 
-    <div class="container">
+    <div class="container-fluid">
       <div class="card" style="margin-top: 50px; margin-bottom: 100px;">
         <h3 class="card-header">
           Customer Quotation Detail

@@ -5,7 +5,7 @@
       <p class="lead">Register new project to the system</p>
     </div>
 
-    <div class="container" style="margin-bottom: 60px;margin-top: 30px;">
+    <div class="container-fluid" style="margin-bottom: 60px;margin-top: 30px;">
       <form action>
         <div class="card">
           <div class="card-body">

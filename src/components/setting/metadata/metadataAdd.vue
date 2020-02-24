@@ -6,7 +6,7 @@
   <p class="lead">Register new metadata to the system</p>
 </div>
 
-        <div class="container" style="margin-bottom: 60px;margin-top: 30px;">
+        <div class="container-fluid" style="margin-bottom: 60px;margin-top: 30px;">
             <form @submit.prevent="onSave()" method action>
                 <div class="card">
                     <div class="card-body">
