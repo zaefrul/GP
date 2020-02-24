@@ -146,8 +146,8 @@ const routes = [
       loginRequired: true
     },
     children: [
-      { path: "", component: ProjectListing },
-      { path: "add", component: ProjectAdd }
+      { path: "", component: ProjectListing, name: "projectList" },
+      { path: "add", component: ProjectAdd, name: "projectAdd" }
     ]
   },
   //Project Detail
@@ -160,7 +160,7 @@ const routes = [
     children: [
       { path: "", component: ProjectInformation },
       //customer po
-      { path: "cpo", component: PiCustomerPoList },
+      { path: "cpo", component: PiCustomerPoList, name: "customerPOList" },
       { path: "cpo/view", component: PiCustomerPoView },
       { path: "cpo/add", component: PiCustomerPoAdd },
       { path: "cpo/edit", component: PiCustomerPoEdit },
@@ -172,9 +172,17 @@ const routes = [
       { path: "cdo/edit", component: PiCustomerDoEdit },
       { path: "cdo/report/:cdoid", component: PiCustomerDoReport },
       //customer quotation
-      { path: "cq", component: PiCustomerQuotationList },
+      {
+        path: "cq",
+        component: PiCustomerQuotationList,
+        name: "customerQuotationList"
+      },
       { path: "cq/view", component: PiCustomerQuotationView },
-      { path: "cq/add", component: PiCustomerQuotationAdd },
+      {
+        path: "cq/add",
+        component: PiCustomerQuotationAdd,
+        name: "customerQuotation"
+      },
       { path: "cq/edit", component: PiCustomerQuotationEdit },
       { path: "cq/report/:cqid", component: PiCustomerQuotationReport },
       //customer rfq
@@ -195,9 +203,17 @@ const routes = [
       { path: "sdo/edit", component: PiSupplierDoEdit },
       { path: "sdo/report/:sdoid", component: PiSupplierDoReport },
       //supplier quotation
-      { path: "sq", component: PiSupplierQuotationList },
+      {
+        path: "sq",
+        component: PiSupplierQuotationList,
+        name: "supplierQuotationList"
+      },
       { path: "sq/view", component: PiSupplierQuotationView },
-      { path: "sq/add", component: PiSupplierQuotationAdd },
+      {
+        path: "sq/add",
+        component: PiSupplierQuotationAdd,
+        name: "supplierQuotation"
+      },
       { path: "sq/edit", component: PiSupplierQuotationEdit },
       { path: "sq/report/:sqid", component: PiSupplierQuotationReport },
       //supplier rfq
@@ -266,7 +282,7 @@ const routes = [
         children: [
           { path: "", component: MetadataList, name: "metadataList" },
           { path: "add", component: MetadataAdd },
-          { path: "edit/:mid", component: MetadataEdit }
+          { path: "edit/:mid", component: MetadataEdit, name: "metadataEdit" }
         ]
       },
       {

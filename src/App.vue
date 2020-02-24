@@ -31,7 +31,9 @@ export default {
       if (val === null) this.$router.push({ name: "login" });
     },
     isLoading(val) {
-      this.isLoading = val;
+      setTimeout(() => {
+        this.isLoading = val;
+      }, 100);
     }
   },
   components: {

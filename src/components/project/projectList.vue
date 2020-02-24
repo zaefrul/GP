@@ -4,9 +4,9 @@
       <h1 class="display-4">PROJECT LIST</h1>
       <p class="lead">This is the listing of our projects</p>
       <p class="lead">
-        <router-link to="project/add">
-          <button type="button" class="btn btn-primary">Register New Project</button>
-        </router-link>
+        <!-- <router-link to="projectList"> -->
+        <button type="button" class="btn btn-primary" @click="goToAddProject">Register New Project</button>
+        <!-- </router-link> -->
       </p>
     </div>
 
@@ -109,6 +109,9 @@ export default {
     formattedProjects(data) {
       let temp = data.map(d => new ProjectListAdapter(d));
       return temp;
+    },
+    goToAddProject() {
+      this.$router.push({ name: "projectAdd" });
     },
     ...mapActions(["getAllProjects"])
   },

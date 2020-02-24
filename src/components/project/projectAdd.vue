@@ -46,9 +46,9 @@
                     id="inputCompanyName"
                     class="form-control"
                     placeholder="Company Name"
-                    v-model="customer.companyName"
-                    @blur="$v.customer.companyName.$touch"
-                    @change="$v.customer.companyName.$touch"
+                    v-model="customerData.companyName"
+                    @blur="$v.customerData.companyName.$touch"
+                    @change="$v.customerData.companyName.$touch"
                   />
                 </div>
                 <div class="form-group col-md-4">
@@ -58,9 +58,9 @@
                     id="inputPhoneNumber"
                     class="form-control"
                     placeholder="Phone Number"
-                    v-model="customer.phone"
-                    @blur="$v.customer.phone.$touch"
-                    @change="$v.customer.phone.$touch"
+                    v-model="customerData.phone"
+                    @blur="$v.customerData.phone.$touch"
+                    @change="$v.customerData.phone.$touch"
                   />
                 </div>
               </div>
@@ -72,9 +72,9 @@
                     id="inputAddressMain"
                     class="form-control"
                     placeholder="Address"
-                    v-model="customer.address"
-                    @blur="$v.customer.address.$touch"
-                    @change="$v.customer.address.$touch"
+                    v-model="customerData.address"
+                    @blur="$v.customerData.address.$touch"
+                    @change="$v.customerData.address.$touch"
                   />
                 </div>
                 <div class="form-group col-md-4">
@@ -84,9 +84,9 @@
                     id="email"
                     class="form-control"
                     placeholder="Email"
-                    v-model="customer.email"
-                    @blur="$v.customer.email.$touch"
-                    @change="$v.customer.email.$touch"
+                    v-model="customerData.email"
+                    @blur="$v.customerData.email.$touch"
+                    @change="$v.customerData.email.$touch"
                   />
                 </div>
               </div>
@@ -97,9 +97,9 @@
                     id="inputAddressSub"
                     class="form-control"
                     placeholder="Address"
-                    v-model="customer.address"
-                    @blur="$v.customer.address.$touch"
-                    @change="$v.customer.address.$touch"
+                    v-model="customerData.address"
+                    @blur="$v.customerData.address.$touch"
+                    @change="$v.customerData.address.$touch"
                   />
                 </div>
               </div>
@@ -111,9 +111,9 @@
                     id="inputPostcode"
                     class="form-control"
                     placeholder="Postcode"
-                    v-model="customer.postcode"
-                    @blur="$v.customer.postcode.$touch"
-                    @change="$v.customer.postcode.$touch"
+                    v-model="customerData.postcode"
+                    @blur="$v.customerData.postcode.$touch"
+                    @change="$v.customerData.postcode.$touch"
                   />
                 </div>
                 <div class="form-group col-md-5">
@@ -121,9 +121,9 @@
                   <select
                     id="inputState"
                     class="form-control"
-                    v-model="customer.state"
-                    @blur="$v.customer.state.$touch"
-                    @change="$v.customer.state.$touch"
+                    v-model="customerData.state"
+                    @blur="$v.customerData.state.$touch"
+                    @change="$v.customerData.state.$touch"
                   >
                     <option selected>Choose...</option>
                     <option value="Selangor">Selangor</option>
@@ -137,9 +137,9 @@
                   <select
                     id="inputCountry"
                     class="form-control"
-                    v-model="customer.country"
-                    @blur="$v.customer.country.$touch"
-                    @change="$v.customer.country.$touch"
+                    v-model="customerData.country"
+                    @blur="$v.customerData.country.$touch"
+                    @change="$v.customerData.country.$touch"
                   >
                     <option selected>Choose...</option>
                     <option value="Malaysia">Malaysia</option>
@@ -156,23 +156,9 @@
                     id="inputPostcode"
                     class="form-control"
                     placeholder="License"
-                    v-model="customer.license"
-                    @blur="$v.customer.license.$touch"
-                    @change="$v.customer.license.$touch"
-                  />
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-3">
-                  <label for="projectTitle">Project Title</label>
-                  <input
-                    type="text"
-                    id="projectTitle"
-                    class="form-control"
-                    placeholder="Project"
-                    v-model="projectTitle"
-                    @blur="$v.projectTitle.$touch"
-                    @change="$v.projectTitle.$touch"
+                    v-model="customerData.license"
+                    @blur="$v.customerData.license.$touch"
+                    @change="$v.customerData.license.$touch"
                   />
                 </div>
               </div>
@@ -184,15 +170,37 @@
                 <div class="col-2">Select Existing Customer</div>
                 <div class="col-10">
                   <div class="form-group">
-                    <select class="form-control" id="exampleFormControlSelect1">
-                      <option>1</option>
-                      <option>2</option>
+                    <select
+                      class="form-control"
+                      id="exampleFormControlSelect1"
+                      v-model="customerId"
+                    >
+                      <option
+                        v-for="cust in customer"
+                        :key="cust.id"
+                        :value="cust.id"
+                      >{{ cust.companyName }}</option>
+                      <!-- <option>2</option>
                       <option>3</option>
                       <option>4</option>
-                      <option>5</option>
+                      <option>5</option>-->
                     </select>
                   </div>
                 </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <label for="projectTitle">Project Title</label>
+                <input
+                  type="text"
+                  id="projectTitle"
+                  class="form-control"
+                  placeholder="Project"
+                  v-model="projectTitle"
+                  @blur="$v.projectTitle.$touch"
+                  @change="$v.projectTitle.$touch"
+                />
               </div>
             </div>
           </div>
@@ -212,6 +220,7 @@
                   <th scope="col">Tag No</th>
                   <th scope="col">Model Number</th>
                   <th scope="col">Remarks</th>
+                  <th scope="col">Revision No</th>
                 </tr>
               </thead>
               <tbody>
@@ -298,6 +307,16 @@
                       @change="v.remarks.$touch"
                     />
                   </td>
+                  <td>
+                    <input
+                      class="form-control form-control-sm"
+                      type="text"
+                      placeholder="Revision No"
+                      v-model.trim="v.revisionNumber.$model"
+                      @blur="v.revisionNumber.$touch"
+                      @change="v.revisionNumber.$touch"
+                    />
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -326,7 +345,7 @@
 </template>
 
 <script>
-import { required, minLength } from "vuelidate/lib/validators";
+import { required, minLength, requiredIf } from "vuelidate/lib/validators";
 import { mapGetters, mapActions, mapMutations } from "vuex";
 
 export default {
@@ -352,7 +371,8 @@ export default {
         }
       ],
       radioClicked: true,
-      customer: {
+      customerId: null,
+      customerData: {
         companyName: "",
         address: "",
         postcode: "",
@@ -365,36 +385,66 @@ export default {
       projectTitle: "",
       items: [
         {
-          partName: ""
+          partName: "",
+          partNumber: "",
+          partPosition: "",
+          serialNumber: "",
+          drawingNumber: "",
+          tagNumber: "",
+          modelNumber: "",
+          remarks: "",
+          revisionNumber: ""
         }
       ]
     };
   },
   validations: {
-    customer: {
+    customerId: {
+      required: requiredIf(vm => {
+        return vm.radioClicked === false;
+      })
+    },
+
+    customerData: {
       companyName: {
-        required
+        required: requiredIf(vm => {
+          return vm.radioClicked === false;
+        })
       },
       address: {
-        required
+        required: requiredIf(vm => {
+          return vm.radioClicked === false;
+        })
       },
       postcode: {
-        required
+        required: requiredIf(vm => {
+          return vm.radioClicked === false;
+        })
       },
       state: {
-        required
+        required: requiredIf(vm => {
+          return vm.radioClicked === false;
+        })
       },
       country: {
-        required
+        required: requiredIf(vm => {
+          return vm.radioClicked === false;
+        })
       },
       phone: {
-        required
+        required: requiredIf(vm => {
+          return vm.radioClicked === false;
+        })
       },
       email: {
-        required
+        required: requiredIf(vm => {
+          return vm.radioClicked === false;
+        })
       },
       license: {
-        required
+        required: requiredIf(vm => {
+          return vm.radioClicked === false;
+        })
       }
     },
     projectTitle: {
@@ -427,10 +477,28 @@ export default {
         },
         remarks: {
           required
+        },
+        revisionNumber: {
+          required
         }
-        // revisionNumber: {
-        //   required
-        // }
+      }
+    }
+  },
+  computed: {
+    ...mapGetters(["success", "customer"])
+  },
+  watch: {
+    success(val) {
+      if (val) {
+        this.$router.push({ name: "projectList" });
+      }
+    },
+    radioClicked(val) {
+      if (val == false) {
+        if (this.customer.length === 0) {
+          this.getAllCustomers();
+        } else {
+        }
       }
     }
   },
@@ -439,12 +507,19 @@ export default {
       this.radioClicked = !this.radioClicked;
     },
     onSubmitWithCustomer() {
-      console.log(this.customer, "customer");
       if (this.$v.$invalid === false) {
-        this.createProjectWithCustomer({
-          customer: { ...this.customer },
-          title: { title: this.projectTitle }
-        });
+        if (this.radioClicked)
+          this.createProjectWithCustomer({
+            customer: { ...this.customerData },
+            title: { title: this.projectTitle },
+            items: [...this.items]
+          });
+        else
+          this.createProjectExistingCustomer({
+            customerId: this.customerId,
+            title: { title: this.projectTitle },
+            items: [...this.items]
+          });
       } else {
         this.$v.$touch();
       }
@@ -452,7 +527,16 @@ export default {
     onAddNewItem() {
       this.items.push({ partName: "" });
     },
-    ...mapActions(["createProjectWithCustomer"])
+    ...mapActions([
+      "createProjectWithCustomer",
+      "getAllCustomers",
+      "createProjectExistingCustomer"
+    ]),
+
+    ...mapMutations(["resetSucess"])
+  },
+  destroyed() {
+    this.resetSucess();
   }
 };
 </script>

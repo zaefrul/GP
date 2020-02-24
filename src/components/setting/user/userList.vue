@@ -139,7 +139,6 @@ export default {
       this.viewActive = true;
       this.selectedUser = uid;
       this.getUser(uid);
-      console.log(this.viewActive);
     },
     closeHistory() {
       this.viewActive = false;

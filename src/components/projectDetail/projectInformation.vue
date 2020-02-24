@@ -3,79 +3,86 @@
         <div class="progressBar mb-5 mt-5">
             <div class="progressRow">
                 <div class="progressBlock">
-                    <div class="progressTitle">Supplier RFQ</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus >= 1 }">
+                    <div class="progressTitle">Customer RFQ</div>
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': projectDetail.stage >= 1 }">
                         <div class="level">1</div>
                     </div>
                 </div>
                 <div class="progressBlock">
-                    <div class="progressTitle">Customer Quotation</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus >= 2 }">
+                    <div class="progressTitle">Supplier RFQ</div>
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': projectDetail.stage >= 2 }">
                         <div class="level">2</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus >= 2 }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': projectDetail.stage >= 2 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
                     <div class="progressTitle">Supplier Quotation</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus >= 3 }">
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': projectDetail.stage >= 3 }">
                         <div class="level">3</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus >= 3 }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': projectDetail.stage >= 3 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
-                    <div class="progressTitle">Customer Purchase Order</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus >= 4 }">
+                    <div class="progressTitle">Customer Quotation</div>
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': projectDetail.stage >= 4 }">
                         <div class="level">4</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus >= 4 }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': projectDetail.stage >= 4 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
-                    <div class="progressTitle">Supplier Purchase Order</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus >= 5 }">
+                    <div class="progressTitle">Customer PO</div>
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': projectDetail.stage >= 5 }">
                         <div class="level">5</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus >= 5 }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': projectDetail.stage >= 5 }"></div>
+                    </div>
+                </div>
+                <div class="progressBlock">
+                    <div class="progressTitle">Supplier PO</div>
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': projectDetail.stage >= 6 }">
+                        <div class="level">6</div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': projectDetail.stage >= 6 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
                     <div class="progressTitle">Supplier SOA</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus >= 6 }">
-                        <div class="level">6</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus >= 6 }"></div>
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': projectDetail.stage >= 7 }">
+                        <div class="level">7</div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': projectDetail.stage >= 7 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
                     <div class="progressTitle">Customer SOA</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus >= 7 }">
-                        <div class="level">7</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus >= 7 }"></div>
-                    </div>
-                </div>
-                <div class="progressBlock">
-                    <div class="progressTitle">Supplier Delivery Order</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus >= 8 }">
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': projectDetail.stage >= 8 }">
                         <div class="level">8</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus >= 8 }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': projectDetail.stage >= 8 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
-                    <div class="progressTitle">Customer Delivery Order</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus >= 9 }">
+                    <div class="progressTitle">Supplier DO</div>
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': projectDetail.stage >= 9 }">
                         <div class="level">9</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus >= 9 }"></div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': projectDetail.stage >= 9 }"></div>
+                    </div>
+                </div>
+                <div class="progressBlock">
+                    <div class="progressTitle">Customer DO</div>
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': projectDetail.stage >= 10 }">
+                        <div class="level">10</div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': projectDetail.stage >= 10 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
                     <div class="progressTitle">Supplier Invoice</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus >= 10 }">
-                        <div class="level">10</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus >= 10 }"></div>
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': projectDetail.stage >= 11 }">
+                        <div class="level">11</div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': projectDetail.stage >= 11 }"></div>
                     </div>
                 </div>
                 <div class="progressBlock">
                     <div class="progressTitle">Customer Invoice</div>
-                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': stageStatus >= 11 }">
-                        <div class="level">11</div>
-                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': stageStatus >= 11 }"></div>
+                    <div class="progressIcon" v-bind:class="{ 'progressIconActive': projectDetail.stage >= 12 }">
+                        <div class="level">12</div>
+                        <div class="progressBarLine" v-bind:class="{ 'progressBarLineActive': projectDetail.stage >= 12 }"></div>
                     </div>
                 </div>
             </div>
@@ -93,8 +100,11 @@
                                 </div>
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                    aria-describedby="inputGroupFileAddon01">
+                                    aria-describedby="inputGroupFileAddon01" ref="file" v-on:change="handleFileUpload()">
                                     <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                </div>
+                                <div class="input-group w-100">
+                                    <button type="button" class="btn btn-success" @click="submitFile()">Upload</button>
                                 </div>
                             </div>
                         </form>
@@ -188,16 +198,24 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+import Http from '../../service/httpservice';
 export default {
     name: 'piMain',
     data: function(){
         return {
             stageStatus: 2,
-            suppSoaDoc: 1,
-            cusSoaDoc: 1,
+            suppSoaDoc: null,
+            cusSoaDoc: null,
             suppInvoiceDoc: null,
             cusInvoiceDoc: null
         }
+    },
+    mounted(){ 
+        this.getProjectDetail(this.$route.params.pid);
+    },
+    computed: {
+        ...mapGetters(["projectDetail"])
     },
     methods: {
         onFileChange(e) {
@@ -205,6 +223,39 @@ export default {
         if (!files.length)
             return;
         this.createImage(files[0]);
+        },
+        ...mapActions(["getProjectDetail"]),
+        handleFileUpload() {
+            this.suppSoaDoc = this.$refs.file.files[0];
+            this.submitFile();
+        },
+        submitFile() {
+            var reader = new FileReader()
+            reader.readAsDataURL(this.suppSoaDoc)
+            console.log(reader);
+            // let formData = new FormData();
+            // formData.append("projectId",this.$route.params.pid);
+            // formData.append("type",1);
+            // formData.append("file",this.suppSoaDoc);
+            // for (var key of formData.entries()) {
+            //     console.log(key[0] + ', ' + key[1]);
+            // }
+            Http.post("/api/soas",
+                {
+                    file:reader.result,
+                    projectId:this.$route.params.pid,
+                    type:1
+                },
+                {
+                    "headers": {
+                        "Content-Type":"multipart/form-data"
+                    }
+                }
+            ).then(res=>{
+                console.log(res);
+            }).catch(re=>{
+                console.log(re);
+            })
         }
     }
 }

@@ -59,7 +59,7 @@
 
               <div class="col-md-6 offset-md-4">
                 <button type="button" class="btn btn-primary" @click="onLogin">Login</button>
-                <a href="#" class="btn btn-link">Forgot Your Password?</a>
+                <!-- <a href="#" class="btn btn-link">Forgot Your Password?</a> -->
               </div>
             </form>
           </div>
@@ -99,9 +99,7 @@ export default {
     }
   },
   methods: {
-    login() {
-      console.log(this.username, this.password);
-    },
+    login() {},
     onLogin() {
       if (this.$v.$invalid === false) {
         this.handleLogin({ username: this.username, password: this.password });

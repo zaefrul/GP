@@ -8,10 +8,14 @@ import SupplierFacade from "./supplier.facade";
 import MetadataFacade from "./metadata.facade";
 
 export default class GPOpsFactory {
-
   static handleMetadata() {
     const metadataFacade = new MetadataFacade();
     return metadataFacade;
+  }
+
+  static handlerProject() {
+    const projectFacade = new ProjectsFacade();
+    return projectFacade;
   }
 
   static handleLogin(data) {
@@ -57,10 +61,15 @@ export default class GPOpsFactory {
     const UserFcd = new UserFacade();
     return UserFcd.modifyUser(id, data);
   }
-  
+
   static createProjectWithCustomer(data) {
     const ProjectsFcd = new ProjectsFacade();
     return ProjectsFcd.createProject(data);
+  }
+
+  static createProjectExistingCustomer(data) {
+    const ProjectsFcd = new ProjectsFacade();
+    return ProjectsFcd.createExistingProject(data);
   }
 
   static getAllCustomers() {
@@ -81,5 +90,60 @@ export default class GPOpsFactory {
   static createSupplier(data) {
     const SupplierFcd = new SupplierFacade();
     return SupplierFcd.createSupplier(data);
+  }
+
+  static getRfq(id) {
+    const ProjectsFcd = new ProjectsFacade();
+    return ProjectsFcd.getRfq(id);
+  }
+
+  static getCurrentProject(id) {
+    const ProjectsFcd = new ProjectsFacade();
+    return ProjectsFcd.getCurrentProject(id);
+  }
+
+  static getCustomerRfqQuo(id) {
+    const ProjectsFcd = new ProjectsFacade();
+    return ProjectsFcd.handleBothCustomerRFQQuo(id);
+  }
+
+  static createQuotation(data) {
+    const ProjectsFcd = new ProjectsFacade();
+    return ProjectsFcd.createQuotation(data);
+  }
+
+  static updateQuotation(data) {
+    const ProjectsFcd = new ProjectsFacade();
+    return ProjectsFcd.updateQuotation(data);
+  }
+
+  static createSupplierQuotation(data) {
+    const ProjectsFcd = new ProjectsFacade();
+    return ProjectsFcd.createSupplierQuotation(data);
+  }
+
+  static getSupplierfqQuo(id) {
+    const ProjectsFcd = new ProjectsFacade();
+    return ProjectsFcd.handleBothCSupplierRFQQuo(id);
+  }
+
+  static createCustomerPO(data) {
+    const ProjectsFcd = new ProjectsFacade();
+    return ProjectsFcd.createCustomerPo(data);
+  }
+
+  static createSupplierPO(data) {
+    const ProjectsFcd = new ProjectsFacade();
+    return ProjectsFcd.createSupplierPo(data);
+  }
+
+  static getBothCustomerPO(id) {
+    const ProjectsFcd = new ProjectsFacade();
+    return ProjectsFcd.handleBothCustomerQuoPO(id);
+  }
+
+  static getBothSupplierPO(id) {
+    const ProjectsFcd = new ProjectsFacade();
+    return ProjectsFcd.handleBothSupplierQuoPO(id);
   }
 }

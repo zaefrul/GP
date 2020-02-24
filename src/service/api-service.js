@@ -32,15 +32,19 @@ export default class GPApiService extends BaseApiService {
   }
 
   getUser(id) {
-    return this.get("users/"+id);
+    return this.get("users/" + id);
   }
 
   modifyUser(id, data) {
-    return this.put("users/"+id, data);
+    return this.put("users/" + id, data);
   }
-  
+
   createCustomer(data) {
     return this.post("api/customers", data);
+  }
+
+  getCustomer(data) {
+    return this.get("/api/customers");
   }
 
   createProject(data) {
@@ -57,5 +61,69 @@ export default class GPApiService extends BaseApiService {
 
   createSupplier(data) {
     return this.post("api/suppliers", data);
+  }
+
+  createCustomerRFQ(data) {
+    return this.post("api/rfqs/customer", data);
+  }
+
+  createSupplierRFQ(data) {
+    return this.post("api/rfqs/supplier", data);
+  }
+
+  getRFQ(id) {
+    return this.get(`api/rfqs/customers/${id}`);
+  }
+
+  getQuotation(id) {
+    return this.get(`api/quotations/project/customer/${id}`);
+  }
+
+  getCurrentProject(id) {
+    return this.get(`api/projects/${id}`);
+  }
+
+  createCustomerQuotation(data) {
+    return this.post(`api/quotations/customer/`, data);
+  }
+
+  createQuotation(data) {
+    return this.post(`api/quotations/customer`, data);
+  }
+
+  updateQuotation(data) {
+    return this.put(`api/quotations/${data.id}`, data.data);
+  }
+
+  createSupplierQuotation(data) {
+    return this.post(`api/quotations/supplier`, data);
+  }
+
+  updateSupplierQuotation(data) {
+    return this.put(`api/quotations/${data.id}`, data.data);
+  }
+
+  getSupplierQuotation(id) {
+    return this.get(`api/quotations/project/supplier/${id}`);
+  }
+
+  getSupplierRFQ(id) {
+    return this.get(`api/rfqs/suppliers/${id}`);
+  }
+
+  createCustomerPO(data) {
+    return this.post("api/purchaseorders/customer", data);
+  }
+
+  createSupplierPO(data) {
+    return this.post("api/purchaseorders/supplier", data);
+  }
+
+  getCustomerPO(id) {
+    return this.get(`api/purchaseorders/project/customer/${id}`);
+  }
+
+  getSupplierPO(id) {
+    return this.get(`api/purchaseorders/project/supplier/${id}`);
   }
 }
