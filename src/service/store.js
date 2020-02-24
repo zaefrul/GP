@@ -1,12 +1,14 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import GPOpsFactory from "./gp-ops.factory";
+import GPApiService from "./api-service";
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
     project: null,
     customer: [],
+    currentCustomer: null,
     metadata: null,
     metadataList: null,
     metadataPrices: null,
@@ -21,7 +23,7 @@ export const store = new Vuex.Store({
     userData: null,
     userSettings: null,
     projectDetail: null,
-    rfq:null,
+    rfq: null,
     projectRfq: [],
     currentProject: null,
     projectDetail: null,
@@ -63,7 +65,8 @@ export const store = new Vuex.Store({
     currentSupplierRfq: state => state.currentSupplierRfq,
     currentSupplierQuotation: state => state.currentSupplierQuotation,
     currentCustomerPO: state => state.currentCustomerPO,
-    currentSupplierPO: state => state.currentSupplierPO
+    currentSupplierPO: state => state.currentSupplierPO,
+    currentCustomer: state => state.currentCustomer
   },
   mutations: {
     setProject: (state, payload) => {
@@ -146,6 +149,15 @@ export const store = new Vuex.Store({
     resetCurrentCustomerPO: state => {
       state.currentCustomerPO = null;
       state.currentCustomerQuotation = null;
+    },
+    setDeleteSupplier: (state, payload) => {
+      state.suppliers = state.suppliers.filter(s => s.id !== payload);
+    },
+    setDeleteCustomer: (state, payload) => {
+      state.customer = state.customer.filter(c => c.id !== payload);
+    },
+    setCurrentCustomer: (state, payload) => {
+      state.currentCustomer = payload;
     }
   },
   actions: {
@@ -325,13 +337,13 @@ export const store = new Vuex.Store({
         });
     },
     editMetadata: (context, payload) => {
-      context.commit("setLoading",true);
+      context.commit("setLoading", true);
       GPOpsFactory.handleMetadata()
         .editMetadata(payload)
-        .then(res=>{
+        .then(res => {
           context.commit("setSuccess", true);
           context.commit("setLoading", false);
-        })
+        });
     },
     getRfq: (context, payload) => {
       context.commit("setLoading", true);
@@ -349,24 +361,30 @@ export const store = new Vuex.Store({
     },
     getProjectDetail: (context, payload) => {
       context.commit("setLoading", false);
-      GPOpsFactory.handlerProject().getProjectDetail(payload).then(res=> {
-        context.commit("setProjectDetail", res);
-        context.commit("setLoading",false);
-      })
+      GPOpsFactory.handlerProject()
+        .getProjectDetail(payload)
+        .then(res => {
+          context.commit("setProjectDetail", res);
+          context.commit("setLoading", false);
+        });
     },
     getProjectCustomerRFQ: (context, payload) => {
       context.commit("setLoading", true);
-      GPOpsFactory.handlerProject().getProjectCustomerRFQ(payload).then(res => {
-        context.commit("setProjectRFQ", res[res.length-1]);
-        context.commit("setLoading", false);
-      })
+      GPOpsFactory.handlerProject()
+        .getProjectCustomerRFQ(payload)
+        .then(res => {
+          context.commit("setProjectRFQ", res[res.length - 1]);
+          context.commit("setLoading", false);
+        });
     },
     getProjectSupplierRFQ: (context, payload) => {
       context.commit("setLoading", true);
-      GPOpsFactory.handlerProject().getProjectSupplierRFQ(payload).then(res => {
-        context.commit("setProjectRFQ", res[res.length-1]);
-        context.commit("setLoading", false);
-      })
+      GPOpsFactory.handlerProject()
+        .getProjectSupplierRFQ(payload)
+        .then(res => {
+          context.commit("setProjectRFQ", res[res.length - 1]);
+          context.commit("setLoading", false);
+        });
       context.commit("setLoading", true);
       GPOpsFactory.handlerProject()
         .getProjectDetail(payload)
@@ -526,6 +544,42 @@ export const store = new Vuex.Store({
           context.commit("setCurrentSupplierQuotation", quotation);
         }
         context.commit("setLoading", false);
+      });
+    },
+    deleteSupplier: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.deleteSupplier(payload).then(res => {
+        console.log(res, "haha");
+        context.commit("setDeleteSupplier", payload);
+        // context.commit("setSuppliers", filterData);
+        // context.commit("setSuccess", true);
+        context.commit("setLoading", false);
+      });
+    },
+    deleteCustomer: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.deleteCustomer(payload).then(res => {
+        console.log(res, "haha");
+        context.commit("setDeleteCustomer", payload);
+        // context.commit("setSuppliers", filterData);
+        // context.commit("setSuccess", true);
+        context.commit("setLoading", false);
+      });
+    },
+    getCustomer: (context, payload) => {
+      console.log(payload, "test");
+      context.commit("setLoading", true);
+      GPOpsFactory.getCustomer(payload).then(res => {
+        context.commit("setCurrentCustomer", res);
+        context.commit("setLoading", false);
+      });
+    },
+    updateCustomer: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.updateCustomer(payload).then(res => {
+        // context.commit("setCurrentCustomer", res);
+        context.commit("setLoading", false);
+        context.commit("setSuccess", true);
       });
     },
     createSupplierRFQ: (context, payload) => {

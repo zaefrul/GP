@@ -43,8 +43,8 @@ export default class GPApiService extends BaseApiService {
     return this.post("api/customers", data);
   }
 
-  getCustomer(data) {
-    return this.get("/api/customers");
+  getCustomer(id) {
+    return this.get(`/api/customers/${id}`);
   }
 
   createProject(data) {
@@ -125,5 +125,17 @@ export default class GPApiService extends BaseApiService {
 
   getSupplierPO(id) {
     return this.get(`api/purchaseorders/project/supplier/${id}`);
+  }
+
+  deleteSupplier(id) {
+    return this.delete(`api/suppliers/${id}`);
+  }
+
+  deleteCustomer(id) {
+    return this.delete(`api/customers/${id}`);
+  }
+
+  updateCustomer(data) {
+    return this.put(`api/customers/${data.id}`, data.data);
   }
 }
