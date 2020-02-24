@@ -20,4 +20,12 @@ export default class CustomersFacade {
   deleteCustomer(id) {
     return this.GPAPI.deleteCustomer(id).then(res => res.data);
   }
+
+  getCustomer(id) {
+    return this.GPAPI.getCustomer(id).then(res => res.data);
+  }
+
+  updateCustomer(data) {
+    return this.GPAPI.updateCustomer(data).then(res => res.data);
+  }
 }

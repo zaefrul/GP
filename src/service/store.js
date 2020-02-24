@@ -1,12 +1,14 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import GPOpsFactory from "./gp-ops.factory";
+import GPApiService from "./api-service";
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
     project: null,
     customer: [],
+    currentCustomer: null,
     metadata: null,
     metadataList: null,
     metadataPrices: null,
@@ -63,7 +65,8 @@ export const store = new Vuex.Store({
     currentSupplierRfq: state => state.currentSupplierRfq,
     currentSupplierQuotation: state => state.currentSupplierQuotation,
     currentCustomerPO: state => state.currentCustomerPO,
-    currentSupplierPO: state => state.currentSupplierPO
+    currentSupplierPO: state => state.currentSupplierPO,
+    currentCustomer: state => state.currentCustomer
   },
   mutations: {
     setProject: (state, payload) => {
@@ -152,6 +155,9 @@ export const store = new Vuex.Store({
     },
     setDeleteCustomer: (state, payload) => {
       state.customer = state.customer.filter(c => c.id !== payload);
+    },
+    setCurrentCustomer: (state, payload) => {
+      state.currentCustomer = payload;
     }
   },
   actions: {
@@ -550,6 +556,22 @@ export const store = new Vuex.Store({
         // context.commit("setSuppliers", filterData);
         // context.commit("setSuccess", true);
         context.commit("setLoading", false);
+      });
+    },
+    getCustomer: (context, payload) => {
+      console.log(payload, "test");
+      context.commit("setLoading", true);
+      GPOpsFactory.getCustomer(payload).then(res => {
+        context.commit("setCurrentCustomer", res);
+        context.commit("setLoading", false);
+      });
+    },
+    updateCustomer: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.updateCustomer(payload).then(res => {
+        // context.commit("setCurrentCustomer", res);
+        context.commit("setLoading", false);
+        context.commit("setSuccess", true);
       });
     }
   }
