@@ -22,6 +22,7 @@ export class RFQItem {
     this.remarks = data.remarks;
     this.revision = data.revision;
     this.unitOfMeasurement = data.unitOfMeasurement;
+    this.quantity = data.quantity;
   }
 }
 export class QuotationItem extends RFQItem {

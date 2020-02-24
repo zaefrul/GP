@@ -23,7 +23,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button class="btn btn-primary" style="float: right;" type="submit">Add</button>
+                    <button class="btn btn-primary" style="float: right;" @click="$router.push({name:'supplierQuotation'})" type="button">Add</button>
                 </div>
             </div>
         </div>

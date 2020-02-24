@@ -16,9 +16,9 @@
                         <tbody>
                             <tr v-for="(item, index) in supplierDoList" :key="index++">
                             <td scope="row">{{ index }}</td>
-                            <td>{{ item.date }}</td>
-                            <td>{{ item.supplier }}</td>
-                            <td class="text-center">{{ item.status }}</td>
+                            <td>{{ item.dateCreated }}</td>
+                            <td>{{ item.number }}</td>
+                            <td class="text-center">{{ item.dateline }}</td>
                             <td class="text-center"><router-link to="cdo/view/" class="nav-link">View DO</router-link></td>
                             </tr>
                         </tbody>
@@ -33,16 +33,22 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
     name: 'piCustomerDoList',
     data: function(){
         return {
-            supplierDoList : [
-                { date: '12/01/2020', supplier: 'Concrete Malaysia Sdn. Bhd.', status: 'Accepted', option: 'View'},
-                { date: '12/01/2020', supplier: 'Aris Kayu Sdn. Bhd.', status: 'Accepted', option: 'View'},
-                { date: '12/01/2020', supplier: 'Kim Tiles Corp', status: 'Accepted', option: 'View'}
-            ]
+            
         }
+    },
+    mounted() {
+        this.getLatestProjectCustomerDO(this.$route.params.pid);
+    },
+    computed: {
+        ...mapGetters(["supplierDoList"])
+    },
+    methods: {
+        ...mapActions(["getLatestProjectCustomerDO"])
     }
 }
 </script>

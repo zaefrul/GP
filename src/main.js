@@ -166,7 +166,7 @@ const routes = [
       { path: "cpo/edit", component: PiCustomerPoEdit },
       { path: "cpo/report/:cpoid", component: PiCustomerPoReport },
       //customer do
-      { path: "cdo", component: PiCustomerDoList },
+      { path: "cdo", component: PiCustomerDoList, name: "cdoList" },
       { path: "cdo/view", component: PiCustomerDoView },
       { path: "cdo/add", component: PiCustomerDoAdd },
       { path: "cdo/edit", component: PiCustomerDoEdit },
@@ -191,13 +191,13 @@ const routes = [
       { path: "crfq/edit", component: PiCustomerRfqEdit },
       { path: "crfq/report/:crfqid", component: PiCustomerRfqReport },
       //supplier po
-      { path: "spo", component: PiSupplierPoList },
+      { path: "spo", component: PiSupplierPoList, name:"spoList" },
       { path: "spo/view", component: PiSupplierPoView },
       { path: "spo/add", component: PiSupplierPoAdd },
       { path: "spo/edit", component: PiSupplierPoEdit },
       { path: "spo/report/:spoid", component: PiSupplierPoReport },
       //supplier do
-      { path: "sdo", component: PiSupplierDoList },
+      { path: "sdo", component: PiSupplierDoList, name:"sdoList" },
       { path: "sdo/view/:sdoid", component: PiSupplierDoView },
       { path: "sdo/add", component: PiSupplierDoAdd },
       { path: "sdo/edit", component: PiSupplierDoEdit },

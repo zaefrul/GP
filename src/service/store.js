@@ -33,7 +33,8 @@ export const store = new Vuex.Store({
     currentSupplierQuotation: null,
     currentCustomerPO: null,
     currentSupplierPO: null,
-    currentSupplierDO: null
+    currentSupplierDO: null,
+    supplierDoList:null
   },
   getters: {
     project: state => state.project,
@@ -68,7 +69,8 @@ export const store = new Vuex.Store({
     currentCustomerPO: state => state.currentCustomerPO,
     currentSupplierPO: state => state.currentSupplierPO,
     currentCustomer: state => state.currentCustomer,
-    currentSupplierDO : state => state.currentSupplierDO
+    currentSupplierDO : state => state.currentSupplierDO,
+    supplierDoList: state => state.supplierDoList
   },
   mutations: {
     setProject: (state, payload) => {
@@ -163,6 +165,9 @@ export const store = new Vuex.Store({
     },
     setSupplierDO: (state, payload) => {
       state.currentSupplierDO = payload;
+    },
+    setSupplierDoList: (state, payload) => {
+      state.supplierDoList = payload;
     }
   },
   actions: {
@@ -655,6 +660,28 @@ export const store = new Vuex.Store({
         context.commit("setSupplierDO", res);
         context.commit("setLoading", false);
       })
-    }
+    },
+    getDetailSupplierDO: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.handlerProject().getDetailDO(payload).then(res=>{
+        context.commit("setSupplierDO", res);
+        context.commit("setLoading", false);
+      })
+    },
+    getLatestProjectCustomerDO: (context, payload) => {
+      
+      context.commit("setLoading", true);
+      GPOpsFactory.handlerProject().getLatestCustDO(payload).then(res=>{
+        context.commit("setSupplierDoList", res);
+        context.commit("setLoading", false);
+      })
+    },
+    createCustomerDO: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.handlerProject().addCustomerDO(payload).then(res=>{
+        context.commit("setSuccess", true);
+        context.commit("setLoading", false);
+      })
+  },
   }
 });

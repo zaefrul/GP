@@ -12,20 +12,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex flex-row">
-                        <div class="col-2">DO to Supplier</div>
-                        <div class="col-8">
-                            <div class="form-group">
-                                <select class="form-control" id="exampleFormControlSelect1" v-model="selectPo">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
                     
                         <div class="col-2">
                             <router-link to="/supplier/add" class="btn btn-primary ml-3" style="float: right;" tag="button">Add New Supplier</router-link>
@@ -142,6 +128,11 @@ export default {
             });
             console.log(this.currentSupplierRfq)
             this.createSupplierDO(this.currentSupplierRfq)
+        }
+    },
+    watch: {
+        success(val){
+            this.$router.push({name:"sdoList"})
         }
     }
 }

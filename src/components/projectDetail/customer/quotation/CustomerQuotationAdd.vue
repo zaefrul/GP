@@ -82,7 +82,7 @@ export default {
       if (val) {
         this.create = true;
         const rfq = val.items.map(i => {
-          let data = { ...i, amount: 0, currency: "MYR" };
+          let data = { ...i, currency: "MYR" };
           delete data["id"];
           return data;
         });
