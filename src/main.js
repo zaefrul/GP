@@ -246,7 +246,7 @@ const routes = [
         children: [
           { path: "", component: MetadataList, name: "metadataList" },
           { path: "add", component: MetadataAdd },
-          { path: "edit/:mid", component: MetadataEdit }
+          { path: "edit/:mid", component: MetadataEdit, name: "metadataEdit" }
         ]
       },
       {

@@ -16,7 +16,7 @@
               <router-link
                 :to="'/project-detail/' + this.$route.params.pid"
                 class="nav-link"
-              >Project Information</router-link>
+              >Summary</router-link>
             </li>
             <li class="nav-item">
               <router-link
@@ -32,27 +32,45 @@
             </li>
             <li class="nav-item">
               <router-link
-                :to="'/project-detail/' + this.$route.params.pid + '/cq'"
+                :to="'/project-detail/' + this.$route.params.pid + '/sq'"
                 class="nav-link"
-              >Cust Quotation</router-link>
+              >Supp QUO</router-link>
             </li>
             <li class="nav-item">
               <router-link
-                :to="'/project-detail/' + this.$route.params.pid + '/sq'"
+                :to="'/project-detail/' + this.$route.params.pid + '/cq'"
                 class="nav-link"
-              >Supp Quotation</router-link>
+              >Cust QUO</router-link>
             </li>
             <li class="nav-item">
               <router-link
                 :to="'/project-detail/' + this.$route.params.pid + '/cpo'"
                 class="nav-link"
-              >Cust Purchase Order</router-link>
+              >Cust PO</router-link>
             </li>
             <li class="nav-item">
               <router-link
                 :to="'/project-detail/' + this.$route.params.pid + '/spo'"
                 class="nav-link"
-              >Supp Purchase Order</router-link>
+              >Supp PO</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link
+                :to="'/project-detail/' + this.$route.params.pid + '/spo'"
+                class="nav-link"
+              >Supp DO</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link
+                :to="'/project-detail/' + this.$route.params.pid + '/spo'"
+                class="nav-link"
+              >Cust DO</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link
+                :to="'/project-detail/' + this.$route.params.pid + '/spo'"
+                class="nav-link"
+              >Invoice</router-link>
             </li>
           </ul>
 

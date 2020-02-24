@@ -310,6 +310,15 @@ export const store = new Vuex.Store({
           context.commit("setLoading", false);
         });
     },
+    editMetadata: (context, payload) => {
+      context.commit("setLoading",true);
+      GPOpsFactory.handleMetadata()
+        .editMetadata(payload)
+        .then(res=>{
+          context.commit("setSuccess", true);
+          context.commit("setLoading", false);
+        })
+    },
     getRfq: (context, payload) => {
       context.commit("setLoading", true);
       GPOpsFactory.getRfq(payload).then(res => {

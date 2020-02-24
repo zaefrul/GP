@@ -74,7 +74,7 @@
       <div class="popupBox">
         <div class="card mhCard">
           <h5 class="card-header">
-            This is item name
+            {{metadata.partName}}
             <button
               type="button"
               class="btn btn-danger btn-sm"
@@ -83,6 +83,22 @@
             >Close</button>
           </h5>
           <div class="card-body mhCardBody">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th scope="row">Revision</th>
+                  <td><span v-if="metadata.revision != null">{{metadata.revision}}</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Remarks</th>
+                  <td><span v-if="metadata.remarks != null">{{metadata.remarks}}</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">UOM</th>
+                  <td><span v-if="metadata.unitOfMeasurement != null">{{metadata.unitOfMeasurement}}</span></td>
+                </tr>
+              </tbody>
+            </table>
             <table class="table">
               <thead>
                 <tr>
@@ -100,7 +116,7 @@
           </div>
           <div class="card-footer mhCardFooter text-center">
             <router-link
-              :to="'metadata/edit/' + selectedMetadata"
+              :to="'metadata/edit/' + metadata.id"
               @click="closeHistory()"
             >Modify the metadata</router-link>
           </div>
@@ -124,12 +140,13 @@ export default {
     this.getMetadatas();
   },
   computed: {
-    ...mapGetters(["metadatas", "metadataPrices"])
+    ...mapGetters(["metadata","metadatas", "metadataPrices"])
   },
   methods: {
-    ...mapActions(["getMetadatas", "getMetadataPrices"]),
+    ...mapActions(["getMetadatas", "getMetadataPrices","getMetadata"]),
     clickHistory(mid) {
       this.getMetadataPrices(mid);
+      this.getMetadata(mid);
       this.historyActive = true;
     },
     closeHistory() {

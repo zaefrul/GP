@@ -233,18 +233,29 @@ export default {
             var reader = new FileReader()
             reader.readAsDataURL(this.suppSoaDoc)
             console.log(reader);
-
-            // Http.post("/api/soas",
-            //     {
-            //         file:reader.result,
-            //         projectId:this.$route.params.pid,
-            //         type:1
-            //     }
-            // ).then(res=>{
-            //     console.log(res);
-            // }).catch(re=>{
-            //     console.log(re);
-            // })
+            // let formData = new FormData();
+            // formData.append("projectId",this.$route.params.pid);
+            // formData.append("type",1);
+            // formData.append("file",this.suppSoaDoc);
+            // for (var key of formData.entries()) {
+            //     console.log(key[0] + ', ' + key[1]);
+            // }
+            Http.post("/api/soas",
+                {
+                    file:reader.result,
+                    projectId:this.$route.params.pid,
+                    type:1
+                },
+                {
+                    "headers": {
+                        "Content-Type":"multipart/form-data"
+                    }
+                }
+            ).then(res=>{
+                console.log(res);
+            }).catch(re=>{
+                console.log(re);
+            })
         }
     }
 }
