@@ -8,19 +8,19 @@
               <tr>
                 <th scope="col">No</th>
                 <th scope="col">Date</th>
-                <th scope="col">Remarks</th>
+                <th scope="col">Reference</th>
                 <th scope="col">Quotation Status</th>
-                <!-- <th scope="col">Option</th> -->
+                <th scope="col">Option</th>
               </tr>
             </thead>
             <tbody>
               <template v-if="!generateQuotation">
-                <tr v-for="(item, index) in customerQuotationList" :key="index++">
+                <tr v-for="(item, index) in currentCustomerQuotation" :key="index++">
                   <td scope="row">{{ index }}</td>
                   <td>{{ item.dateCreated }}</td>
-                  <td>{{ item.remarks }}</td>
+                  <td>{{ item.number }}</td>
                   <td>{{ item.active }}</td>
-                  <!-- <td>{{ item.option }}</td> -->
+                  <td class="text-center"><router-link :to="'cq/view/' + item.id" class="nav-link">View Quotation</router-link></td>
                 </tr>
               </template>
               <template v-if="generateQuotation">
@@ -90,7 +90,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["currentProject"])
+    ...mapGetters(["currentProject","currentCustomerQuotation"])
   },
   watch: {
     currentProject(val) {
@@ -99,20 +99,25 @@ export default {
   },
   mounted() {
     // this.getRfq();
-    if (this.currentProject.quotations.length > 0) {
-      this.generateQuotation = false;
-      this.customerQuotationList = [...this.currentProject.quotations];
-    } else {
-      this.generateQuotation = true;
+    // if (this.currentProject.quotations.length > 0) {
+    //   this.generateQuotation = false;
+    //   this.customerQuotationList = [...this.currentProject.quotations];
+    // } else {
+    //   this.generateQuotation = true;
 
-      this.customerQuotationList = [...this.currentProject.rfQs];
+    //   this.customerQuotationList = [...this.currentProject.rfQs];
+    // }
+    this.getProjectCustomerQuotation(this.$route.params.pid)
+    if(this.currentCustomerQuotation.length > 0)
+    {
+      this.generateQuotation = false;
     }
   },
   methods: {
     goToAddQuotation() {
       this.$router.push({ name: "customerQuotation" });
     },
-    ...mapActions(["getRfq"])
+    ...mapActions(["getProjectCustomerQuotation"])
   }
 };
 </script>

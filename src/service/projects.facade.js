@@ -57,9 +57,13 @@ export default class ProjectsFacade {
 
   handleBothRFQ(rfq) {
     return this.GPAPI.combineAnd([
-      this.GPAPI.createCustomerRFQ(rfq),
-      this.GPAPI.createSupplierRFQ(rfq)
+      this.GPAPI.createCustomerRFQ(rfq)
+      //this.GPAPI.createSupplierRFQ(rfq) comment - need to be created during button generation
     ]);
+  }
+
+  createSupplierRfq(data) {
+    return this.GPAPI.createSupplierRFQ(data);
   }
 
   getProjectDetail(id)
@@ -137,5 +141,21 @@ export default class ProjectsFacade {
       this.GPAPI.getQuotation(id),
       this.GPAPI.getCustomerPO(id)
     ]);
+  }
+
+  generateSupplierRFQ(id) {
+    return this.GPAPI.get("/api/rfqs/supplier/generateRFQ/"+id).then(res => res.data);
+  }
+
+  getProjectSupplierQuotation(projectId) {
+    return this.GPAPI.get("/api/quotations/project/supplier/" + projectId).then(res=>res.data);
+  }
+
+  getProjectCustomerQuotation(projectId) {
+    return this.GPAPI.get("/api/quotations/project/customer/" + projectId).then(res=>res.data);
+  }
+
+  getDetailProQuo(quoId) {
+    return this.GPAPI.get("/api/quotations/"+quoId).then(res=>res.data);
   }
 }

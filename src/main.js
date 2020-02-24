@@ -177,7 +177,7 @@ const routes = [
         component: PiCustomerQuotationList,
         name: "customerQuotationList"
       },
-      { path: "cq/view", component: PiCustomerQuotationView },
+      { path: "cq/view/:cqid", component: PiCustomerQuotationView },
       {
         path: "cq/add",
         component: PiCustomerQuotationAdd,
@@ -208,7 +208,7 @@ const routes = [
         component: PiSupplierQuotationList,
         name: "supplierQuotationList"
       },
-      { path: "sq/view", component: PiSupplierQuotationView },
+      { path: "sq/view/:sqid", component: PiSupplierQuotationView },
       {
         path: "sq/add",
         component: PiSupplierQuotationAdd,
@@ -217,9 +217,9 @@ const routes = [
       { path: "sq/edit", component: PiSupplierQuotationEdit },
       { path: "sq/report/:sqid", component: PiSupplierQuotationReport },
       //supplier rfq
-      { path: "srfq", component: PiSupplierRfqList },
+      { path: "srfq", component: PiSupplierRfqList, name: "LSRFQ" },
       { path: "srfq/view", component: PiSupplierRfqView },
-      { path: "srfq/add", component: PiSupplierRfqAdd },
+      { path: "srfq/add", component: PiSupplierRfqAdd, name:"ASRFQ" },
       { path: "srfq/edit", component: PiSupplierRfqEdit },
       { path: "srfq/report/:srfqid", component: PiSupplierRfqReport }
     ]

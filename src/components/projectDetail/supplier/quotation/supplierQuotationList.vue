@@ -8,22 +8,22 @@
                             <tr>
                             <th scope="col">No</th>
                             <th scope="col">Date</th>
-                            <th scope="col">Supplier</th>
+                            <th scope="col">Referrence</th>
                             <th scope="col">Quotation Status</th>
                             <th scope="col">Option</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(item, index) in supplierQuotationList" :key="index++">
+                            <tr v-for="(item, index) in currentSupplierQuotation" :key="index++">
                             <td scope="row">{{ index }}</td>
-                            <td>{{ item.date }}</td>
-                            <td>{{ item.supplier }}</td>
+                            <td>{{ item.dateCreated }}</td>
+                            <td>{{ item.number }}</td>
                             <td>{{ item.status }}</td>
-                            <td class="text-center"><router-link to="sq/view/" class="nav-link">View Quotation</router-link></td>
+                            <td class="text-center"><router-link :to="'sq/view/' + item.id" class="nav-link">View Quotation</router-link></td>
                             </tr>
                         </tbody>
                     </table>
-                    <button class="btn btn-primary" style="float: right;" type="submit">Add New Quotation</button>
+                    <button class="btn btn-primary" style="float: right;" type="submit">Add</button>
                 </div>
             </div>
         </div>
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
     name: 'piSupplierQuotationList',
     data: function(){
@@ -41,6 +42,15 @@ export default {
                 { date: '12/01/2020', supplier: 'Kim Tiles Sdn. Bhd.', status: 'Accepted', option: 'View'}
             ]
         }
+    },
+    mounted() {
+        this.getProjectSupplierQuotation(this.$route.params.pid);
+    },
+    computed: {
+        ...mapGetters(["currentSupplierQuotation"])
+    },
+    methods: {
+        ...mapActions(["getProjectSupplierQuotation"])
     }
 }
 </script>
