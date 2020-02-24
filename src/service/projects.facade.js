@@ -116,4 +116,26 @@ export default class ProjectsFacade {
       this.GPAPI.getSupplierQuotation(id)
     ]);
   }
+
+  createCustomerPo(data) {
+    return this.GPAPI.createCustomerPO(data).then(res => res.data);
+  }
+
+  createSupplierPo(data) {
+    return this.GPAPI.createSupplierPO(data).then(res => res.data);
+  }
+
+  handleBothSupplierQuoPO(id) {
+    return this.GPAPI.combineAnd([
+      this.GPAPI.getSupplierQuotation(id),
+      this.GPAPI.getSupplierPO(id)
+    ]);
+  }
+
+  handleBothCustomerQuoPO(id) {
+    return this.GPAPI.combineAnd([
+      this.GPAPI.getQuotation(id),
+      this.GPAPI.getCustomerPO(id)
+    ]);
+  }
 }

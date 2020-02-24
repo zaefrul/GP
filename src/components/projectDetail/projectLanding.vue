@@ -89,6 +89,14 @@ export default {
   data() {
     return {};
   },
+  computed: {
+    ...mapGetters(["currentProject"])
+  },
+  $watch: {
+    currentProject(val) {
+      this.currentProject = val;
+    }
+  },
   mounted() {
     this.getCurrentProject(this.$route.params.pid);
   },
