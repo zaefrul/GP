@@ -11,6 +11,7 @@
                 <th scope="col">Part Number</th>
                 <th scope="col">Serial Number</th>
                 <th scope="col">Remarks</th>
+                <th scope="col">Qty</th>
               </tr>
             </thead>
             <tbody>
@@ -20,6 +21,7 @@
                 <td>{{ item.partNumber }}</td>
                 <td>{{ item.serialNumber }}</td>
                 <td>{{item.remarks }}</td>
+                <td>{{item.quantity }}</td>
                 <!-- <td><router-link :to="'po/view/' + item.poid" class="nav-link">View</router-link></td> -->
                 <!-- <td>
                   <router-link to="cpo/view/" class="nav-link">View</router-link>

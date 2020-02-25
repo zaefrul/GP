@@ -33,7 +33,9 @@ export const store = new Vuex.Store({
     currentSupplierRfq: null,
     currentSupplierQuotation: null,
     currentCustomerPO: null,
-    currentSupplierPO: null
+    currentSupplierPO: null,
+    currentSupplierDO: null,
+    supplierDoList:null
   },
   getters: {
     project: state => state.project,
@@ -68,7 +70,9 @@ export const store = new Vuex.Store({
     currentCustomerPO: state => state.currentCustomerPO,
     currentSupplierPO: state => state.currentSupplierPO,
     currentCustomer: state => state.currentCustomer,
-    currentSupplier: state => state.currentSupplier
+    currentSupplier: state => state.currentSupplier,
+    currentSupplierDO : state => state.currentSupplierDO,
+    supplierDoList: state => state.supplierDoList
   },
   mutations: {
     setProject: (state, payload) => {
@@ -163,6 +167,12 @@ export const store = new Vuex.Store({
     },
     setCurrentSupplier: (state, payload) => {
       state.currentSupplier = payload;
+    },
+    setSupplierDO: (state, payload) => {
+      state.currentSupplierDO = payload;
+    },
+    setSupplierDoList: (state, payload) => {
+      state.supplierDoList = payload;
     }
   },
   actions: {
@@ -648,12 +658,60 @@ export const store = new Vuex.Store({
     },
     getDetailProjectCustomerQuotation: (context, payload) => {
       context.commit("setLoading", true);
-      GPOpsFactory.handlerProject()
-        .getDetailProQuo(payload)
-        .then(res => {
-          context.commit("setCurrentCustomerQuotation", res);
+      GPOpsFactory.handlerProject().getDetailProQuo(payload).then(res=>{
+        context.commit("setCurrentCustomerQuotation", res);
+        context.commit("setLoading", false);
+      })
+    },
+    getLatestQuoForPo: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.handlerProject().getProjectCustomerQuotation(payload).then(res=>{
+        context.commit("setCurrentCustomerPO", res[res.length-1]);
+        context.commit("setLoading", false);
+      })
+    },
+    getLatestQuoForSupPo: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.handlerProject().getProjectCustomerQuotation(payload).then(res=>{
+        context.commit("setCurrentCustomerPO", res[res.length-1]);
+        context.commit("setLoading", false);
+      })
+    },
+    createSupplierDO: (context, payload) => {
+        context.commit("setLoading", true);
+        GPOpsFactory.handlerProject().addSupplierDO(payload).then(res=>{
+          context.commit("setSuccess", true);
           context.commit("setLoading", false);
-        });
+        })
+    },
+    getLatestProjectSupplierDO: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.handlerProject().getLatestDO(payload).then(res=>{
+        context.commit("setSupplierDO", res);
+        context.commit("setLoading", false);
+      })
+    },
+    getDetailSupplierDO: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.handlerProject().getDetailDO(payload).then(res=>{
+        context.commit("setSupplierDO", res);
+        context.commit("setLoading", false);
+      })
+    },
+    getLatestProjectCustomerDO: (context, payload) => {
+      
+      context.commit("setLoading", true);
+      GPOpsFactory.handlerProject().getLatestCustDO(payload).then(res=>{
+        context.commit("setSupplierDoList", res);
+        context.commit("setLoading", false);
+      })
+    },
+    createCustomerDO: (context, payload) => {
+      context.commit("setLoading", true);
+      GPOpsFactory.handlerProject().addCustomerDO(payload).then(res=>{
+        context.commit("setSuccess", true);
+        context.commit("setLoading", false);
+      })
     }
   }
 });

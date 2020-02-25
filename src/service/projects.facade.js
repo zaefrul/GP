@@ -158,4 +158,25 @@ export default class ProjectsFacade {
   getDetailProQuo(quoId) {
     return this.GPAPI.get("/api/quotations/"+quoId).then(res=>res.data);
   }
+
+  addSupplierDO(data) {
+    return this.GPAPI.post('/api/deliveryorders/supplier', data).then(res=>res.data);
+  }
+
+  addCustomerDO(data) {
+    return this.GPAPI.post('/api/deliveryorders/customer', data).then(res=>res.data);
+  }
+
+  getLatestDO(id) {
+    return this.GPAPI.get("/api/deliveryorders/project/supplier/"+id).then(res=>res.data);
+  }
+
+  getLatestCustDO(id) {
+    return this.GPAPI.get("/api/deliveryorders/project/customer/"+id).then(res=>res.data);
+
+  }
+
+  getDetailDO(id) {
+    return this.GPAPI.get("/api/deliveryorders/"+id).then(res=>res.data);
+  }
 }

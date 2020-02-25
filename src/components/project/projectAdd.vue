@@ -221,6 +221,7 @@
                   <th scope="col">Model Number</th>
                   <th scope="col">Remarks</th>
                   <th scope="col">Revision No</th>
+                  <th scope="col">Quantity</th>
                 </tr>
               </thead>
               <tbody>
@@ -312,9 +313,19 @@
                       class="form-control form-control-sm"
                       type="text"
                       placeholder="Revision No"
-                      v-model.trim="v.revisionNumber.$model"
-                      @blur="v.revisionNumber.$touch"
-                      @change="v.revisionNumber.$touch"
+                      v-model.trim="v.revision.$model"
+                      @blur="v.revision.$touch"
+                      @change="v.revision.$touch"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      class="form-control form-control-sm"
+                      type="text"
+                      placeholder="Quantity"
+                      v-model.trim="v.quantity.$model"
+                      @blur="v.quantity.$touch"
+                      @change="v.quantity.$touch"
                     />
                   </td>
                 </tr>
@@ -393,7 +404,8 @@ export default {
           tagNumber: "",
           modelNumber: "",
           remarks: "",
-          revisionNumber: ""
+          revision: "",
+          quantity:""
         }
       ]
     };
@@ -478,7 +490,10 @@ export default {
         remarks: {
           required
         },
-        revisionNumber: {
+        revision: {
+          required
+        },
+        quantity: {
           required
         }
       }

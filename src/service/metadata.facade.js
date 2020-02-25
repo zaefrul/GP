@@ -26,6 +26,7 @@ export default class MetadataFacade {
   }
 
   editMetadata(data) {
+      console.log(data);
       return this.GPAPI.put("/api/metadatas/"+data.id).then(res=>res.status);
   }
 }
